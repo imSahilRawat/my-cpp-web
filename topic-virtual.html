@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Functions - C++ Questions</title>
+</head>
+<body>
+    <h1>Virtual Functions</h1>
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="questions.html">Questions</a> |
+        <a href="about.html">About Me</a>
+    </p>
+
+    <hr>
+
+    <p><a href="questions.html">&lt;&lt; Back to Topics</a></p>
+
+    <h2>Practice Questions (13 questions)</h2>
+
+    <h3>Question 1: Write a C++ program to create an abstract class Animal with an abstract method called sound(). Create derived classes Lion and Tiger that extend the Animal class and implement the sound() method to make a specific sound for each animal.</h3>
+
+    <button onclick="toggleSolution('sol1')">Show Solution</button>
+    <pre id="sol1" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() = 0;
+};
+
+class Lion : public Animal {
+public:
+    void sound() {
+        cout &lt;&lt; "Lion says: ROAR!" &lt;&lt; endl;
+    }
+};
+
+class Tiger : public Animal {
+public:
+    void sound() {
+        cout &lt;&lt; "Tiger says: GRRR!" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Lion lion;
+    Tiger tiger;
+
+    cout &lt;&lt; "Animal Sounds:" &lt;&lt; endl;
+    lion.sound();
+    tiger.sound();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 2: Write a C++ program to create an abstract class Animal with an abstract method called sound(). Create derived classes Lion and Tiger that extend the Animal class and implement the sound() method to make a specific sound for each animal.</h3>
+
+    <button onclick="toggleSolution('sol2')">Show Solution</button>
+    <pre id="sol2" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() = 0;
+    virtual ~Animal() {}
+};
+
+class Lion : public Animal {
+public:
+    void sound() {
+        cout &lt;&lt; "Lion says: ROAR!" &lt;&lt; endl;
+    }
+};
+
+class Tiger : public Animal {
+public:
+    void sound() {
+        cout &lt;&lt; "Tiger says: GRRR!" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Animal* animals[2];
+    Lion lion;
+    Tiger tiger;
+
+    animals[0] = &amp;lion;
+    animals[1] = &amp;tiger;
+
+    cout &lt;&lt; "Animal Sounds (using base class pointer):" &lt;&lt; endl;
+    for (int i = 0; i &lt; 2; i++) {
+        animals[i]-&gt;sound();
+    }
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 3: Write a C++ program to create an abstract class Shape with abstract methods calculateArea() and calculatePerimeter(). Create derived classes Circle and Triangle that extend the Shape class and implement the respective methods to calculate the area and perimeter of each shape.</h3>
+
+    <button onclick="toggleSolution('sol3')">Show Solution</button>
+    <pre id="sol3" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Shape {
+public:
+    virtual float calculateArea() = 0;
+    virtual float calculatePerimeter() = 0;
+    virtual ~Shape() {}
+};
+
+class Circle : public Shape {
+private:
+    float radius;
+public:
+    Circle(float r) : radius(r) {}
+
+    float calculateArea() {
+        return 3.14159 * radius * radius;
+    }
+
+    float calculatePerimeter() {
+        return 2 * 3.14159 * radius;
+    }
+};
+
+class Triangle : public Shape {
+private:
+    float a, b, c;
+public:
+    Triangle(float x, float y, float z) : a(x), b(y), c(z) {}
+
+    float calculateArea() {
+        float s = (a + b + c) / 2;
+        return s * (s - a) * (s - b) * (s - c);
+    }
+
+    float calculatePerimeter() {
+        return a + b + c;
+    }
+};
+
+int main() {
+    Circle c(5);
+    Triangle t(3, 4, 5);
+
+    cout &lt;&lt; "Circle:" &lt;&lt; endl;
+    cout &lt;&lt; "Area: " &lt;&lt; c.calculateArea() &lt;&lt; endl;
+    cout &lt;&lt; "Perimeter: " &lt;&lt; c.calculatePerimeter() &lt;&lt; endl;
+
+    cout &lt;&lt; "\nTriangle:" &lt;&lt; endl;
+    cout &lt;&lt; "Area: " &lt;&lt; t.calculateArea() &lt;&lt; endl;
+    cout &lt;&lt; "Perimeter: " &lt;&lt; t.calculatePerimeter() &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 4: Write a C++ program to create an abstract class BankAccount with abstract methods deposit() and withdraw(). Create derived classes: SavingsAccount and CurrentAccount that extend the BankAccount class and implement the respective methods to handle deposits and withdrawals for each account type.</h3>
+
+    <button onclick="toggleSolution('sol4')">Show Solution</button>
+    <pre id="sol4" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class BankAccount {
+protected:
+    float balance;
+public:
+    BankAccount(float initial = 0) : balance(initial) {}
+
+    virtual void deposit(float amount) = 0;
+    virtual void withdraw(float amount) = 0;
+
+    void displayBalance() {
+        cout &lt;&lt; "Balance: Rs. " &lt;&lt; balance &lt;&lt; endl;
+    }
+
+    virtual ~BankAccount() {}
+};
+
+class SavingsAccount : public BankAccount {
+public:
+    SavingsAccount(float initial = 0) : BankAccount(initial) {}
+
+    void deposit(float amount) {
+        balance += amount;
+        cout &lt;&lt; "Deposited Rs. " &lt;&lt; amount &lt;&lt; " in Savings Account" &lt;&lt; endl;
+    }
+
+    void withdraw(float amount) {
+        if (amount &lt;= balance) {
+            balance -= amount;
+            cout &lt;&lt; "Withdrew Rs. " &lt;&lt; amount &lt;&lt; " from Savings Account" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Insufficient balance!" &lt;&lt; endl;
+        }
+    }
+};
+
+class CurrentAccount : public BankAccount {
+private:
+    float overdraftLimit;
+public:
+    CurrentAccount(float initial = 0, float limit = 1000) : BankAccount(initial), overdraftLimit(limit) {}
+
+    void deposit(float amount) {
+        balance += amount;
+        cout &lt;&lt; "Deposited Rs. " &lt;&lt; amount &lt;&lt; " in Current Account" &lt;&lt; endl;
+    }
+
+    void withdraw(float amount) {
+        if (amount &lt;= balance + overdraftLimit) {
+            balance -= amount;
+            cout &lt;&lt; "Withdrew Rs. " &lt;&lt; amount &lt;&lt; " from Current Account" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Exceeds overdraft limit!" &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    SavingsAccount savings(5000);
+    CurrentAccount current(10000, 2000);
+
+    cout &lt;&lt; "=== Savings Account ===" &lt;&lt; endl;
+    savings.deposit(2000);
+    savings.withdraw(1000);
+    savings.displayBalance();
+
+    cout &lt;&lt; "\n=== Current Account ===" &lt;&lt; endl;
+    current.deposit(5000);
+    current.withdraw(3000);
+    current.displayBalance();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 5: Write a C++ program to create an abstract class Animal with abstract methods eat() and sleep(). Create derived classes Lion, Tiger, and Deer that extend the Animal class and implement the eat() and sleep() methods differently based on their specific behavior.</h3>
+
+    <button onclick="toggleSolution('sol5')">Show Solution</button>
+    <pre id="sol5" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Animal {
+public:
+    virtual void eat() = 0;
+    virtual void sleep() = 0;
+    virtual ~Animal() {}
+};
+
+class Lion : public Animal {
+public:
+    void eat() {
+        cout &lt;&lt; "Lion eats meat by hunting other animals." &lt;&lt; endl;
+    }
+    void sleep() {
+        cout &lt;&lt; "Lion sleeps for 20 hours a day." &lt;&lt; endl;
+    }
+};
+
+class Tiger : public Animal {
+public:
+    void eat() {
+        cout &lt;&lt; "Tiger eats large prey alone." &lt;&lt; endl;
+    }
+    void sleep() {
+        cout &lt;&lt; "Tiger sleeps for 16-18 hours a day." &lt;&lt; endl;
+    }
+};
+
+class Deer : public Animal {
+public:
+    void eat() {
+        cout &lt;&lt; "Deer eats grass and plants." &lt;&lt; endl;
+    }
+    void sleep() {
+        cout &lt;&lt; "Deer sleeps lightly for 4-5 hours, staying alert." &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Lion lion;
+    Tiger tiger;
+    Deer deer;
+
+    cout &lt;&lt; "=== Lion ===" &lt;&lt; endl;
+    lion.eat();
+    lion.sleep();
+
+    cout &lt;&lt; "\n=== Tiger ===" &lt;&lt; endl;
+    tiger.eat();
+    tiger.sleep();
+
+    cout &lt;&lt; "\n=== Deer ===" &lt;&lt; endl;
+    deer.eat();
+    deer.sleep();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 6: Write a C++ program to create an abstract class Employee with abstract methods calculateSalary() and displayInfo(). Create derived classes Manager and Programmer that extend the Employee class and implement the respective methods to calculate salary and display information for each role.</h3>
+
+    <button onclick="toggleSolution('sol6')">Show Solution</button>
+    <pre id="sol6" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Employee {
+protected:
+    string name;
+    int id;
+    float baseSalary;
+public:
+    Employee(int i, string n, float s) {
+        id = i;
+        name = n;
+        baseSalary = s;
+    }
+
+    virtual void calculateSalary() = 0;
+    virtual void displayInfo() = 0;
+    virtual ~Employee() {}
+};
+
+class Manager : public Employee {
+private:
+    float bonus;
+public:
+    Manager(int i, string n, float s, float b) : Employee(i, n, s), bonus(b) {}
+
+    void calculateSalary() {
+        float total = baseSalary + bonus;
+        cout &lt;&lt; "Manager's total salary: Rs. " &lt;&lt; total &lt;&lt; endl;
+    }
+
+    void displayInfo() {
+        cout &lt;&lt; "Manager - ID: " &lt;&lt; id &lt;&lt; ", Name: " &lt;&lt; name &lt;&lt; ", Base: Rs. " &lt;&lt; baseSalary &lt;&lt; ", Bonus: Rs. " &lt;&lt; bonus &lt;&lt; endl;
+    }
+};
+
+class Programmer : public Employee {
+private:
+    int hoursWorked;
+    float hourlyRate;
+public:
+    Programmer(int i, string n, float s, int h, float r) : Employee(i, n, s), hoursWorked(h), hourlyRate(r) {}
+
+    void calculateSalary() {
+        float overtime = hoursWorked * hourlyRate;
+        float total = baseSalary + overtime;
+        cout &lt;&lt; "Programmer's total salary: Rs. " &lt;&lt; total &lt;&lt; endl;
+    }
+
+    void displayInfo() {
+        cout &lt;&lt; "Programmer - ID: " &lt;&lt; id &lt;&lt; ", Name: " &lt;&lt; name &lt;&lt; ", Base: Rs. " &lt;&lt; baseSalary &lt;&lt; ", Overtime Hours: " &lt;&lt; hoursWorked &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Manager mgr(1, "John", 50000, 10000);
+    Programmer pgmr(2, "Alice", 40000, 20, 500);
+
+    cout &lt;&lt; "=== Manager ===" &lt;&lt; endl;
+    mgr.displayInfo();
+    mgr.calculateSalary();
+
+    cout &lt;&lt; "\n=== Programmer ===" &lt;&lt; endl;
+    pgmr.displayInfo();
+    pgmr.calculateSalary();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 7: Write a C++ program to create an abstract class Shape3D with abstract methods calculateVolume() and calculateSurfaceArea(). Create derived classes Sphere and Cube that extend the Shape3D class and implement the respective methods to calculate the volume and surface area of each shape.</h3>
+
+    <button onclick="toggleSolution('sol7')">Show Solution</button>
+    <pre id="sol7" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Shape3D {
+public:
+    virtual float calculateVolume() = 0;
+    virtual float calculateSurfaceArea() = 0;
+    virtual ~Shape3D() {}
+};
+
+class Sphere : public Shape3D {
+private:
+    float radius;
+public:
+    Sphere(float r) : radius(r) {}
+
+    float calculateVolume() {
+        return (4.0 / 3.0) * 3.14159 * radius * radius * radius;
+    }
+
+    float calculateSurfaceArea() {
+        return 4 * 3.14159 * radius * radius;
+    }
+};
+
+class Cube : public Shape3D {
+private:
+    float side;
+public:
+    Cube(float s) : side(s) {}
+
+    float calculateVolume() {
+        return side * side * side;
+    }
+
+    float calculateSurfaceArea() {
+        return 6 * side * side;
+    }
+};
+
+int main() {
+    Sphere s(5);
+    Cube c(4);
+
+    cout &lt;&lt; "=== Sphere (radius = 5) ===" &lt;&lt; endl;
+    cout &lt;&lt; "Volume: " &lt;&lt; s.calculateVolume() &lt;&lt; endl;
+    cout &lt;&lt; "Surface Area: " &lt;&lt; s.calculateSurfaceArea() &lt;&lt; endl;
+
+    cout &lt;&lt; "\n=== Cube (side = 4) ===" &lt;&lt; endl;
+    cout &lt;&lt; "Volume: " &lt;&lt; c.calculateVolume() &lt;&lt; endl;
+    cout &lt;&lt; "Surface Area: " &lt;&lt; c.calculateSurfaceArea() &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 8: Write a C++ program to create an abstract class Vehicle with abstract methods startEngine() and stopEngine(). Create derived classes Car and Motorcycle that extend the Vehicle class and implement the respective methods to start and stop the engines for each vehicle type.</h3>
+
+    <button onclick="toggleSolution('sol8')">Show Solution</button>
+    <pre id="sol8" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Vehicle {
+public:
+    virtual void startEngine() = 0;
+    virtual void stopEngine() = 0;
+    virtual ~Vehicle() {}
+};
+
+class Car : public Vehicle {
+public:
+    void startEngine() {
+        cout &lt;&lt; "Car: Insert key, press brake, turn ignition - Engine started!" &lt;&lt; endl;
+    }
+    void stopEngine() {
+        cout &lt;&lt; "Car: Turn ignition off, remove key - Engine stopped!" &lt;&lt; endl;
+    }
+};
+
+class Motorcycle : public Vehicle {
+public:
+    void startEngine() {
+        cout &lt;&lt; "Motorcycle: Put in neutral, pull clutch, kick start - Engine started!" &lt;&lt; endl;
+    }
+    void stopEngine() {
+        cout &lt;&lt; "Motorcycle: Turn off ignition switch - Engine stopped!" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Car car;
+    Motorcycle bike;
+
+    cout &lt;&lt; "=== Car ===" &lt;&lt; endl;
+    car.startEngine();
+    car.stopEngine();
+
+    cout &lt;&lt; "\n=== Motorcycle ===" &lt;&lt; endl;
+    bike.startEngine();
+    bike.stopEngine();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 9: Write a C++ program to create an abstract class Person with abstract methods eat() and exercise(). Create derived classes Athlete and LazyPerson that extend the Person class and implement the respective methods to describe how each person eats and exercises.</h3>
+
+    <button onclick="toggleSolution('sol9')">Show Solution</button>
+    <pre id="sol9" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Person {
+public:
+    virtual void eat() = 0;
+    virtual void exercise() = 0;
+    virtual ~Person() {}
+};
+
+class Athlete : public Person {
+public:
+    void eat() {
+        cout &lt;&lt; "Athlete eats a balanced diet with proteins, carbs, and vegetables." &lt;&lt; endl;
+    }
+    void exercise() {
+        cout &lt;&lt; "Athlete exercises 2 hours daily with running, weight training, and stretching." &lt;&lt; endl;
+    }
+};
+
+class LazyPerson : public Person {
+public:
+    void eat() {
+        cout &lt;&lt; "LazyPerson eats junk food, pizza, and snacks irregularly." &lt;&lt; endl;
+    }
+    void exercise() {
+        cout &lt;&lt; "LazyPerson rarely exercises, maybe a short walk occasionally." &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Athlete athlete;
+    LazyPerson lazy;
+
+    cout &lt;&lt; "=== Athlete ===" &lt;&lt; endl;
+    athlete.eat();
+    athlete.exercise();
+
+    cout &lt;&lt; "\n=== Lazy Person ===" &lt;&lt; endl;
+    lazy.eat();
+    lazy.exercise();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 10: Write a C++ program to create an abstract class Instrument with abstract methods play() and tune(). Create derived classes for Glockenspiel and Violin that extend the Instrument class and implement the respective methods to play and tune each instrument.</h3>
+
+    <button onclick="toggleSolution('sol10')">Show Solution</button>
+    <pre id="sol10" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Instrument {
+public:
+    virtual void play() = 0;
+    virtual void tune() = 0;
+    virtual ~Instrument() {}
+};
+
+class Glockenspiel : public Instrument {
+public:
+    void play() {
+        cout &lt;&lt; "Glockenspiel: Struck with mallets to produce bright, bell-like tones." &lt;&lt; endl;
+    }
+    void tune() {
+        cout &lt;&lt; "Glockenspiel: Tuned by adjusting the metal bars' length and tension." &lt;&lt; endl;
+    }
+};
+
+class Violin : public Instrument {
+public:
+    void play() {
+        cout &lt;&lt; "Violin: Played with a bow across strings or plucked." &lt;&lt; endl;
+    }
+    void tune() {
+        cout &lt;&lt; "Violin: Tuned by adjusting pegs and fine tuners for G, D, A, E strings." &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Glockenspiel glock;
+    Violin violin;
+
+    cout &lt;&lt; "=== Glockenspiel ===" &lt;&lt; endl;
+    glock.play();
+    glock.tune();
+
+    cout &lt;&lt; "\n=== Violin ===" &lt;&lt; endl;
+    violin.play();
+    violin.tune();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 11: Write a C++ program to create an abstract class Shape2D with abstract methods draw() and resize(). Create derived classes Rectangle and Circle that extend the Shape2D class and implement the respective methods to draw and resize each shape.</h3>
+
+    <button onclick="toggleSolution('sol11')">Show Solution</button>
+    <pre id="sol11" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Shape2D {
+protected:
+    float size;
+public:
+    Shape2D(float s = 0) : size(s) {}
+    virtual void draw() = 0;
+    virtual void resize(float newSize) = 0;
+    virtual ~Shape2D() {}
+};
+
+class Rectangle : public Shape2D {
+private:
+    float width, height;
+public:
+    Rectangle(float w, float h) : width(w), height(h) {}
+
+    void draw() {
+        cout &lt;&lt; "Rectangle: Drawing rectangle with width " &lt;&lt; width &lt;&lt; " and height " &lt;&lt; height &lt;&lt; endl;
+    }
+
+    void resize(float factor) {
+        width *= factor;
+        height *= factor;
+        cout &lt;&lt; "Rectangle: Resized to width " &lt;&lt; width &lt;&lt; " and height " &lt;&lt; height &lt;&lt; endl;
+    }
+};
+
+class Circle : public Shape2D {
+private:
+    float radius;
+public:
+    Circle(float r) : radius(r) {}
+
+    void draw() {
+        cout &lt;&lt; "Circle: Drawing circle with radius " &lt;&lt; radius &lt;&lt; endl;
+    }
+
+    void resize(float factor) {
+        radius *= factor;
+        cout &lt;&lt; "Circle: Resized to radius " &lt;&lt; radius &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Rectangle rect(10, 5);
+    Circle circle(7);
+
+    cout &lt;&lt; "=== Rectangle ===" &lt;&lt; endl;
+    rect.draw();
+    rect.resize(1.5);
+
+    cout &lt;&lt; "\n=== Circle ===" &lt;&lt; endl;
+    circle.draw();
+    circle.resize(2);
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 12: Write a C++ program to create an abstract class GeometricShape with abstract methods area() and perimeter(). Create derived classes Triangle and Square that extend the GeometricShape class and implement the respective methods to calculate the area and perimeter of each shape.</h3>
+
+    <button onclick="toggleSolution('sol12')">Show Solution</button>
+    <pre id="sol12" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class GeometricShape {
+public:
+    virtual float area() = 0;
+    virtual float perimeter() = 0;
+    virtual ~GeometricShape() {}
+};
+
+class Triangle : public GeometricShape {
+private:
+    float a, b, c;
+public:
+    Triangle(float x, float y, float z) : a(x), b(y), c(z) {}
+
+    float area() {
+        float s = (a + b + c) / 2;
+        return s * (s - a) * (s - b) * (s - c);
+    }
+
+    float perimeter() {
+        return a + b + c;
+    }
+};
+
+class Square : public GeometricShape {
+private:
+    float side;
+public:
+    Square(float s) : side(s) {}
+
+    float area() {
+        return side * side;
+    }
+
+    float perimeter() {
+        return 4 * side;
+    }
+};
+
+int main() {
+    Triangle t(3, 4, 5);
+    Square s(6);
+
+    cout &lt;&lt; "=== Triangle (3, 4, 5) ===" &lt;&lt; endl;
+    cout &lt;&lt; "Area: " &lt;&lt; t.area() &lt;&lt; endl;
+    cout &lt;&lt; "Perimeter: " &lt;&lt; t.perimeter() &lt;&lt; endl;
+
+    cout &lt;&lt; "\n=== Square (side = 6) ===" &lt;&lt; endl;
+    cout &lt;&lt; "Area: " &lt;&lt; s.area() &lt;&lt; endl;
+    cout &lt;&lt; "Perimeter: " &lt;&lt; s.perimeter() &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 13: Write a C++ program to create an abstract class Bird with abstract methods fly() and makeSound(). Create derived classes Eagle and Hawk that extend the Bird class and implement the respective methods to describe how each bird flies and makes a sound.</h3>
+
+    <button onclick="toggleSolution('sol13')">Show Solution</button>
+    <pre id="sol13" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Bird {
+public:
+    virtual void fly() = 0;
+    virtual void makeSound() = 0;
+    virtual ~Bird() {}
+};
+
+class Eagle : public Bird {
+public:
+    void fly() {
+        cout &lt;&lt; "Eagle soars high in the sky with powerful wing beats." &lt;&lt; endl;
+    }
+    void makeSound() {
+        cout &lt;&lt; "Eagle makes a loud screeching call: KREEE!" &lt;&lt; endl;
+    }
+};
+
+class Hawk : public Bird {
+public:
+    void fly() {
+        cout &lt;&lt; "Hawk flies swiftly with quick, agile movements." &lt;&lt; endl;
+    }
+    void makeSound() {
+        cout &lt;&lt; "Hawk makes a sharp whinny: KEE-EE-EE!" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Eagle eagle;
+    Hawk hawk;
+
+    cout &lt;&lt; "=== Eagle ===" &lt;&lt; endl;
+    eagle.fly();
+    eagle.makeSound();
+
+    cout &lt;&lt; "\n=== Hawk ===" &lt;&lt; endl;
+    hawk.fly();
+    hawk.makeSound();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <p><strong>Note:</strong> This topic contains 13 practice questions on Virtual Functions (UNIT-III).</p>
+
+    <hr>
+
+    <p>&copy; 2026 C++ Practice Questions | Made by Sahil Rawat</p>
+
+    <script>
+        function toggleSolution(id) {
+            var sol = document.getElementById(id);
+            if (sol.style.display === 'none') {
+                sol.style.display = 'block';
+            } else {
+                sol.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

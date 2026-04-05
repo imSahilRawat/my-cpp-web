@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Dimension Arrays - C++ Questions</title>
+</head>
+<body>
+    <h1>Multi-Dimension Arrays</h1>
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="questions.html">Questions</a> |
+        <a href="about.html">About Me</a>
+    </p>
+
+    <hr>
+
+    <p><a href="questions.html">&lt;&lt; Back to Topics</a></p>
+
+    <h2>Practice Questions (12 questions)</h2>
+
+    <h3>Question 1: Enter the Matrix of rows and columns entered by the user and print in matrix format</h3>
+    
+    <button onclick="toggleSolution('sol1')">Show Solution</button>
+    <pre id="sol1" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows, cols;
+    int matrix[10][10];
+
+    cout &lt;&lt; "Enter number of rows: ";
+    cin &gt;&gt; rows;
+    cout &lt;&lt; "Enter number of columns: ";
+    cin &gt;&gt; cols;
+
+    cout &lt;&lt; "Enter matrix elements:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; matrix[i][j];
+        }
+    }
+
+    cout &lt;&lt; "\nMatrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cout &lt;&lt; matrix[i][j] &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 2: Program to Add Two Matrices</h3>
+    
+    <button onclick="toggleSolution('sol2')">Show Solution</button>
+    <pre id="sol2" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    int matrix[10][10];
+    bool isIdentity = true;
+
+    cout &lt;&lt; "Enter size of square matrix: ";
+    cin &gt;&gt; n;
+
+    cout &lt;&lt; "Enter matrix elements:" &lt;&lt; endl;
+    for (int i = 0; i &lt; n; i++) {
+        for (int j = 0; j &lt; n; j++) {
+            cin &gt;&gt; matrix[i][j];
+        }
+    }
+
+    for (int i = 0; i &lt; n; i++) {
+        for (int j = 0; j &lt; n; j++) {
+            if (i == j &amp;&amp; matrix[i][j] != 1) {
+                isIdentity = false;
+            }
+            if (i != j &amp;&amp; matrix[i][j] != 0) {
+                isIdentity = false;
+            }
+        }
+    }
+
+    if (isIdentity)
+        cout &lt;&lt; "Matrix is an Identity Matrix!" &lt;&lt; endl;
+    else
+        cout &lt;&lt; "Matrix is NOT an Identity Matrix!" &lt;&lt; endl;
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 3: Program to Multiply Two Matrices</h3>
+    
+    <button onclick="toggleSolution('sol3')">Show Solution</button>
+    <pre id="sol3" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows, cols;
+    int matrix[10][10], transpose[10][10];
+
+    cout &lt;&lt; "Enter number of rows: ";
+    cin &gt;&gt; rows;
+    cout &lt;&lt; "Enter number of columns: ";
+    cin &gt;&gt; cols;
+
+    cout &lt;&lt; "Enter matrix elements:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; matrix[i][j];
+        }
+    }
+
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            transpose[j][i] = matrix[i][j];
+        }
+    }
+
+    cout &lt;&lt; "\nTranspose of matrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; cols; i++) {
+        for (int j = 0; j &lt; rows; j++) {
+            cout &lt;&lt; transpose[i][j] &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 4: Program to subtract the two matrices</h3>
+   
+    <button onclick="toggleSolution('sol4')">Show Solution</button>
+    <pre id="sol4" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows, cols;
+    int matrix[10][10];
+    int zeroCount = 0, totalElements;
+
+    cout &lt;&lt; "Enter number of rows: ";
+    cin &gt;&gt; rows;
+    cout &lt;&lt; "Enter number of columns: ";
+    cin &gt;&gt; cols;
+
+    totalElements = rows * cols;
+
+    cout &lt;&lt; "Enter matrix elements:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; matrix[i][j];
+            if (matrix[i][j] == 0)
+                zeroCount++;
+        }
+    }
+
+    cout &lt;&lt; "\nTotal elements: " &lt;&lt; totalElements &lt;&lt; endl;
+    cout &lt;&lt; "Zero elements: " &lt;&lt; zeroCount &lt;&lt; endl;
+
+    if (zeroCount &gt; totalElements / 2)
+        cout &lt;&lt; "Matrix is a Sparse Matrix!" &lt;&lt; endl;
+    else
+        cout &lt;&lt; "Matrix is NOT a Sparse Matrix!" &lt;&lt; endl;
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 5: Program to determine whether two matrices are equal</h3>
+   
+    <button onclick="toggleSolution('sol5')">Show Solution</button>
+    <pre id="sol5" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows, cols;
+    int A[10][10], B[10][10], C[10][10];
+
+    cout &lt;&lt; "Enter number of rows: ";
+    cin &gt;&gt; rows;
+    cout &lt;&lt; "Enter number of columns: ";
+    cin &gt;&gt; cols;
+
+    cout &lt;&lt; "Enter elements of first matrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; A[i][j];
+        }
+    }
+
+    cout &lt;&lt; "Enter elements of second matrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; B[i][j];
+        }
+    }
+
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            C[i][j] = A[i][j] + B[i][j];
+        }
+    }
+
+    cout &lt;&lt; "\nSum of matrices:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cout &lt;&lt; C[i][j] &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 6: Program to display the lower triangular matrix</h3>
+    
+    <button onclick="toggleSolution('sol6')">Show Solution</button>
+    <pre id="sol6" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int r1, c1, r2, c2;
+    int A[10][10], B[10][10], C[10][10];
+
+    cout &lt;&lt; "Enter rows and columns of first matrix: ";
+    cin &gt;&gt; r1 &gt;&gt; c1;
+    cout &lt;&lt; "Enter rows and columns of second matrix: ";
+    cin &gt;&gt; r2 &gt;&gt; c2;
+
+    if (c1 != r2) {
+        cout &lt;&lt; "Matrix multiplication not possible!" &lt;&lt; endl;
+        return 0;
+    }
+
+    cout &lt;&lt; "Enter elements of first matrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; r1; i++) {
+        for (int j = 0; j &lt; c1; j++) {
+            cin &gt;&gt; A[i][j];
+        }
+    }
+
+    cout &lt;&lt; "Enter elements of second matrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; r2; i++) {
+        for (int j = 0; j &lt; c2; j++) {
+            cin &gt;&gt; B[i][j];
+        }
+    }
+
+    for (int i = 0; i &lt; r1; i++) {
+        for (int j = 0; j &lt; c2; j++) {
+            C[i][j] = 0;
+            for (int k = 0; k &lt; c1; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+
+    cout &lt;&lt; "\nProduct of matrices:" &lt;&lt; endl;
+    for (int i = 0; i &lt; r1; i++) {
+        for (int j = 0; j &lt; c2; j++) {
+            cout &lt;&lt; C[i][j] &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 7: Program to display the upper triangular matrix</h3>
+    
+    <button onclick="toggleSolution('sol7')">Show Solution</button>
+    <pre id="sol7" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows, cols;
+    int A[10][10], B[10][10], C[10][10];
+
+    cout &lt;&lt; "Enter number of rows: ";
+    cin &gt;&gt; rows;
+    cout &lt;&lt; "Enter number of columns: ";
+    cin &gt;&gt; cols;
+
+    cout &lt;&lt; "Enter elements of first matrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; A[i][j];
+        }
+    }
+
+    cout &lt;&lt; "Enter elements of second matrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; B[i][j];
+        }
+    }
+
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            C[i][j] = A[i][j] - B[i][j];
+        }
+    }
+
+    cout &lt;&lt; "\nDifference of matrices:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cout &lt;&lt; C[i][j] &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 8: 
+Program to find the frequency of odd & even numbers in the given matrix</h3>
+    
+    <button onclick="toggleSolution('sol8')">Show Solution</button>
+    <pre id="sol8" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows, cols;
+    int A[10][10], B[10][10];
+    bool equal = true;
+
+    cout &lt;&lt; "Enter number of rows: ";
+    cin &gt;&gt; rows;
+    cout &lt;&lt; "Enter number of columns: ";
+    cin &gt;&gt; cols;
+
+    cout &lt;&lt; "Enter elements of first matrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; A[i][j];
+        }
+    }
+
+    cout &lt;&lt; "Enter elements of second matrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; B[i][j];
+        }
+    }
+
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            if (A[i][j] != B[i][j]) {
+                equal = false;
+                break;
+            }
+        }
+        if (!equal) break;
+    }
+
+    if (equal)
+        cout &lt;&lt; "Matrices are equal!" &lt;&lt; endl;
+    else
+        cout &lt;&lt; "Matrices are not equal!" &lt;&lt; endl;
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 9: Program to find the sum of each row and each column of a matrix</h3>
+    
+    <button onclick="toggleSolution('sol9')">Show Solution</button>
+    <pre id="sol9" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows, cols;
+    int matrix[10][10];
+
+    cout &lt;&lt; "Enter number of rows: ";
+    cin &gt;&gt; rows;
+    cout &lt;&lt; "Enter number of columns: ";
+    cin &gt;&gt; cols;
+
+    cout &lt;&lt; "Enter matrix elements:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; matrix[i][j];
+        }
+    }
+
+    cout &lt;&lt; "\nLower Triangular Matrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            if (i &gt;= j)
+                cout &lt;&lt; matrix[i][j] &lt;&lt; " ";
+            else
+                cout &lt;&lt; "0 ";
+        }
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 10: Program to determine whether a given matrix is an identity matrix</h3>
+    
+    <button onclick="toggleSolution('sol10')">Show Solution</button>
+    <pre id="sol10" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows, cols;
+    int matrix[10][10];
+
+    cout &lt;&lt; "Enter number of rows: ";
+    cin &gt;&gt; rows;
+    cout &lt;&lt; "Enter number of columns: ";
+    cin &gt;&gt; cols;
+
+    cout &lt;&lt; "Enter matrix elements:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; matrix[i][j];
+        }
+    }
+
+    cout &lt;&lt; "\nUpper Triangular Matrix:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            if (i &lt;= j)
+                cout &lt;&lt; matrix[i][j] &lt;&lt; " ";
+            else
+                cout &lt;&lt; "0 ";
+        }
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 11: Program to Transpose matrix</h3>
+   
+    <button onclick="toggleSolution('sol11')">Show Solution</button>
+    <pre id="sol11" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows, cols;
+    int matrix[10][10];
+    int oddCount = 0, evenCount = 0;
+
+    cout &lt;&lt; "Enter number of rows: ";
+    cin &gt;&gt; rows;
+    cout &lt;&lt; "Enter number of columns: ";
+    cin &gt;&gt; cols;
+
+    cout &lt;&lt; "Enter matrix elements:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; matrix[i][j];
+        }
+    }
+
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            if (matrix[i][j] % 2 == 0)
+                evenCount++;
+            else
+                oddCount++;
+        }
+    }
+
+    cout &lt;&lt; "\nFrequency of odd numbers: " &lt;&lt; oddCount &lt;&lt; endl;
+    cout &lt;&lt; "Frequency of even numbers: " &lt;&lt; evenCount &lt;&lt; endl;
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 12: Program to determine whether a given matrix is a sparse matrix</h3>
+
+    <button onclick="toggleSolution('sol12')">Show Solution</button>
+    <pre id="sol12" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows, cols;
+    int matrix[10][10];
+
+    cout &lt;&lt; "Enter number of rows: ";
+    cin &gt;&gt; rows;
+    cout &lt;&lt; "Enter number of columns: ";
+    cin &gt;&gt; cols;
+
+    cout &lt;&lt; "Enter matrix elements:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            cin &gt;&gt; matrix[i][j];
+        }
+    }
+
+    cout &lt;&lt; "\nSum of each row:" &lt;&lt; endl;
+    for (int i = 0; i &lt; rows; i++) {
+        int rowSum = 0;
+        for (int j = 0; j &lt; cols; j++) {
+            rowSum += matrix[i][j];
+        }
+        cout &lt;&lt; "Row " &lt;&lt; i + 1 &lt;&lt; ": " &lt;&lt; rowSum &lt;&lt; endl;
+    }
+
+    cout &lt;&lt; "\nSum of each column:" &lt;&lt; endl;
+    for (int j = 0; j &lt; cols; j++) {
+        int colSum = 0;
+        for (int i = 0; i &lt; rows; i++) {
+            colSum += matrix[i][j];
+        }
+        cout &lt;&lt; "Column " &lt;&lt; j + 1 &lt;&lt; ": " &lt;&lt; colSum &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <p><strong>Note:</strong> This topic contains 12 practice questions.</p>
+
+    <hr>
+
+    <p>&copy; 2026 C++ Practice Questions | Made by Sahil Rawat</p>
+
+    <script>
+        function toggleSolution(id) {
+            var sol = document.getElementById(id);
+            if (sol.style.display === 'none') {
+                sol.style.display = 'block';
+            } else {
+                sol.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

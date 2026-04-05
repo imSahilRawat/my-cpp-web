@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Dimension Arrays - C++ Questions</title>
+</head>
+<body>
+    <h1>Single Dimension Arrays</h1>
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="questions.html">Questions</a> |
+        <a href="about.html">About Me</a>
+    </p>
+
+    <hr>
+
+    <p><a href="questions.html">&lt;&lt; Back to Topics</a></p>
+
+    <h2>Practice Questions (43 questions)</h2>
+
+    <h3>Question 1: Program to copy all elements of one array into another array</h3>
+    
+    <button onclick="toggleSolution('sol1')">Show Solution</button>
+    <pre id="sol1" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+    cin &gt;&gt; n;
+    int arr1[n], arr2[n];
+    cout &lt;&lt; "Enter elements of first array:\n";
+    for(int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; arr1[i];
+    }
+    for(int i = 0; i &lt; n; i++) {
+        arr2[i] = arr1[i];
+    }
+     cout &lt;&lt; "Elements of second array:\n";
+    for(int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; arr2[i] &lt;&lt; " ";
+    }
+}
+    </pre>
+    <hr>
+
+    <h3>Question 2: Program to print the smallest element in an array</h3>
+   
+    <button onclick="toggleSolution('sol2')">Show Solution</button>
+    <pre id="sol2" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    int min = arr[0];
+
+    for(int i = 1; i &lt; n; i++) {
+        if(arr[i] &lt; min)
+            min = arr[i];
+    }
+
+    cout &lt;&lt; "Smallest element = " &lt;&lt; min;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 3: Program to print the number of elements present in an array</h3>
+   
+    <button onclick="toggleSolution('sol3')">Show Solution</button>
+    <pre id="sol3" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    cout &lt;&lt; "Number of elements = " &lt;&lt; n;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 4: Program to print the sum of all the items of the array</h3>
+   
+    <button onclick="toggleSolution('sol4')">Show Solution</button>
+    <pre id="sol4" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n,sum = 0;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++)
+        sum += arr[i];
+
+    cout &lt;&lt; "Sum = " &lt;&lt; sum;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 5: Program to right rotate the elements of an array</h3>
+    
+    <button onclick="toggleSolution('sol5')">Show Solution</button>
+    <pre id="sol5" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    int last = arr[n - 1];
+
+    for(int i = n - 1; i &gt; 0; i--)
+        arr[i] = arr[i - 1];
+
+    arr[0] = last;
+
+    for(int i = 0; i &lt; n; i++)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 6: Program to sort the elements of an array in ascending order</h3>
+    
+    <button onclick="toggleSolution('sol6')">Show Solution</button>
+    <pre id="sol6" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] &gt; arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    for(int i = 0; i &lt; n; i++)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 7: Program to sort the elements of an array in descending order</h3>
+    
+    <button onclick="toggleSolution('sol7')">Show Solution</button>
+    <pre id="sol7" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] &lt; arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    for(int i = 0; i &lt; n; i++)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 8: Program to Find 3rd Largest Number in an array</h3>
+    
+    <button onclick="toggleSolution('sol8')">Show Solution</button>
+    <pre id="sol8" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] &lt; arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    cout &lt;&lt; "3rd largest = " &lt;&lt; arr[2];
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 9: Program to Find 2nd Largest Number in an array</h3>
+    
+    <button onclick="toggleSolution('sol9')">Show Solution</button>
+    <pre id="sol9" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] &lt; arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    cout &lt;&lt; "2nd largest = " &lt;&lt; arr[1];
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 10: Program to Find Largest Number in an array</h3>
+   
+    <button onclick="toggleSolution('sol10')">Show Solution</button>
+    <pre id="sol10" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n,max;
+     cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    max = arr[0];
+
+    for(int i = 1; i &lt; n; i++)
+        if(arr[i] &gt; max)
+            max = arr[i];
+
+    cout &lt;&lt; max;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 11: C++ Program Find 2nd Smallest Number in an array</h3>
+   
+    <button onclick="toggleSolution('sol11')">Show Solution</button>
+    <pre id="sol11" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] &gt; arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    cout &lt;&lt; "2nd smallest = " &lt;&lt; arr[1];
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 12: Program to find the frequency of each element in the array</h3>
+    
+    <button onclick="toggleSolution('sol12')">Show Solution</button>
+    <pre id="sol12" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+    cin &gt;&gt; n;
+    int arr[n];
+    cout &lt;&lt; "Enter elements:\n";
+    for(int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; arr[i];
+    }
+    for(int i = 0; i &lt; n; i++) {
+        int count = 1;
+        if(arr[i] == -1)
+            continue;
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] == arr[j]) {
+                count++;
+                arr[j] = -1; 
+            }
+        }
+        cout &lt;&lt; arr[i] &lt;&lt; " occurs " &lt;&lt; count &lt;&lt; " times\n";
+    }
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 13: Program to Find Smallest Number in an array</h3>
+    
+    <button onclick="toggleSolution('sol13')">Show Solution</button>
+    <pre id="sol13" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, min;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    min = arr[0];
+
+    for(int i = 1; i &lt; n; i++)
+        if(arr[i] &lt; min)
+            min = arr[i];
+
+    cout &lt;&lt; min;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 14: Program to Remove Duplicate Element in an array</h3>
+    
+    <button onclick="toggleSolution('sol14')">Show Solution</button>
+    <pre id="sol14" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] == arr[j]) {
+                for(int k = j; k &lt; n - 1; k++) {
+                    arr[k] = arr[k + 1];
+                }
+                n--;  
+                j--; 
+            }
+        }
+    }
+    for(int i = 0; i &lt; n; i++)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 15: Program to Print Odd and Even Numbers from an array</h3>
+    
+    <button onclick="toggleSolution('sol15')">Show Solution</button>
+    <pre id="sol15" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;    
+    cout &lt;&lt; "Enter number of elements: ";
+    cin &gt;&gt; n;
+    int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+    cout &lt;&lt; "Even: ";
+    for(int i = 0; i &lt; n; i++) {
+        if(arr[i] % 2 == 0)
+            cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; "\nOdd: ";
+    for(int i = 0; i &lt; n; i++) {
+        if(arr[i] % 2 != 0)
+            cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 16: Write a C++ program to swap the first and last elements of an array and create a new array</h3>
+  
+    <button onclick="toggleSolution('sol16')">Show Solution</button>
+    <pre id="sol16" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+    cin &gt;&gt; n;   
+    int a[n], b[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; a[i];
+    for(int i = 0; i &lt; n; i++)
+        b[i] = a[i];
+    int temp = b[0];
+    b[0] = b[n - 1];
+    b[n - 1] = temp;
+    for(int i = 0; i &lt; n; i++)
+        cout &lt;&lt; b[i] &lt;&lt; " ";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 17: Write a C++ program to count the number of even and odd elements in a given array</h3>
+    <button onclick="toggleSolution('sol17')">Show Solution</button>
+    <pre id="sol17" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+    cin &gt;&gt; n;
+    int arr[n];
+    int even = 0, odd = 0;
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+    for(int i = 0; i &lt; n; i++) {
+        if(arr[i] % 2 == 0)
+            even++;
+        else
+            odd++;
+    }
+    cout &lt;&lt; "Even = " &lt;&lt; even &lt;&lt; endl;
+    cout &lt;&lt; "Odd = " &lt;&lt; odd;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 18: Write a C++ program to sum values of an array</h3>
+    
+    <button onclick="toggleSolution('sol18')">Show Solution</button>
+    <pre id="sol18" style="display:none;">
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++)
+        sum += arr[i];
+
+    cout &lt;&lt; "Sum = " &lt;&lt; sum;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 19: Write a C++ program to find the index of an array element</h3>
+     <button onclick="toggleSolution('sol19')">Show Solution</button>
+    <pre id="sol19" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, key;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    cin &gt;&gt; key;
+
+    for(int i = 0; i &lt; n; i++) {
+        if(arr[i] == key) {
+            cout &lt;&lt; "Index = " &lt;&lt; i;
+            return 0;
+        }
+    }
+
+    cout &lt;&lt; "Not found";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 20: Write a C++ program to calculate the average value of array elements</h3>
+     <button onclick="toggleSolution('sol20')">Show Solution</button>
+    <pre id="sol20" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; arr[i];
+        sum += arr[i];
+    }
+
+    cout &lt;&lt; "Average = " &lt;&lt; (float)sum / n;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 21: Write a C++ program to test if an array contains a specific value</h3>
+    <button onclick="toggleSolution('sol21')">Show Solution</button>
+    <pre id="sol21" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, key;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    cin &gt;&gt; key;
+
+    for(int i = 0; i &lt; n; i++) {
+        if(arr[i] == key) {
+            cout &lt;&lt; "Found";
+            return 0;
+        }
+    }
+
+    cout &lt;&lt; "Not Found";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 22: Write a C++ program to find the maximum and minimum value of an array</h3>
+    <button onclick="toggleSolution('sol22')">Show Solution</button>
+    <pre id="sol22" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    int max = arr[0], min = arr[0];
+
+    for(int i = 1; i &lt; n; i++) {
+        if(arr[i] &gt; max)
+            max = arr[i];
+        if(arr[i] &lt; min)
+            min = arr[i];
+    }
+
+    cout &lt;&lt; "Max = " &lt;&lt; max &lt;&lt; endl;
+    cout &lt;&lt; "Min = " &lt;&lt; min;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 23: Program to left rotate the elements of an array</h3>
+     <button onclick="toggleSolution('sol23')">Show Solution</button>
+    <pre id="sol23" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+    cin &gt;&gt; n;
+    int arr[n];
+    cout &lt;&lt; "Enter elements:\n";
+    for(int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; arr[i];
+    }
+    int first = arr[0];
+    for(int i = 0; i &lt; n - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    arr[n - 1] = first;
+cout &lt;&lt; "Array after left rotation:\n";
+    for(int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 24: Write a C++ program to insert an element (specific position) into an array</h3>
+     <button onclick="toggleSolution('sol24')">Show Solution</button>
+    <pre id="sol24" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, pos, val;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n+1];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    cin &gt;&gt; pos &gt;&gt; val;  // position and value
+
+    for(int i = n; i &gt;= pos; i--)
+        arr[i] = arr[i - 1];
+
+    arr[pos] = val;
+
+    for(int i = 0; i &lt;= n; i++)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 25: Write a C++ program to reverse an array of integer values</h3>
+     <button onclick="toggleSolution('sol25')">Show Solution</button>
+    <pre id="sol25" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n/2; i++) {
+        int temp = arr[i];
+        arr[i] = arr[n - i - 1];
+        arr[n - i - 1] = temp;
+    }
+
+    for(int i = 0; i &lt; n; i++)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 26: Write a C++ program to find the common elements between two arrays</h3>
+    <button onclick="toggleSolution('sol26')">Show Solution</button>
+    <pre id="sol26" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int a[n], b[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; a[i];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; b[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = 0; j &lt; n; j++) {
+            if(a[i] == b[j]) {
+                cout &lt;&lt; a[i] &lt;&lt; " ";
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 27: Write a C++ program to find the duplicate values of an array of integer values</h3>
+     <button onclick="toggleSolution('sol27')">Show Solution</button>
+    <pre id="sol27" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] == arr[j]) {
+                cout &lt;&lt; arr[i] &lt;&lt; " ";
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 28: Write a C++ program to find second largest number from the array</h3>
+    <button onclick="toggleSolution('sol28')">Show Solution</button>
+    <pre id="sol28" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] &lt; arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    cout &lt;&lt; arr[1];
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 29: Write a C++ program to find second lowest number from the array</h3>
+     <button onclick="toggleSolution('sol29')">Show Solution</button>
+    <pre id="sol29" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] &gt; arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    cout &lt;&lt; arr[1];
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 30: Write a C++ program to find the number of even and odd integers in a given array of integers</h3>
+     <button onclick="toggleSolution('sol30')">Show Solution</button>
+    <pre id="sol30" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n], even = 0, odd = 0;
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        if(arr[i] % 2 == 0)
+            even++;
+        else
+            odd++;
+    }
+
+    cout &lt;&lt; "Even = " &lt;&lt; even &lt;&lt; endl;
+    cout &lt;&lt; "Odd = " &lt;&lt; odd;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 31: Write a C++ program to get the difference between the largest and smallest values in an array of integers</h3>
+     <button onclick="toggleSolution('sol31')">Show Solution</button>
+    <pre id="sol31" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    int max = arr[0], min = arr[0];
+
+    for(int i = 1; i &lt; n; i++) {
+        if(arr[i] &gt; max)
+            max = arr[i];
+        if(arr[i] &lt; min)
+            min = arr[i];
+    }
+
+    cout &lt;&lt; "Difference = " &lt;&lt; (max - min);
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 32: Write a C++ program to segregate all 0s on left side and all 1s on right side of a given array of 0s and 1s</h3>
+     <button onclick="toggleSolution('sol32')">Show Solution</button>
+    <pre id="sol32" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    int zero = 0;
+
+    for(int i = 0; i &lt; n; i++) {
+        if(arr[i] == 0) {
+            int temp = arr[i];
+            arr[i] = arr[zero];
+            arr[zero] = temp;
+            zero++;
+        }
+    }
+
+    for(int i = 0; i &lt; n; i++)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 33: Write a C++ program to cyclically rotate a given array clockwise by one</h3>
+     <button onclick="toggleSolution('sol33')">Show Solution</button>
+    <pre id="sol33" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    int last = arr[n - 1];
+
+    for(int i = n - 1; i &gt; 0; i--)
+        arr[i] = arr[i - 1];
+
+    arr[0] = last;
+
+    for(int i = 0; i &lt; n; i++)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 34: Program to print the duplicate elements of an array</h3>
+      <button onclick="toggleSolution('sol34')">Show Solution</button>
+    <pre id="sol34" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] == arr[j]) {
+                cout &lt;&lt; arr[i] &lt;&lt; " ";
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 35: Write a C++ program to print all unique element in an array</h3>
+    <button onclick="toggleSolution('sol35')">Show Solution</button>
+    <pre id="sol35" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        int count = 0;
+
+        for(int j = 0; j &lt; n; j++) {
+            if(arr[i] == arr[j])
+                count++;
+        }
+
+        if(count == 1)
+            cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 36: Write a C++ Program to Sort the Array in an Ascending Order</h3>
+     <button onclick="toggleSolution('sol36')">Show Solution</button>
+    <pre id="sol36" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+        cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] &gt; arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    for(int i = 0; i &lt; n; i++)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 37: Write a C++ Program to Sort the Array in an Descending Order</h3>
+     <button onclick="toggleSolution('sol37')">Show Solution</button>
+    <pre id="sol37" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+         cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(arr[i] &lt; arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    for(int i = 0; i &lt; n; i++)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 38: Write a C++ Program to Search Key Elements in an Array</h3>
+     <button onclick="toggleSolution('sol38')">Show Solution</button>
+    <pre id="sol38" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, key;
+       cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+
+    int arr[n];
+
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    cin &gt;&gt; key;
+
+    for(int i = 0; i &lt; n; i++) {
+        if(arr[i] == key) {
+            cout &lt;&lt; "Found at index " &lt;&lt; i;
+            return 0;
+        }
+    }
+
+    cout &lt;&lt; "Not Found";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 39: Program to print the elements of an array</h3>
+     <button onclick="toggleSolution('sol39')">Show Solution</button>
+    <pre id="sol39" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+
+    cout &lt;&lt; "Enter number of elements: ";
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; arr[i];
+    }
+
+    cout &lt;&lt; "Array elements are:\n";
+    for(int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 40: Program to print the elements of an array in reverse order</h3>
+     <button onclick="toggleSolution('sol40')">Show Solution</button>
+    <pre id="sol40" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = n - 1; i &gt;= 0; i--)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 41: Program to print the elements of an array present on even position</h3>
+     <button onclick="toggleSolution('sol41')">Show Solution</button>
+    <pre id="sol41" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 1; i &lt; n; i += 2)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 42: Program to print the elements of an array present on odd position</h3>
+    <button onclick="toggleSolution('sol42')">Show Solution</button>
+    <pre id="sol42" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    for(int i = 0; i &lt; n; i += 2)
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 43: Program to print the largest element in an array</h3>
+    <button onclick="toggleSolution('sol43')">Show Solution</button>
+    <pre id="sol43" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+
+    cin &gt;&gt; n;
+int arr[n];
+    for(int i = 0; i &lt; n; i++)
+        cin &gt;&gt; arr[i];
+
+    int max = arr[0];
+
+    for(int i = 1; i &lt; n; i++) {
+        if(arr[i] &gt; max)
+            max = arr[i];
+    }
+
+    cout &lt;&lt; "Largest element = " &lt;&lt; max;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <p><strong>Note:</strong> This topic contains 43 practice questions.</p>
+
+    <hr>
+
+    <p>&copy; 2026 C++ Practice Questions | Made by Sahil Rawat</p>
+
+    <script>
+        function toggleSolution(id) {
+            var sol = document.getElementById(id);
+            if (sol.style.display === 'none') {
+                sol.style.display = 'block';
+            } else {
+                sol.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

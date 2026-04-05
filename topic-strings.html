@@ -1,0 +1,2190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings - C++ Questions</title>
+</head>
+<body>
+    <h1>Strings</h1>
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="questions.html">Questions</a> |
+        <a href="about.html">About Me</a>
+    </p>
+
+    <hr>
+
+    <p><a href="questions.html">&lt;&lt; Back to Topics</a></p>
+
+    <h2>Practice Questions (41 questions)</h2>
+
+    <h3>Question 1: Program to Check Anagram</h3>
+    
+    <button onclick="toggleSolution('sol1')">Show Solution</button>
+    <pre id="sol1" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringAnalyzer {
+private:
+    string str1, str2;
+
+public:
+    StringAnalyzer(string s1, string s2) {
+        str1 = s1;
+        str2 = s2;
+    }
+
+    bool areAnagram() {
+        string temp1 = str1, temp2 = str2;
+
+        // Remove spaces
+        temp1.erase(remove(temp1.begin(), temp1.end(), ' '), temp1.end());
+        temp2.erase(remove(temp2.begin(), temp2.end(), ' '), temp2.end());
+
+        // Convert to lowercase
+        transform(temp1.begin(), temp1.end(), temp1.begin(), ::tolower);
+        transform(temp2.begin(), temp2.end(), temp2.begin(), ::tolower);
+
+        // Sort and compare
+        sort(temp1.begin(), temp1.end());
+        sort(temp2.begin(), temp2.end());
+
+        return temp1 == temp2;
+    }
+
+    void display() {
+        cout &lt;&lt; "String 1: " &lt;&lt; str1 &lt;&lt; endl;
+        cout &lt;&lt; "String 2: " &lt;&lt; str2 &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string s1, s2;
+
+    cout &lt;&lt; "Enter first string: ";
+    getline(cin, s1);
+
+    cout &lt;&lt; "Enter second string: ";
+    getline(cin, s2);
+
+    StringAnalyzer analyzer(s1, s2);
+
+    analyzer.display();
+
+    if (analyzer.areAnagram()) {
+        cout &lt;&lt; "The strings are ANAGRAMS!" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "The strings are NOT anagrams!" &lt;&lt; endl;
+    }
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 2: Program to Swapping Pair of Characters</h3>
+    
+    <button onclick="toggleSolution('sol2')">Show Solution</button>
+    <pre id="sol2" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class CharacterCounter {
+private:
+    string str;
+
+public:
+    CharacterCounter(string s) {
+        str = s;
+    }
+
+    int countCharacters() {
+        return str.length();
+    }
+
+    void display() {
+        cout &lt;&lt; "Total characters: " &lt;&lt; countCharacters() &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    CharacterCounter counter(input);
+    counter.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 3: Program to Check if a String contains only digits?</h3>
+    
+    <button onclick="toggleSolution('sol3')">Show Solution</button>
+    <pre id="sol3" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+class PunctuationCounter {
+private:
+    string str;
+
+public:
+    PunctuationCounter(string s) {
+        str = s;
+    }
+
+    int countPunctuation() {
+        int count = 0;
+        for (int i = 0; i &lt; str.length(); i++) {
+            if (ispunct(str[i])) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    void display() {
+        cout &lt;&lt; "Total punctuation characters: " &lt;&lt; countPunctuation() &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    PunctuationCounter counter(input);
+    counter.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 4: Program to perform Deep Copy for String?</h3>
+    
+    <button onclick="toggleSolution('sol4')">Show Solution</button>
+    <pre id="sol4" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+class VowelConsonantCounter {
+private:
+    string str;
+
+public:
+    VowelConsonantCounter(string s) {
+        str = s;
+    }
+
+    void countVowelsAndConsonants() {
+        int vowels = 0;
+        int consonants = 0;
+
+        for (int i = 0; i &lt; str.length(); i++) {
+            if (isalpha(str[i])) {
+                char ch = tolower(str[i]);
+                if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                    vowels++;
+                } else {
+                    consonants++;
+                }
+            }
+        }
+
+        cout &lt;&lt; "Total vowels: " &lt;&lt; vowels &lt;&lt; endl;
+        cout &lt;&lt; "Total consonants: " &lt;&lt; consonants &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    VowelConsonantCounter counter(input);
+    counter.countVowelsAndConsonants();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 5:Program to remove all occurrences of a given character from input String?
+</h3>
+    
+    <button onclick="toggleSolution('sol5')">Show Solution</button>
+    <pre id="sol5" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class PalindromeChecker {
+private:
+    string str;
+
+public:
+    PalindromeChecker(string s) {
+        str = s;
+    }
+
+    bool isPalindrome() {
+        int left = 0;
+        int right = str.length() - 1;
+
+        while (left &lt; right) {
+            if (str[left] != str[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    void display() {
+        if (isPalindrome()) {
+            cout &lt;&lt; "String is a palindrome!" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "String is NOT a palindrome!" &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    PalindromeChecker checker(input);
+    checker.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 6: Program to Add Characters to a String
+</h3>
+    
+    <button onclick="toggleSolution('sol6')">Show Solution</button>
+    <pre id="sol6" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringRotationChecker {
+private:
+    string str1, str2;
+
+public:
+    StringRotationChecker(string s1, string s2) {
+        str1 = s1;
+        str2 = s2;
+    }
+
+    bool isRotation() {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        string temp = str1 + str1;
+        return temp.find(str2) != string::npos;
+    }
+
+    void display() {
+        if (isRotation()) {
+            cout &lt;&lt; "One string is a rotation of the other!" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "One string is NOT a rotation of the other!" &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    string s1, s2;
+
+    cout &lt;&lt; "Enter first string: ";
+    getline(cin, s1);
+
+    cout &lt;&lt; "Enter second string: ";
+    getline(cin, s2);
+
+    StringRotationChecker checker(s1, s2);
+    checker.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 7: Program to check whether a string is a Palindrome
+</h3>
+   
+    <button onclick="toggleSolution('sol7')">Show Solution</button>
+    <pre id="sol7" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringDivider {
+private:
+    string str;
+    int n;
+
+public:
+    StringDivider(string s, int num) {
+        str = s;
+        n = num;
+    }
+
+    void divideString() {
+        int len = str.length();
+        int partSize = len / n;
+        int remainder = len % n;
+
+        if (len &lt; n) {
+            cout &lt;&lt; "String length is less than N parts!" &lt;&lt; endl;
+            return;
+        }
+
+        int start = 0;
+        for (int i = 0; i &lt; n; i++) {
+            int size = partSize + (i &lt; remainder ? 1 : 0);
+            cout &lt;&lt; "Part " &lt;&lt; (i + 1) &lt;&lt; ": " &lt;&lt; str.substr(start, size) &lt;&lt; endl;
+            start += size;
+        }
+    }
+};
+
+int main() {
+    string input;
+    int n;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    cout &lt;&lt; "Enter number of parts (N): ";
+    cin &gt;&gt; n;
+
+    StringDivider divider(input, n);
+    divider.divideString();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 8: Program to Convert Enum to String
+</h3>
+    
+    <button onclick="toggleSolution('sol8')">Show Solution</button>
+    <pre id="sol8" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringSubsets {
+private:
+    string str;
+
+public:
+    StringSubsets(string s) {
+        str = s;
+    }
+
+    void findAllSubsets() {
+        int n = str.length();
+        int totalSubsets = 1 &lt;&lt; n;
+
+        cout &lt;&lt; "All subsets of the string:" &lt;&lt; endl;
+        for (int i = 0; i &lt; totalSubsets; i++) {
+            string subset = "";
+            for (int j = 0; j &lt; n; j++) {
+                if (i &amp; (1 &lt;&lt; j)) {
+                    subset += str[j];
+                }
+            }
+            cout &lt;&lt; subset &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    StringSubsets subsets(input);
+    subsets.findAllSubsets();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 9: Program to count number of words in a String?
+</h3>
+    
+    <button onclick="toggleSolution('sol9')">Show Solution</button>
+    <pre id="sol9" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringPermutations {
+private:
+    string str;
+
+public:
+    StringPermutations(string s) {
+        str = s;
+    }
+
+    void findAllPermutations() {
+        cout &lt;&lt; "All permutations of the string:" &lt;&lt; endl;
+        findPermutations(str, 0, str.length() - 1);
+    }
+
+private:
+    void findPermutations(string s, int left, int right) {
+        if (left == right) {
+            cout &lt;&lt; s &lt;&lt; endl;
+        } else {
+            for (int i = left; i &lt;= right; i++) {
+                swap(s[left], s[i]);
+                findPermutations(s, left + 1, right);
+            }
+        }
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    StringPermutations perm(input);
+    perm.findAllPermutations();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 10: Program to count the total number of characters in a string
+</h3>
+    
+    <button onclick="toggleSolution('sol10')">Show Solution</button>
+    <pre id="sol10" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class CharacterFrequency {
+private:
+    string str;
+
+public:
+    CharacterFrequency(string s) {
+        str = s;
+    }
+
+    void findMaxMinChar() {
+        int freq[256] = {0};
+        char maxChar = str[0];
+        char minChar = str[0];
+        int maxFreq = 0;
+        int minFreq = str.length();
+
+        for (int i = 0; i &lt; str.length(); i++) {
+            freq[str[i]]++;
+        }
+
+        for (int i = 0; i &lt; 256; i++) {
+            if (freq[i] &gt; 0) {
+                if (freq[i] &gt; maxFreq) {
+                    maxFreq = freq[i];
+                    maxChar = (char)i;
+                }
+                if (freq[i] &lt; minFreq) {
+                    minFreq = freq[i];
+                    minChar = (char)i;
+                }
+            }
+        }
+
+        cout &lt;&lt; "Maximum occurring character: " &lt;&lt; maxChar &lt;&lt; " (" &lt;&lt; maxFreq &lt;&lt; " times)" &lt;&lt; endl;
+        cout &lt;&lt; "Minimum occurring character: " &lt;&lt; minChar &lt;&lt; " (" &lt;&lt; minFreq &lt;&lt; " times)" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    CharacterFrequency freq(input);
+    freq.findMaxMinChar();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 11: Program to count the total number of punctuation characters exists in a String
+</h3>
+    <button onclick="toggleSolution('sol11')">Show Solution</button>
+    <pre id="sol11" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+class StringReverser {
+private:
+    string str;
+
+public:
+    StringReverser(string s) {
+        str = s;
+    }
+
+    void reverseString() {
+        ::reverse(str.begin(), str.end());
+        cout &lt;&lt; "Reversed string: " &lt;&lt; str &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    cout &lt;&lt; "Original string: " &lt;&lt; input &lt;&lt; endl;
+
+    StringReverser reverser(input);
+    reverser.reverseString();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 12: Program to count the total number of vowels and consonants in a string
+</h3>
+    
+    <button onclick="toggleSolution('sol12')">Show Solution</button>
+    <pre id="sol12" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringSwapper {
+private:
+    string str;
+
+public:
+    StringSwapper(string s) {
+        str = s;
+    }
+
+    void swapPairs() {
+        for (int i = 0; i &lt; str.length() - 1; i += 2) {
+            char temp = str[i];
+            str[i] = str[i + 1];
+            str[i + 1] = temp;
+        }
+    }
+
+    void display() {
+        cout &lt;&lt; "Modified string: " &lt;&lt; str &lt;&lt; endl;
+    }
+
+    string getOriginal() {
+        return str;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    cout &lt;&lt; "Original string: " &lt;&lt; input &lt;&lt; endl;
+
+    StringSwapper swapper(input);
+
+    swapper.swapPairs();
+    cout &lt;&lt; "After swapping pairs: ";
+    swapper.display();
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 13: Program to determine whether a given string is palindrome
+</h3>
+   
+    <button onclick="toggleSolution('sol13')">Show Solution</button>
+    <pre id="sol13" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class DuplicateCharacters {
+private:
+    string str;
+
+public:
+    DuplicateCharacters(string s) {
+        str = s;
+    }
+
+    void findDuplicates() {
+        int freq[256] = {0};
+
+        for (int i = 0; i &lt; str.length(); i++) {
+            freq[str[i]]++;
+        }
+
+        cout &lt;&lt; "Duplicate characters: ";
+        for (int i = 0; i &lt; 256; i++) {
+            if (freq[i] &gt; 1) {
+                cout &lt;&lt; (char)i &lt;&lt; " ";
+            }
+        }
+        cout &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    DuplicateCharacters finder(input);
+    finder.findDuplicates();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 14: Program to determine whether one string is a rotation of another
+</h3>
+    
+    <button onclick="toggleSolution('sol14')">Show Solution</button>
+    <pre id="sol14" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class DuplicateWords {
+private:
+    string str;
+
+public:
+    DuplicateWords(string s) {
+        str = s;
+    }
+
+    void findDuplicates() {
+        string words[100];
+        int freq[100] = {0};
+        int count = 0;
+        int wordStart = 0;
+
+        for (int i = 0; i &lt;= str.length(); i++) {
+            if (i == str.length() || str[i] == ' ') {
+                if (i &gt; wordStart) {
+                    string word = str.substr(wordStart, i - wordStart);
+
+                    bool found = false;
+                    for (int j = 0; j &lt; count; j++) {
+                        if (words[j] == word) {
+                            freq[j]++;
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        words[count] = word;
+                        freq[count] = 1;
+                        count++;
+                    }
+                }
+                wordStart = i + 1;
+            }
+        }
+
+        cout &lt;&lt; "Duplicate words: ";
+        for (int i = 0; i &lt; count; i++) {
+            if (freq[i] &gt; 1) {
+                cout &lt;&lt; words[i] &lt;&lt; " ";
+            }
+        }
+        cout &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    DuplicateWords finder(input);
+    finder.findDuplicates();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 15: Program to divide a string in 'N' equal parts.
+</h3>
+  
+    <button onclick="toggleSolution('sol15')">Show Solution</button>
+    <pre id="sol15" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class CharacterFrequency {
+private:
+    string str;
+
+public:
+    CharacterFrequency(string s) {
+        str = s;
+    }
+
+    void findFrequency() {
+        int freq[256] = {0};
+
+        for (int i = 0; i &lt; str.length(); i++) {
+            freq[str[i]]++;
+        }
+
+        cout &lt;&lt; "Character frequencies:" &lt;&lt; endl;
+        for (int i = 0; i &lt; 256; i++) {
+            if (freq[i] &gt; 0) {
+                cout &lt;&lt; (char)i &lt;&lt; ": " &lt;&lt; freq[i] &lt;&lt; endl;
+            }
+        }
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    CharacterFrequency finder(input);
+    finder.findFrequency();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 16: Program to find all subsets of a string
+</h3>
+   
+    <button onclick="toggleSolution('sol16')">Show Solution</button>
+    <pre id="sol16" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class WordSizeFinder {
+private:
+    string str;
+
+public:
+    WordSizeFinder(string s) {
+        str = s;
+    }
+
+    void findLargestSmallestWord() {
+        string largest = "", smallest = "";
+        int largestLen = 0, smallestLen = 9999;
+        int wordStart = 0;
+
+        for (int i = 0; i &lt;= str.length(); i++) {
+            if (i == str.length() || str[i] == ' ') {
+                if (i &gt; wordStart) {
+                    int len = i - wordStart;
+                    string word = str.substr(wordStart, len);
+
+                    if (len &gt; largestLen) {
+                        largestLen = len;
+                        largest = word;
+                    }
+                    if (len &lt; smallestLen) {
+                        smallestLen = len;
+                        smallest = word;
+                    }
+                }
+                wordStart = i + 1;
+            }
+        }
+
+        cout &lt;&lt; "Largest word: " &lt;&lt; largest &lt;&lt; endl;
+        cout &lt;&lt; "Smallest word: " &lt;&lt; smallest &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    WordSizeFinder finder(input);
+    finder.findLargestSmallestWord();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 17: Program to find all the permutations of a string
+
+</h3>
+   
+    <button onclick="toggleSolution('sol17')">Show Solution</button>
+    <pre id="sol17" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class LongestRepeatingSequence {
+private:
+    string str;
+
+public:
+    LongestRepeatingSequence(string s) {
+        str = s;
+    }
+
+    void findLongestRepeating() {
+        int n = str.length();
+        string longest = "";
+
+        for (int len = 1; len &lt;= n / 2; len++) {
+            for (int i = 0; i &lt;= n - 2 * len; i++) {
+                string sub1 = str.substr(i, len);
+                for (int j = i + len; j &lt;= n - len; j++) {
+                    string sub2 = str.substr(j, len);
+                    if (sub1 == sub2 &amp;&amp; len &gt; (int)longest.length()) {
+                        longest = sub1;
+                    }
+                }
+            }
+        }
+
+        if (longest != "") {
+            cout &lt;&lt; "Longest repeating sequence: " &lt;&lt; longest &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "No repeating sequence found!" &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    LongestRepeatingSequence finder(input);
+    finder.findLongestRepeating();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 18: Program to find maximum and minimum occurring character in a string</h3>
+    
+    <button onclick="toggleSolution('sol18')">Show Solution</button>
+    <pre id="sol18" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class MostRepeatedWord {
+private:
+    string filename;
+
+public:
+    MostRepeatedWord(string file) {
+        filename = file;
+    }
+
+    void findMostRepeated() {
+        ifstream file(filename.c_str());
+        if (!file.is_open()) {
+            cout &lt;&lt; "Could not open file!" &lt;&lt; endl;
+            return;
+        }
+
+        string words[1000];
+        int freq[1000] = {0};
+        int count = 0;
+        string word;
+
+        while (file &gt;&gt; word) {
+            bool found = false;
+            for (int i = 0; i &lt; count; i++) {
+                if (words[i] == word) {
+                    freq[i]++;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                words[count] = word;
+                freq[count] = 1;
+                count++;
+            }
+        }
+        file.close();
+
+        int maxFreq = 0;
+        string mostRepeated = "";
+        for (int i = 0; i &lt; count; i++) {
+            if (freq[i] &gt; maxFreq) {
+                maxFreq = freq[i];
+                mostRepeated = words[i];
+            }
+        }
+
+        cout &lt;&lt; "Most repeated word: " &lt;&lt; mostRepeated &lt;&lt; " (" &lt;&lt; maxFreq &lt;&lt; " times)" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string filename;
+
+    cout &lt;&lt; "Enter filename: ";
+    cin &gt;&gt; filename;
+
+    MostRepeatedWord finder(filename);
+    finder.findMostRepeated();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 19: Program to find Reverse of the string
+</h3>
+    
+    <button onclick="toggleSolution('sol19')">Show Solution</button>
+    <pre id="sol19" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class WordCounter {
+private:
+    string filename;
+
+public:
+    WordCounter(string file) {
+        filename = file;
+    }
+
+    void countWords() {
+        ifstream file(filename.c_str());
+        if (!file.is_open()) {
+            cout &lt;&lt; "Could not open file!" &lt;&lt; endl;
+            return;
+        }
+
+        int count = 0;
+        string word;
+
+        while (file &gt;&gt; word) {
+            count++;
+        }
+
+        file.close();
+        cout &lt;&lt; "Total words in file: " &lt;&lt; count &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string filename;
+
+    cout &lt;&lt; "Enter filename: ";
+    cin &gt;&gt; filename;
+
+    WordCounter counter(filename);
+    counter.countWords();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 20: Program to find the duplicate characters in a string
+</h3>
+    
+    <button onclick="toggleSolution('sol20')">Show Solution</button>
+    <pre id="sol20" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringCharacter {
+private:
+    string str;
+
+public:
+    StringCharacter(string s) {
+        str = s;
+    }
+
+    void getCharacter(int index) {
+        if (index &gt;= 0 &amp;&amp; index &lt; (int)str.length()) {
+            cout &lt;&lt; "Character at index " &lt;&lt; index &lt;&lt; ": " &lt;&lt; str[index] &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Invalid index!" &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    string input;
+    int index;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    cout &lt;&lt; "Enter index: ";
+    cin &gt;&gt; index;
+
+    StringCharacter sc(input);
+    sc.getCharacter(index);
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 21: Program to find the duplicate words in a string
+</h3>
+    
+    <button onclick="toggleSolution('sol21')">Show Solution</button>
+    <pre id="sol21" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringInserter {
+private:
+    string str1, str2;
+
+public:
+    StringInserter(string s1, string s2) {
+        str1 = s1;
+        str2 = s2;
+    }
+
+    void insertString(int position) {
+        str1.insert(position, str2);
+        cout &lt;&lt; "After insertion: " &lt;&lt; str1 &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string str1, str2;
+    int position;
+
+    cout &lt;&lt; "Enter first string: ";
+    getline(cin, str1);
+
+    cout &lt;&lt; "Enter string to insert: ";
+    getline(cin, str2);
+
+    cout &lt;&lt; "Enter position: ";
+    cin &gt;&gt; position;
+
+    StringInserter inserter(str1, str2);
+    inserter.insertString(position);
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 22: Program to find the frequency of characters
+</h3>
+    
+    <button onclick="toggleSolution('sol22')">Show Solution</button>
+    <pre id="sol22" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringNewline {
+private:
+    string str;
+
+public:
+    StringNewline(string s) {
+        str = s;
+    }
+
+    void printWithNewlines() {
+        int wordStart = 0;
+
+        for (int i = 0; i &lt;= (int)str.length(); i++) {
+            if (i == str.length() || str[i] == ' ') {
+                if (i &gt; wordStart) {
+                    cout &lt;&lt; str.substr(wordStart, i - wordStart) &lt;&lt; endl;
+                }
+                wordStart = i + 1;
+            }
+        }
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    StringNewline sn(input);
+    sn.printWithNewlines();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 23: Program to find the largest and smallest word in a string
+</h3>
+   
+    <button onclick="toggleSolution('sol23')">Show Solution</button>
+    <pre id="sol23" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringChecker {
+private:
+    string str;
+
+public:
+    StringChecker(string s) {
+        str = s;
+    }
+
+    bool containsOnlyDigits() {
+        for (int i = 0; i &lt; str.length(); i++) {
+            if (!isdigit(str[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void display() {
+        if (containsOnlyDigits()) {
+            cout &lt;&lt; "String contains only digits!" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "String does NOT contain only digits!" &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    StringChecker checker(input);
+    checker.display();
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 24: Program to find the longest repeating sequence in a string
+</h3>
+    
+    <button onclick="toggleSolution('sol24')">Show Solution</button>
+    <pre id="sol24" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class EvenLengthWords {
+private:
+    string str;
+
+public:
+    EvenLengthWords(string s) {
+        str = s;
+    }
+
+    void printEvenLengthWords() {
+        int wordStart = 0;
+
+        for (int i = 0; i &lt;= (int)str.length(); i++) {
+            if (i == str.length() || str[i] == ' ') {
+                if (i &gt; wordStart) {
+                    int len = i - wordStart;
+                    if (len % 2 == 0) {
+                        cout &lt;&lt; str.substr(wordStart, len) &lt;&lt; endl;
+                    }
+                }
+                wordStart = i + 1;
+            }
+        }
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    cout &lt;&lt; "Even length words:" &lt;&lt; endl;
+    EvenLengthWords elw(input);
+    elw.printEvenLengthWords();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 25: Program to find the most repeated word in a text file</h3>
+    
+    <button onclick="toggleSolution('sol25')">Show Solution</button>
+    <pre id="sol25" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class PalindromeWords {
+private:
+    string str;
+
+public:
+    PalindromeWords(string s) {
+        str = s;
+    }
+
+    bool isPalindrome(string s) {
+        int left = 0;
+        int right = s.length() - 1;
+
+        while (left &lt; right) {
+            if (s[left] != s[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    void findSmallestBiggestPalindrome() {
+        string smallest = "", biggest = "";
+        int smallestLen = 9999, biggestLen = 0;
+        int wordStart = 0;
+
+        for (int i = 0; i &lt;= (int)str.length(); i++) {
+            if (i == str.length() || str[i] == ' ') {
+                if (i &gt; wordStart) {
+                    string word = str.substr(wordStart, i - wordStart);
+                    if (isPalindrome(word)) {
+                        int len = word.length();
+                        if (len &lt; smallestLen) {
+                            smallestLen = len;
+                            smallest = word;
+                        }
+                        if (len &gt; biggestLen) {
+                            biggestLen = len;
+                            biggest = word;
+                        }
+                    }
+                }
+                wordStart = i + 1;
+            }
+        }
+
+        if (smallest != "") {
+            cout &lt;&lt; "Smallest palindrome word: " &lt;&lt; smallest &lt;&lt; endl;
+            cout &lt;&lt; "Biggest palindrome word: " &lt;&lt; biggest &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "No palindrome words found!" &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    PalindromeWords pw(input);
+    pw.findSmallestBiggestPalindrome();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 26: Program to find the number of the words in the given text file
+</h3>
+    
+    <button onclick="toggleSolution('sol26')">Show Solution</button>
+    <pre id="sol26" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class RemoveWhitespace {
+private:
+    string str;
+
+public:
+    RemoveWhitespace(string s) {
+        str = s;
+    }
+
+    void removeSpaces() {
+        string result = "";
+        for (int i = 0; i &lt; str.length(); i++) {
+            if (str[i] != ' ' &amp;&amp; str[i] != '\t' &amp;&amp; str[i] != '\n') {
+                result += str[i];
+            }
+        }
+        cout &lt;&lt; "String without whitespace: " &lt;&lt; result &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    RemoveWhitespace rw(input);
+    rw.removeSpaces();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 27: Program to Get a Character From the Given String
+</h3>
+   
+    <button onclick="toggleSolution('sol27')">Show Solution</button>
+    <pre id="sol27" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class CaseReplacer {
+private:
+    string str;
+
+public:
+    CaseReplacer(string s) {
+        str = s;
+    }
+
+    void replaceCase() {
+        for (int i = 0; i &lt; str.length(); i++) {
+            if (str[i] &gt;= 'a' &amp;&amp; str[i] &lt;= 'z') {
+                str[i] = str[i] - 32;
+            }
+            else if (str[i] &gt;= 'A' &amp;&amp; str[i] &lt;= 'Z') {
+                str[i] = str[i] + 32;
+            }
+        }
+        cout &lt;&lt; "After case replacement: " &lt;&lt; str &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    CaseReplacer cr(input);
+    cr.replaceCase();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 28: Program to Insert a string into another string
+</h3>
+   
+    <button onclick="toggleSolution('sol28')">Show Solution</button>
+    <pre id="sol28" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class SpaceReplacer {
+private:
+    string str;
+    char ch;
+
+public:
+    SpaceReplacer(string s, char c) {
+        str = s;
+        ch = c;
+    }
+
+    void replaceSpaces() {
+        for (int i = 0; i &lt; str.length(); i++) {
+            if (str[i] == ' ') {
+                str[i] = ch;
+            }
+        }
+        cout &lt;&lt; "After replacement: " &lt;&lt; str &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+    char ch;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    cout &lt;&lt; "Enter character to replace spaces with: ";
+    cin &gt;&gt; ch;
+
+    SpaceReplacer sr(input, ch);
+    sr.replaceSpaces();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 29: Program to Print a New Line in String (Each word in newline)</h3>
+    
+    <button onclick="toggleSolution('sol29')">Show Solution</button>
+    <pre id="sol29" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringSeparator {
+private:
+    string str;
+
+public:
+    StringSeparator(string s) {
+        str = s;
+    }
+
+    void separateCharacters() {
+        cout &lt;&lt; "Individual characters:" &lt;&lt; endl;
+        for (int i = 0; i &lt; str.length(); i++) {
+            cout &lt;&lt; str[i] &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    StringSeparator ss(input);
+    ss.separateCharacters();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 30: Program to Print even length words</h3>
+   
+    <button onclick="toggleSolution('sol30')">Show Solution</button>
+    <pre id="sol30" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringSplitter {
+private:
+    string str;
+    int n;
+
+public:
+    StringSplitter(string s, int num) {
+        str = s;
+        n = num;
+    }
+
+    void splitString() {
+        int len = str.length();
+        int partSize = len / n;
+        int remainder = len % n;
+
+        if (len &lt; n) {
+            cout &lt;&lt; "String length is less than N parts!" &lt;&lt; endl;
+            return;
+        }
+
+        int start = 0;
+        for (int i = 0; i &lt; n; i++) {
+            int size = partSize + (i &lt; remainder ? 1 : 0);
+            cout &lt;&lt; "Part " &lt;&lt; (i + 1) &lt;&lt; ": " &lt;&lt; str.substr(start, size) &lt;&lt; endl;
+            start += size;
+        }
+    }
+};
+
+int main() {
+    string input;
+    int n;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    cout &lt;&lt; "Enter number of parts (N): ";
+    cin &gt;&gt; n;
+
+    StringSplitter splitter(input, n);
+    splitter.splitString();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 31: Program to print smallest and biggest possible palindrome word in a given string
+</h3>
+    
+    <button onclick="toggleSolution('sol31')">Show Solution</button>
+    <pre id="sol31" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringSwapper {
+private:
+    string str1, str2;
+
+public:
+    StringSwapper(string s1, string s2) {
+        str1 = s1;
+        str2 = s2;
+    }
+
+    void swapWithoutTemp() {
+        str1 = str1 + str2;
+        str2 = str1.substr(0, str1.length() - str2.length());
+        str1 = str1.substr(str2.length());
+
+        cout &lt;&lt; "After swapping:" &lt;&lt; endl;
+        cout &lt;&lt; "String 1: " &lt;&lt; str1 &lt;&lt; endl;
+        cout &lt;&lt; "String 2: " &lt;&lt; str2 &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string s1, s2;
+
+    cout &lt;&lt; "Enter first string: ";
+    getline(cin, s1);
+
+    cout &lt;&lt; "Enter second string: ";
+    getline(cin, s2);
+
+    StringSwapper swapper(s1, s2);
+    swapper.swapWithoutTemp();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 32: Program to remove all the white spaces from a string</h3>
+   
+    <button onclick="toggleSolution('sol32')">Show Solution</button>
+    <pre id="sol32" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringContains {
+private:
+    string str1, str2;
+
+public:
+    StringContains(string s1, string s2) {
+        str1 = s1;
+        str2 = s2;
+    }
+
+    void checkContains() {
+        if (str1.find(str2) != string::npos) {
+            cout &lt;&lt; "First string contains second string!" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "First string does NOT contain second string!" &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    string s1, s2;
+
+    cout &lt;&lt; "Enter first string: ";
+    getline(cin, s1);
+
+    cout &lt;&lt; "Enter second string: ";
+    getline(cin, s2);
+
+    StringContains sc(s1, s2);
+    sc.checkContains();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 33: Program to replace lower-case characters with upper-case and vice-versa</h3>
+
+    <button onclick="toggleSolution('sol33')">Show Solution</button>
+    <pre id="sol33" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class ReverseWordByWord {
+private:
+    string str;
+
+public:
+    ReverseWordByWord(string s) {
+        str = s;
+    }
+
+    void reverseWords() {
+        string words[100];
+        int count = 0;
+        int wordStart = 0;
+
+        for (int i = 0; i &lt;= (int)str.length(); i++) {
+            if (i == str.length() || str[i] == ' ') {
+                if (i &gt; wordStart) {
+                    words[count] = str.substr(wordStart, i - wordStart);
+                    count++;
+                }
+                wordStart = i + 1;
+            }
+        }
+
+        cout &lt;&lt; "Reversed word by word: ";
+        for (int i = count - 1; i &gt;= 0; i--) {
+            cout &lt;&lt; words[i] &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    ReverseWordByWord rww(input);
+    rww.reverseWords();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 34: Program to replace the spaces of a string with a specific character</h3>
+   
+    <button onclick="toggleSolution('sol34')">Show Solution</button>
+    <pre id="sol34" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+class StringDeepCopy {
+private:
+    char* str;
+    int length;
+
+public:
+    StringDeepCopy(const char* s) {
+        length = strlen(s);
+        str = new char[length + 1];
+        strcpy(str, s);
+    }
+
+    StringDeepCopy(const StringDeepCopy&amp; other) {
+        length = other.length;
+        str = new char[length + 1];
+        strcpy(str, other.str);
+    }
+
+    ~StringDeepCopy() {
+        delete[] str;
+    }
+
+    void display() {
+        cout &lt;&lt; "String: " &lt;&lt; str &lt;&lt; endl;
+    }
+
+    char* getString() {
+        return str;
+    }
+};
+
+int main() {
+    const char* input = "Hello World";
+
+    StringDeepCopy original(input);
+    StringDeepCopy copy = original;
+
+    cout &lt;&lt; "Original: ";
+    original.display();
+    cout &lt;&lt; "Deep Copy: ";
+    copy.display();
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 35: Program to separate the Individual Characters from a String</h3>
+    
+    <button onclick="toggleSolution('sol35')">Show Solution</button>
+    <pre id="sol35" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class SameCharacters {
+private:
+    string str1, str2;
+
+public:
+    SameCharacters(string s1, string s2) {
+        str1 = s1;
+        str2 = s2;
+    }
+
+    bool checkSameCharacters() {
+        int freq1[256] = {0};
+        int freq2[256] = {0};
+
+        for (int i = 0; i &lt; str1.length(); i++) {
+            freq1[str1[i]]++;
+        }
+
+        for (int i = 0; i &lt; str2.length(); i++) {
+            freq2[str2[i]]++;
+        }
+
+        for (int i = 0; i &lt; 256; i++) {
+            if (freq1[i] != freq2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void display() {
+        if (checkSameCharacters()) {
+            cout &lt;&lt; "Both strings have same characters!" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Strings do NOT have same characters!" &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    string s1, s2;
+
+    cout &lt;&lt; "Enter first string: ";
+    getline(cin, s1);
+
+    cout &lt;&lt; "Enter second string: ";
+    getline(cin, s2);
+
+    SameCharacters sc(s1, s2);
+    sc.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 36: Program to Splitting into a number of sub-strings</h3>
+    
+    <button onclick="toggleSolution('sol36')">Show Solution</button>
+    <pre id="sol36" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class FirstNonRepeated {
+private:
+    string str;
+
+public:
+    FirstNonRepeated(string s) {
+        str = s;
+    }
+
+    void findFirstNonRepeated() {
+        int freq[256] = {0};
+
+        for (int i = 0; i &lt; str.length(); i++) {
+            freq[str[i]]++;
+        }
+
+        for (int i = 0; i &lt; (int)str.length(); i++) {
+            if (freq[str[i]] == 1) {
+                cout &lt;&lt; "First non-repeated character: " &lt;&lt; str[i] &lt;&lt; endl;
+                return;
+            }
+        }
+
+        cout &lt;&lt; "No non-repeated character found!" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    FirstNonRepeated fnr(input);
+    fnr.findFirstNonRepeated();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 37: Program to swap two string variables without using third or temp variable.
+</h3>
+   
+    <button onclick="toggleSolution('sol37')">Show Solution</button>
+    <pre id="sol37" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringModifier {
+private:
+    string str;
+    char ch;
+
+public:
+    StringModifier(string s, char c) {
+        str = s;
+        ch = c;
+    }
+
+    void removeOccurrences() {
+        for (int i = 0; i &lt; str.length(); i++) {
+            if (str[i] == ch) {
+                str.erase(i, 1);
+                i--;
+            }
+        }
+    }
+
+    void display() {
+        cout &lt;&lt; "Modified string: " &lt;&lt; str &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+    char ch;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    cout &lt;&lt; "Enter character to remove: ";
+    cin &gt;&gt; ch;
+
+    StringModifier modifier(input, ch);
+    modifier.removeOccurrences();
+    modifier.display();
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 38: Read two String user input and check if first contains second?
+</h3>
+  
+    <button onclick="toggleSolution('sol38')">Show Solution</button>
+    <pre id="sol38" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class StringAdder {
+private:
+    string str;
+
+public:
+    StringAdder(string s) {
+        str = s;
+    }
+
+    void addCharacter(char ch, int position) {
+        str.insert(position, 1, ch);
+    }
+
+    void display() {
+        cout &lt;&lt; "Modified string: " &lt;&lt; str &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+    char ch;
+    int position;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    cout &lt;&lt; "Enter character to add: ";
+    cin &gt;&gt; ch;
+
+    cout &lt;&lt; "Enter position to insert: ";
+    cin &gt;&gt; position;
+
+    StringAdder adder(input);
+    adder.addCharacter(ch, position);
+    adder.display();
+
+    return 0;
+}
+
+    </pre>
+    <hr>
+
+    <h3>Question 39: Reverse String Word by Word
+</h3>
+    
+    <button onclick="toggleSolution('sol39')">Show Solution</button>
+    <pre id="sol39" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class PalindromeChecker {
+private:
+    string str;
+
+public:
+    PalindromeChecker(string s) {
+        str = s;
+    }
+
+    bool isPalindrome() {
+        int left = 0;
+        int right = str.length() - 1;
+
+        while (left &lt; right) {
+            if (str[left] != str[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    void display() {
+        if (isPalindrome()) {
+            cout &lt;&lt; "String is a Palindrome!" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "String is NOT a Palindrome!" &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    PalindromeChecker checker(input);
+    checker.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 40: Write a program to check if two Strings are created with same characters?
+</h3>
+   
+    <button onclick="toggleSolution('sol40')">Show Solution</button>
+    <pre id="sol40" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+enum Color { RED, GREEN, BLUE };
+
+class EnumToString {
+public:
+    static string colorToString(Color c) {
+        switch (c) {
+            case RED: return "Red";
+            case GREEN: return "Green";
+            case BLUE: return "Blue";
+            default: return "Unknown";
+        }
+    }
+};
+
+int main() {
+    Color c1 = RED;
+    Color c2 = GREEN;
+    Color c3 = BLUE;
+
+    cout &lt;&lt; "Color 1: " &lt;&lt; EnumToString::colorToString(c1) &lt;&lt; endl;
+    cout &lt;&lt; "Color 2: " &lt;&lt; EnumToString::colorToString(c2) &lt;&lt; endl;
+    cout &lt;&lt; "Color 3: " &lt;&lt; EnumToString::colorToString(c3) &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 41: Write a program to find out first non repeated character from input String?</h3>
+    
+    <button onclick="toggleSolution('sol41')">Show Solution</button>
+    <pre id="sol41" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class WordCounter {
+private:
+    string str;
+
+public:
+    WordCounter(string s) {
+        str = s;
+    }
+
+    int countWords() {
+        int count = 0;
+        bool inWord = false;
+
+        for (int i = 0; i &lt; str.length(); i++) {
+            if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n') {
+                inWord = false;
+            } else if (!inWord) {
+                inWord = true;
+                count++;
+            }
+        }
+        return count;
+    }
+
+    void display() {
+        cout &lt;&lt; "Number of words: " &lt;&lt; countWords() &lt;&lt; endl;
+    }
+};
+
+int main() {
+    string input;
+
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, input);
+
+    WordCounter counter(input);
+    counter.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <p><strong>Note:</strong> This topic contains 41 practice questions.</p>
+
+    <hr>
+
+    <p>&copy; 2026 C++ Practice Questions | Made by Sahil Rawat</p>
+
+    <script>
+        function toggleSolution(id) {
+            var sol = document.getElementById(id);
+            if (sol.style.display === 'none') {
+                sol.style.display = 'block';
+            } else {
+                sol.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

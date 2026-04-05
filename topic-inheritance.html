@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance - C++ Questions</title>
+</head>
+<body>
+    <h1>Inheritance</h1>
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="questions.html">Questions</a> |
+        <a href="about.html">About Me</a>
+    </p>
+
+    <hr>
+
+    <p><a href="questions.html">&lt;&lt; Back to Topics</a></p>
+
+    <h2>Practice Questions (10 questions)</h2>
+
+    <h3>Question 1: Write a C++ program to create a class called Animal with a method called makeSound(). Create a derived class called Cat that overrides the makeSound() method to bark.</h3>
+
+    <button onclick="toggleSolution('sol1')">Show Solution</button>
+    <pre id="sol1" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Animal {
+public:
+    void makeSound() {
+        cout &lt;&lt; "Animal makes a sound" &lt;&lt; endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void makeSound() {
+        cout &lt;&lt; "Cat says: Meow!" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Animal animal;
+    Cat cat;
+
+    animal.makeSound();
+    cat.makeSound();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 2: Write a C++ program to create a class called Vehicle with a method called drive(). Create a derived class called Car that overrides the drive() method to print "Repairing a car".</h3>
+
+    <button onclick="toggleSolution('sol2')">Show Solution</button>
+    <pre id="sol2" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Vehicle {
+public:
+    void drive() {
+        cout &lt;&lt; "Driving a vehicle" &lt;&lt; endl;
+    }
+};
+
+class Car : public Vehicle {
+public:
+    void drive() {
+        cout &lt;&lt; "Repairing a car" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Vehicle vehicle;
+    Car car;
+
+    vehicle.drive();
+    car.drive();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 3: Write a C++ program to create a class called Shape with a method called getArea(). Create a derived class called Rectangle that overrides the getArea() method to calculate the area of a rectangle.</h3>
+
+    <button onclick="toggleSolution('sol3')">Show Solution</button>
+    <pre id="sol3" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Shape {
+public:
+    virtual float getArea() {
+        return 0;
+    }
+};
+
+class Rectangle : public Shape {
+private:
+    float length, width;
+public:
+    Rectangle(float l, float w) {
+        length = l;
+        width = w;
+    }
+
+    float getArea() {
+        return length * width;
+    }
+};
+
+int main() {
+    Shape shape;
+    Rectangle rect(10, 5);
+
+    cout &lt;&lt; "Shape Area: " &lt;&lt; shape.getArea() &lt;&lt; endl;
+    cout &lt;&lt; "Rectangle Area: " &lt;&lt; rect.getArea() &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 4: Write a C++ program to create a class called Employee with methods called work() and getSalary(). Create a derived class called HRManager that overrides the work() method and adds a new method called addEmployee().</h3>
+
+    <button onclick="toggleSolution('sol4')">Show Solution</button>
+    <pre id="sol4" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Employee {
+public:
+    void work() {
+        cout &lt;&lt; "Employee is working" &lt;&lt; endl;
+    }
+
+    float getSalary() {
+        return 50000;
+    }
+};
+
+class HRManager : public Employee {
+public:
+    void work() {
+        cout &lt;&lt; "HR Manager is managing employees" &lt;&lt; endl;
+    }
+
+    void addEmployee(string name) {
+        cout &lt;&lt; "Employee " &lt;&lt; name &lt;&lt; " added to the company" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Employee emp;
+    HRManager hr;
+
+    emp.work();
+    cout &lt;&lt; "Employee Salary: Rs. " &lt;&lt; emp.getSalary() &lt;&lt; endl;
+
+    hr.work();
+    hr.addEmployee("John Smith");
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 5: Write a C++ program to create a class known as "BankAccount" with methods called deposit() and withdraw(). Create a derived class called SavingsAccount that overrides the withdraw() method to prevent withdrawals if the account balance falls below one hundred.</h3>
+
+    <button onclick="toggleSolution('sol5')">Show Solution</button>
+    <pre id="sol5" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class BankAccount {
+protected:
+    float balance;
+public:
+    BankAccount(float initial = 0) {
+        balance = initial;
+    }
+
+    void deposit(float amount) {
+        balance += amount;
+        cout &lt;&lt; "Deposited Rs. " &lt;&lt; amount &lt;&lt; endl;
+    }
+
+    void withdraw(float amount) {
+        if (amount &lt;= balance) {
+            balance -= amount;
+            cout &lt;&lt; "Withdrew Rs. " &lt;&lt; amount &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Insufficient balance!" &lt;&lt; endl;
+        }
+    }
+
+    void displayBalance() {
+        cout &lt;&lt; "Balance: Rs. " &lt;&lt; balance &lt;&lt; endl;
+    }
+};
+
+class SavingsAccount : public BankAccount {
+public:
+    SavingsAccount(float initial = 0) : BankAccount(initial) {}
+
+    void withdraw(float amount) {
+        if (balance - amount &lt; 100) {
+            cout &lt;&lt; "Cannot withdraw! Balance must not fall below Rs. 100" &lt;&lt; endl;
+        } else {
+            balance -= amount;
+            cout &lt;&lt; "Withdrew Rs. " &lt;&lt; amount &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    SavingsAccount acc(500);
+
+    acc.displayBalance();
+    acc.withdraw(300);
+    acc.displayBalance();
+
+    acc.withdraw(200);
+    acc.displayBalance();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 6: Write a C++ program to create a class called Animal with a method named move(). Create a derived class called Cheetah that overrides the move() method to run.</h3>
+
+    <button onclick="toggleSolution('sol6')">Show Solution</button>
+    <pre id="sol6" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Animal {
+public:
+    void move() {
+        cout &lt;&lt; "Animal is moving" &lt;&lt; endl;
+    }
+};
+
+class Cheetah : public Animal {
+public:
+    void move() {
+        cout &lt;&lt; "Cheetah is running at 100 km/h!" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Animal animal;
+    Cheetah cheetah;
+
+    animal.move();
+    cheetah.move();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 7: Write a C++ program to create a class known as Person with methods called getFirstName() and getLastName(). Create a derived class called Employee that adds a new method named getEmployeeId() and overrides the getLastName() method to include the employee's job title.</h3>
+
+    <button onclick="toggleSolution('sol7')">Show Solution</button>
+    <pre id="sol7" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Person {
+protected:
+    string firstName;
+    string lastName;
+
+public:
+    Person(string fn, string ln) {
+        firstName = fn;
+        lastName = ln;
+    }
+
+    string getFirstName() {
+        return firstName;
+    }
+
+    virtual string getLastName() {
+        return lastName;
+    }
+};
+
+class Employee : public Person {
+private:
+    int employeeId;
+    string jobTitle;
+
+public:
+    Employee(string fn, string ln, int id, string jt) : Person(fn, ln) {
+        employeeId = id;
+        jobTitle = jt;
+    }
+
+    int getEmployeeId() {
+        return employeeId;
+    }
+
+    string getLastName() {
+        return lastName + " (" + jobTitle + ")";
+    }
+};
+
+int main() {
+    Employee emp("John", "Smith", 101, "Manager");
+
+    cout &lt;&lt; "First Name: " &lt;&lt; emp.getFirstName() &lt;&lt; endl;
+    cout &lt;&lt; "Last Name: " &lt;&lt; emp.getLastName() &lt;&lt; endl;
+    cout &lt;&lt; "Employee ID: " &lt;&lt; emp.getEmployeeId() &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 8: Write a C++ program to create a class called Shape with methods called getPerimeter() and getArea(). Create a derived class called Circle that overrides the getPerimeter() and getArea() methods to calculate the area and perimeter of a circle.</h3>
+
+    <button onclick="toggleSolution('sol8')">Show Solution</button>
+    <pre id="sol8" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Shape {
+public:
+    virtual float getPerimeter() {
+        return 0;
+    }
+
+    virtual float getArea() {
+        return 0;
+    }
+};
+
+class Circle : public Shape {
+private:
+    float radius;
+public:
+    Circle(float r) {
+        radius = r;
+    }
+
+    float getPerimeter() {
+        return 2 * 3.14159 * radius;
+    }
+
+    float getArea() {
+        return 3.14159 * radius * radius;
+    }
+};
+
+int main() {
+    Circle c(7);
+
+    cout &lt;&lt; "Circle Perimeter: " &lt;&lt; c.getPerimeter() &lt;&lt; endl;
+    cout &lt;&lt; "Circle Area: " &lt;&lt; c.getArea() &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 9: Write a C++ program to create a vehicle class hierarchy. The base class should be Vehicle, with derived classes Truck, Car and Motorcycle. Each derived class should have properties such as make, model, year, and fuel type. Implement methods for calculating fuel efficiency, distance traveled, and maximum speed.</h3>
+
+    <button onclick="toggleSolution('sol9')">Show Solution</button>
+    <pre id="sol9" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Vehicle {
+protected:
+    string make;
+    string model;
+    int year;
+    string fuelType;
+
+public:
+    Vehicle(string m, string md, int y, string f) {
+        make = m;
+        model = md;
+        year = y;
+        fuelType = f;
+    }
+
+    virtual float fuelEfficiency() = 0;
+    virtual float distanceTraveled(float hours) = 0;
+    virtual float maxSpeed() = 0;
+
+    void display() {
+        cout &lt;&lt; make &lt;&lt; " " &lt;&lt; model &lt;&lt; " (" &lt;&lt; year &lt;&lt; ") - " &lt;&lt; fuelType &lt;&lt; endl;
+    }
+};
+
+class Car : public Vehicle {
+private:
+    float efficiency;
+    float speed;
+public:
+    Car(string m, string md, int y, string f, float eff, float spd)
+        : Vehicle(m, md, y, f), efficiency(eff), speed(spd) {}
+
+    float fuelEfficiency() {
+        return efficiency;
+    }
+
+    float distanceTraveled(float hours) {
+        return speed * hours;
+    }
+
+    float maxSpeed() {
+        return speed;
+    }
+};
+
+class Truck : public Vehicle {
+private:
+    float efficiency;
+    float speed;
+    float capacity;
+public:
+    Truck(string m, string md, int y, string f, float eff, float spd, float cap)
+        : Vehicle(m, md, y, f), efficiency(eff), speed(spd), capacity(cap) {}
+
+    float fuelEfficiency() {
+        return efficiency;
+    }
+
+    float distanceTraveled(float hours) {
+        return speed * hours;
+    }
+
+    float maxSpeed() {
+        return speed;
+    }
+};
+
+class Motorcycle : public Vehicle {
+private:
+    float efficiency;
+    float speed;
+public:
+    Motorcycle(string m, string md, int y, string f, float eff, float spd)
+        : Vehicle(m, md, y, f), efficiency(eff), speed(spd) {}
+
+    float fuelEfficiency() {
+        return efficiency;
+    }
+
+    float distanceTraveled(float hours) {
+        return speed * hours;
+    }
+
+    float maxSpeed() {
+        return speed;
+    }
+};
+
+int main() {
+    Car car("Toyota", "Camry", 2024, "Petrol", 15.5, 180);
+    Truck truck("Volvo", "FH16", 2023, "Diesel", 8.2, 120, 40);
+    Motorcycle bike("Harley", "Iron 883", 2024, "Petrol", 22.0, 160);
+
+    cout &lt;&lt; "=== Car ===" &lt;&lt; endl;
+    car.display();
+    cout &lt;&lt; "Fuel Efficiency: " &lt;&lt; car.fuelEfficiency() &lt;&lt; " km/l" &lt;&lt; endl;
+    cout &lt;&lt; "Distance in 2 hours: " &lt;&lt; car.distanceTraveled(2) &lt;&lt; " km" &lt;&lt; endl;
+    cout &lt;&lt; "Max Speed: " &lt;&lt; car.maxSpeed() &lt;&lt; " km/h" &lt;&lt; endl;
+
+    cout &lt;&lt; "\n=== Truck ===" &lt;&lt; endl;
+    truck.display();
+    cout &lt;&lt; "Fuel Efficiency: " &lt;&lt; truck.fuelEfficiency() &lt;&lt; " km/l" &lt;&lt; endl;
+    cout &lt;&lt; "Distance in 2 hours: " &lt;&lt; truck.distanceTraveled(2) &lt;&lt; " km" &lt;&lt; endl;
+    cout &lt;&lt; "Max Speed: " &lt;&lt; truck.maxSpeed() &lt;&lt; " km/h" &lt;&lt; endl;
+
+    cout &lt;&lt; "\n=== Motorcycle ===" &lt;&lt; endl;
+    bike.display();
+    cout &lt;&lt; "Fuel Efficiency: " &lt;&lt; bike.fuelEfficiency() &lt;&lt; " km/l" &lt;&lt; endl;
+    cout &lt;&lt; "Distance in 2 hours: " &lt;&lt; bike.distanceTraveled(2) &lt;&lt; " km" &lt;&lt; endl;
+    cout &lt;&lt; "Max Speed: " &lt;&lt; bike.maxSpeed() &lt;&lt; " km/h" &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 10: Write a C++ program that creates a class hierarchy for employees of a company. The base class should be Employee, with derived classes Manager, Developer, and Programmer. Each derived class should have properties such as name, address, salary, and job title. Implement methods for calculating bonuses, generating performance reports, and managing projects.</h3>
+
+    <button onclick="toggleSolution('sol10')">Show Solution</button>
+    <pre id="sol10" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Employee {
+protected:
+    string name;
+    string address;
+    float salary;
+    string jobTitle;
+
+public:
+    Employee(string n, string a, float s, string jt) {
+        name = n;
+        address = a;
+        salary = s;
+        jobTitle = jt;
+    }
+
+    virtual float calculateBonus() = 0;
+    virtual void performanceReport() = 0;
+    virtual void manageProjects() = 0;
+
+    void display() {
+        cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; ", Title: " &lt;&lt; jobTitle &lt;&lt; endl;
+        cout &lt;&lt; "Address: " &lt;&lt; address &lt;&lt; ", Salary: Rs. " &lt;&lt; salary &lt;&lt; endl;
+    }
+};
+
+class Manager : public Employee {
+private:
+    int projectsManaged;
+public:
+    Manager(string n, string a, float s, string jt, int p)
+        : Employee(n, a, s, jt), projectsManaged(p) {}
+
+    float calculateBonus() {
+        return salary * 0.20;
+    }
+
+    void performanceReport() {
+        cout &lt;&lt; "Manager " &lt;&lt; name &lt;&lt; " has managed " &lt;&lt; projectsManaged &lt;&lt; " projects successfully." &lt;&lt; endl;
+    }
+
+    void manageProjects() {
+        cout &lt;&lt; "Manager is overseeing " &lt;&lt; projectsManaged &lt;&lt; " active projects." &lt;&lt; endl;
+    }
+};
+
+class Developer : public Employee {
+private:
+    int projectsCompleted;
+    string programmingLang;
+public:
+    Developer(string n, string a, float s, string jt, int p, string pl)
+        : Employee(n, a, s, jt), projectsCompleted(p), programmingLang(pl) {}
+
+    float calculateBonus() {
+        return salary * 0.15;
+    }
+
+    void performanceReport() {
+        cout &lt;&lt; "Developer " &lt;&lt; name &lt;&lt; " has completed " &lt;&lt; projectsCompleted &lt;&lt; " projects." &lt;&lt; endl;
+    }
+
+    void manageProjects() {
+        cout &lt;&lt; "Developer is working on projects using " &lt;&lt; programmingLang &lt;&lt; "." &lt;&lt; endl;
+    }
+};
+
+class Programmer : public Employee {
+private:
+    int linesOfCode;
+    string primaryLang;
+public:
+    Programmer(string n, string a, float s, string jt, int loc, string pl)
+        : Employee(n, a, s, jt), linesOfCode(loc), primaryLang(pl) {}
+
+    float calculateBonus() {
+        return salary * 0.10;
+    }
+
+    void performanceReport() {
+        cout &lt;&lt; "Programmer " &lt;&lt; name &lt;&lt; " has written " &lt;&lt; linesOfCode &lt;&lt; " lines of code." &lt;&lt; endl;
+    }
+
+    void manageProjects() {
+        cout &lt;&lt; "Programmer is coding in " &lt;&lt; primaryLang &lt;&lt; "." &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Manager mgr("Alice Johnson", "123 Main St", 80000, "Senior Manager", 5);
+    Developer dev("Bob Smith", "456 Oak Ave", 60000, "Lead Developer", 12, "Java");
+    Programmer pgm("Carol White", "789 Pine Rd", 45000, "Junior Programmer", 5000, "Python");
+
+    cout &lt;&lt; "=== Manager ===" &lt;&lt; endl;
+    mgr.display();
+    cout &lt;&lt; "Bonus: Rs. " &lt;&lt; mgr.calculateBonus() &lt;&lt; endl;
+    mgr.performanceReport();
+    mgr.manageProjects();
+
+    cout &lt;&lt; "\n=== Developer ===" &lt;&lt; endl;
+    dev.display();
+    cout &lt;&lt; "Bonus: Rs. " &lt;&lt; dev.calculateBonus() &lt;&lt; endl;
+    dev.performanceReport();
+    dev.manageProjects();
+
+    cout &lt;&lt; "\n=== Programmer ===" &lt;&lt; endl;
+    pgm.display();
+    cout &lt;&lt; "Bonus: Rs. " &lt;&lt; pgm.calculateBonus() &lt;&lt; endl;
+    pgm.performanceReport();
+    pgm.manageProjects();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <p><strong>Note:</strong> This topic contains 10 practice questions on Inheritance (UNIT-III).</p>
+
+    <hr>
+
+    <p>&copy; 2026 C++ Practice Questions | Made by Sahil Rawat</p>
+
+    <script>
+        function toggleSolution(id) {
+            var sol = document.getElementById(id);
+            if (sol.style.display === 'none') {
+                sol.style.display = 'block';
+            } else {
+                sol.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Conversion - C++ Questions</title>
+</head>
+<body>
+    <h1>Data Conversion</h1>
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="questions.html">Questions</a> |
+        <a href="about.html">About Me</a>
+    </p>
+
+    <hr>
+
+    <p><a href="questions.html">&lt;&lt; Back to Topics</a></p>
+
+    <h2>Practice Questions (16 questions)</h2>
+
+    <h3>Question 1: C++ Program to convert String to int</h3>
+
+    <button onclick="toggleSolution('sol1')">Show Solution</button>
+    <pre id="sol1" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string str = "12345";
+    int num = stoi(str);
+
+    cout &lt;&lt; "String: " &lt;&lt; str &lt;&lt; endl;
+    cout &lt;&lt; "Integer: " &lt;&lt; num &lt;&lt; endl;
+    cout &lt;&lt; "String + 100 = " &lt;&lt; num + 100 &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 2: C++ Program to convert int to String</h3>
+
+    <button onclick="toggleSolution('sol2')">Show Solution</button>
+    <pre id="sol2" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    int num = 12345;
+    string str = to_string(num);
+
+    cout &lt;&lt; "Integer: " &lt;&lt; num &lt;&lt; endl;
+    cout &lt;&lt; "String: " &lt;&lt; str &lt;&lt; endl;
+    cout &lt;&lt; "String length: " &lt;&lt; str.length() &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 3: C++ Program to convert String to long</h3>
+
+    <button onclick="toggleSolution('sol3')">Show Solution</button>
+    <pre id="sol3" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string str = "9876543210";
+    long num = stol(str);
+
+    cout &lt;&lt; "String: " &lt;&lt; str &lt;&lt; endl;
+    cout &lt;&lt; "Long: " &lt;&lt; num &lt;&lt; endl;
+    cout &lt;&lt; "Long + 1000 = " &lt;&lt; num + 1000 &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 4: C++ Program to convert long to String</h3>
+
+    <button onclick="toggleSolution('sol4')">Show Solution</button>
+    <pre id="sol4" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    long num = 9876543210L;
+    string str = to_string(num);
+
+    cout &lt;&lt; "Long: " &lt;&lt; num &lt;&lt; endl;
+    cout &lt;&lt; "String: " &lt;&lt; str &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 5: C++ Program to convert String to float</h3>
+
+    <button onclick="toggleSolution('sol5')">Show Solution</button>
+    <pre id="sol5" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string str = "3.14159";
+    float num = stof(str);
+
+    cout &lt;&lt; "String: " &lt;&lt; str &lt;&lt; endl;
+    cout &lt;&lt; "Float: " &lt;&lt; num &lt;&lt; endl;
+    cout &lt;&lt; "Float * 2 = " &lt;&lt; num * 2 &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 6: C++ Program to convert float to String</h3>
+
+    <button onclick="toggleSolution('sol6')">Show Solution</button>
+    <pre id="sol6" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    float num = 3.14159f;
+    string str = to_string(num);
+
+    cout &lt;&lt; "Float: " &lt;&lt; num &lt;&lt; endl;
+    cout &lt;&lt; "String: " &lt;&lt; str &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 7: C++ Program to convert String to double</h3>
+
+    <button onclick="toggleSolution('sol7')">Show Solution</button>
+    <pre id="sol7" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string str = "3.14159265358979";
+    double num = stod(str);
+
+    cout &lt;&lt; "String: " &lt;&lt; str &lt;&lt; endl;
+    cout &lt;&lt; "Double: " &lt;&lt; num &lt;&lt; endl;
+    cout &lt;&lt; "Double * 2 = " &lt;&lt; num * 2 &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 8: C++ Program to convert double to String</h3>
+
+    <button onclick="toggleSolution('sol8')">Show Solution</button>
+    <pre id="sol8" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    double num = 3.14159265358979;
+    string str = to_string(num);
+
+    cout &lt;&lt; "Double: " &lt;&lt; num &lt;&lt; endl;
+    cout &lt;&lt; "String: " &lt;&lt; str &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 9: C++ Program to convert char to int</h3>
+
+    <button onclick="toggleSolution('sol9')">Show Solution</button>
+    <pre id="sol9" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    char ch = 'A';
+    int num = (int)ch;
+
+    cout &lt;&lt; "Character: " &lt;&lt; ch &lt;&lt; endl;
+    cout &lt;&lt; "Integer (ASCII value): " &lt;&lt; num &lt;&lt; endl;
+
+    char ch2 = '5';
+    int num2 = ch2 - '0';
+    cout &lt;&lt; "\nCharacter '5' to Integer: " &lt;&lt; num2 &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 10: C++ Program to convert int to char</h3>
+
+    <button onclick="toggleSolution('sol10')">Show Solution</button>
+    <pre id="sol10" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int num = 65;
+    char ch = (char)num;
+
+    cout &lt;&lt; "Integer: " &lt;&lt; num &lt;&lt; endl;
+    cout &lt;&lt; "Character: " &lt;&lt; ch &lt;&lt; endl;
+
+    int num2 = 5;
+    char ch2 = num2 + '0';
+    cout &lt;&lt; "\nInteger 5 to Character: " &lt;&lt; ch2 &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 11: C++ Program to convert Binary to Decimal</h3>
+
+    <button onclick="toggleSolution('sol11')">Show Solution</button>
+    <pre id="sol11" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+int binaryToDecimal(long long binary) {
+    int decimal = 0;
+    int i = 0;
+
+    while (binary != 0) {
+        int remainder = binary % 10;
+        decimal += remainder * pow(2, i);
+        binary /= 10;
+        i++;
+    }
+
+    return decimal;
+}
+
+int main() {
+    long long binary;
+    cout &lt;&lt; "Enter binary number: ";
+    cin &gt;&gt; binary;
+
+    int decimal = binaryToDecimal(binary);
+
+    cout &lt;&lt; "Binary: " &lt;&lt; binary &lt;&lt; endl;
+    cout &lt;&lt; "Decimal: " &lt;&lt; decimal &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 12: C++ Program to convert Decimal to Binary</h3>
+
+    <button onclick="toggleSolution('sol12')">Show Solution</button>
+    <pre id="sol12" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+void decimalToBinary(int n) {
+    int binary[32];
+    int i = 0;
+
+    while (n &gt; 0) {
+        binary[i] = n % 2;
+        n = n / 2;
+        i++;
+    }
+
+    cout &lt;&lt; "Binary: ";
+    for (int j = i - 1; j &gt;= 0; j--) {
+        cout &lt;&lt; binary[j];
+    }
+    cout &lt;&lt; endl;
+}
+
+int main() {
+    int decimal;
+    cout &lt;&lt; "Enter decimal number: ";
+    cin &gt;&gt; decimal;
+
+    cout &lt;&lt; "Decimal: " &lt;&lt; decimal &lt;&lt; endl;
+    decimalToBinary(decimal);
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 13: C++ Program to convert Hex to Decimal</h3>
+
+    <button onclick="toggleSolution('sol13')">Show Solution</button>
+    <pre id="sol13" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+int hexCharToInt(char ch) {
+    if (ch &gt;= '0' &amp;&amp; ch &lt;= '9')
+        return ch - '0';
+    else if (ch &gt;= 'A' &amp;&amp; ch &lt;= 'F')
+        return ch - 'A' + 10;
+    else if (ch &gt;= 'a' &amp;&amp; ch &lt;= 'f')
+        return ch - 'a' + 10;
+    return 0;
+}
+
+int hexToDecimal(char hex[]) {
+    int decimal = 0;
+    int len = strlen(hex);
+    int base = 1;
+
+    for (int i = len - 1; i &gt;= 0; i--) {
+        decimal += hexCharToInt(hex[i]) * base;
+        base *= 16;
+    }
+
+    return decimal;
+}
+
+int main() {
+    char hex[20];
+    cout &lt;&lt; "Enter hexadecimal number: ";
+    cin &gt;&gt; hex;
+
+    int decimal = hexToDecimal(hex);
+
+    cout &lt;&lt; "Hexadecimal: " &lt;&lt; hex &lt;&lt; endl;
+    cout &lt;&lt; "Decimal: " &lt;&lt; decimal &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 14: C++ Program to convert Decimal to Hex</h3>
+
+    <button onclick="toggleSolution('sol14')">Show Solution</button>
+    <pre id="sol14" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+void decimalToHex(int n) {
+    char hex[20];
+    int i = 0;
+
+    while (n != 0) {
+        int remainder = n % 16;
+
+        if (remainder &lt; 10)
+            hex[i++] = remainder + '0';
+        else
+            hex[i++] = remainder - 10 + 'A';
+
+        n = n / 16;
+    }
+
+    cout &lt;&lt; "Hexadecimal: ";
+    for (int j = i - 1; j &gt;= 0; j--) {
+        cout &lt;&lt; hex[j];
+    }
+    cout &lt;&lt; endl;
+}
+
+int main() {
+    int decimal;
+    cout &lt;&lt; "Enter decimal number: ";
+    cin &gt;&gt; decimal;
+
+    cout &lt;&lt; "Decimal: " &lt;&lt; decimal &lt;&lt; endl;
+    decimalToHex(decimal);
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 15: C++ Program to convert Octal to Decimal</h3>
+
+    <button onclick="toggleSolution('sol15')">Show Solution</button>
+    <pre id="sol15" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+int octalToDecimal(int octal) {
+    int decimal = 0;
+    int i = 0;
+
+    while (octal != 0) {
+        int digit = octal % 10;
+        decimal += digit * pow(8, i);
+        octal /= 10;
+        i++;
+    }
+
+    return decimal;
+}
+
+int main() {
+    int octal;
+    cout &lt;&lt; "Enter octal number: ";
+    cin &gt;&gt; octal;
+
+    int decimal = octalToDecimal(octal);
+
+    cout &lt;&lt; "Octal: " &lt;&lt; octal &lt;&lt; endl;
+    cout &lt;&lt; "Decimal: " &lt;&lt; decimal &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 16: C++ Program to convert Decimal to Octal</h3>
+
+    <button onclick="toggleSolution('sol16')">Show Solution</button>
+    <pre id="sol16" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+void decimalToOctal(int n) {
+    int octal[20];
+    int i = 0;
+
+    while (n &gt; 0) {
+        octal[i] = n % 8;
+        n = n / 8;
+        i++;
+    }
+
+    cout &lt;&lt; "Octal: ";
+    for (int j = i - 1; j &gt;= 0; j--) {
+        cout &lt;&lt; octal[j];
+    }
+    cout &lt;&lt; endl;
+}
+
+int main() {
+    int decimal;
+    cout &lt;&lt; "Enter decimal number: ";
+    cin &gt;&gt; decimal;
+
+    cout &lt;&lt; "Decimal: " &lt;&lt; decimal &lt;&lt; endl;
+    decimalToOctal(decimal);
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <p><strong>Note:</strong> This topic contains 16 practice questions on Data Conversion.</p>
+
+    <hr>
+
+    <p>&copy; 2026 C++ Practice Questions | Made by Sahil Rawat</p>
+
+    <script>
+        function toggleSolution(id) {
+            var sol = document.getElementById(id);
+            if (sol.style.display === 'none') {
+                sol.style.display = 'block';
+            } else {
+                sol.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

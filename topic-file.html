@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Handling - C++ Questions</title>
+</head>
+<body>
+    <h1>File Handling</h1>
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="questions.html">Questions</a> |
+        <a href="about.html">About Me</a>
+    </p>
+
+    <hr>
+
+    <p><a href="questions.html">&lt;&lt; Back to Topics</a></p>
+
+    <h2>Practice Questions (16 questions)</h2>
+
+    <h3>Question 1: Write a C++ program to create a new text file and write some text into it.</h3>
+
+    <button onclick="toggleSolution('sol1')">Show Solution</button>
+    <pre id="sol1" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    ofstream outfile("output.txt");
+
+    if (!outfile) {
+        cout &lt;&lt; "Error creating file!" &lt;&lt; endl;
+        return 1;
+    }
+
+    outfile &lt;&lt; "Hello, this is a test file." &lt;&lt; endl;
+    outfile &lt;&lt; "Created using C++ File Handling." &lt;&lt; endl;
+    outfile &lt;&lt; "This demonstrates writing text to a file." &lt;&lt; endl;
+
+    outfile.close();
+
+    cout &lt;&lt; "Text written to file successfully!" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 2: Write a C++ program to open an existing text file and display its contents on the console.</h3>
+
+    <button onclick="toggleSolution('sol2')">Show Solution</button>
+    <pre id="sol2" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    ifstream infile("output.txt");
+
+    if (!infile) {
+        cout &lt;&lt; "Error opening file!" &lt;&lt; endl;
+        return 1;
+    }
+
+    char ch;
+    while (infile.get(ch)) {
+        cout &lt;&lt; ch;
+    }
+
+    infile.close();
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 3: Write a C++ program to count the number of lines in a text file.</h3>
+
+    <button onclick="toggleSolution('sol3')">Show Solution</button>
+    <pre id="sol3" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    ifstream infile("output.txt");
+
+    if (!infile) {
+        cout &lt;&lt; "Error opening file!" &lt;&lt; endl;
+        return 1;
+    }
+
+    char ch;
+    int lineCount = 0;
+
+    while (infile.get(ch)) {
+        if (ch == '\n') {
+            lineCount++;
+        }
+    }
+
+    cout &lt;&lt; "Number of lines: " &lt;&lt; lineCount &lt;&lt; endl;
+
+    infile.close();
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 4: Write a C++ program to count the number of words in a text file.</h3>
+
+    <button onclick="toggleSolution('sol4')">Show Solution</button>
+    <pre id="sol4" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    ifstream infile("output.txt");
+
+    if (!infile) {
+        cout &lt;&lt; "Error opening file!" &lt;&lt; endl;
+        return 1;
+    }
+
+    char word[100];
+    int wordCount = 0;
+
+    while (infile &gt;&gt; word) {
+        wordCount++;
+    }
+
+    cout &lt;&lt; "Number of words: " &lt;&lt; wordCount &lt;&lt; endl;
+
+    infile.close();
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 5: Write a C++ program to copy the contents of one text file to another.</h3>
+
+    <button onclick="toggleSolution('sol5')">Show Solution</button>
+    <pre id="sol5" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    ifstream infile("output.txt");
+    ofstream outfile("copied.txt");
+
+    if (!infile || !outfile) {
+        cout &lt;&lt; "Error opening files!" &lt;&lt; endl;
+        return 1;
+    }
+
+    char ch;
+    while (infile.get(ch)) {
+        outfile.put(ch);
+    }
+
+    infile.close();
+    outfile.close();
+
+    cout &lt;&lt; "File copied successfully!" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 6: Write a C++ program to find and replace a specific word in a text file.</h3>
+
+    <button onclick="toggleSolution('sol6')">Show Solution</button>
+    <pre id="sol6" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    char filename[100], oldWord[50], newWord[50];
+
+    cout &lt;&lt; "Enter filename: ";
+    cin &gt;&gt; filename;
+    cout &lt;&lt; "Enter word to replace: ";
+    cin &gt;&gt; oldWord;
+    cout &lt;&lt; "Enter new word: ";
+    cin &gt;&gt; newWord;
+
+    ifstream infile(filename);
+    ofstream outfile("temp.txt");
+
+    if (!infile || !outfile) {
+        cout &lt;&lt; "Error opening files!" &lt;&lt; endl;
+        return 1;
+    }
+
+    char word[100];
+    while (infile &gt;&gt; word) {
+        int match = 1;
+        int i = 0;
+        while (oldWord[i] != '\0' &amp;&amp; word[i] != '\0') {
+            if (oldWord[i] != word[i]) {
+                match = 0;
+                break;
+            }
+            i++;
+        }
+        if (oldWord[i] == '\0' &amp;&amp; word[i] == '\0' &amp;&amp; match) {
+            outfile &lt;&lt; newWord &lt;&lt; " ";
+        } else {
+            outfile &lt;&lt; word &lt;&lt; " ";
+        }
+    }
+
+    infile.close();
+    outfile.close();
+
+    remove(filename);
+    rename("temp.txt", filename);
+
+    cout &lt;&lt; "Word replaced successfully!" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 7: Write a C++ program to append new data to an existing text file.</h3>
+
+    <button onclick="toggleSolution('sol7')">Show Solution</button>
+    <pre id="sol7" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    ofstream outfile("output.txt", ios::app);
+
+    if (!outfile) {
+        cout &lt;&lt; "Error opening file!" &lt;&lt; endl;
+        return 1;
+    }
+
+    outfile &lt;&lt; "This is appended text." &lt;&lt; endl;
+    outfile &lt;&lt; "New data added to the existing file." &lt;&lt; endl;
+
+    outfile.close();
+
+    cout &lt;&lt; "Data appended successfully!" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 8: Write a C++ program to sort the lines of a text file in alphabetical order.</h3>
+
+    <button onclick="toggleSolution('sol8')">Show Solution</button>
+    <pre id="sol8" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    ifstream infile("output.txt");
+
+    if (!infile) {
+        cout &lt;&lt; "Error opening file!" &lt;&lt; endl;
+        return 1;
+    }
+
+    char lines[100][256];
+    int lineCount = 0;
+
+    while (infile.getline(lines[lineCount], 256) &amp;&amp; lineCount &lt; 100) {
+        lineCount++;
+    }
+    infile.close();
+
+    // Bubble sort for lines
+    for (int i = 0; i &lt; lineCount - 1; i++) {
+        for (int j = 0; j &lt; lineCount - i - 1; j++) {
+            if (lines[j][0] &gt; lines[j + 1][0]) {
+                char temp[256];
+                int k = 0;
+                while (lines[j][k] != '\0') {
+                    temp[k] = lines[j][k];
+                    k++;
+                }
+                temp[k] = '\0';
+
+                k = 0;
+                while (lines[j + 1][k] != '\0') {
+                    lines[j][k] = lines[j + 1][k];
+                    k++;
+                }
+                lines[j][k] = '\0';
+
+                k = 0;
+                while (temp[k] != '\0') {
+                    lines[j + 1][k] = temp[k];
+                    k++;
+                }
+                lines[j + 1][k] = '\0';
+            }
+        }
+    }
+
+    ofstream outfile("output.txt");
+    for (int i = 0; i &lt; lineCount; i++) {
+        outfile &lt;&lt; lines[i] &lt;&lt; endl;
+    }
+    outfile.close();
+
+    cout &lt;&lt; "Lines sorted successfully!" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 9: Write a C++ program to merge multiple text files into a single file.</h3>
+
+    <button onclick="toggleSolution('sol9')">Show Solution</button>
+    <pre id="sol9" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+void mergeFile(char filename[], ofstream&amp; outfile) {
+    ifstream infile(filename);
+    if (!infile) {
+        cout &lt;&lt; "Error opening " &lt;&lt; filename &lt;&lt; endl;
+        return;
+    }
+
+    char ch;
+    while (infile.get(ch)) {
+        outfile.put(ch);
+    }
+    infile.close();
+}
+
+int main() {
+    ofstream outfile("merged.txt");
+
+    if (!outfile) {
+        cout &lt;&lt; "Error creating output file!" &lt;&lt; endl;
+        return 1;
+    }
+
+    mergeFile("file1.txt", outfile);
+    mergeFile("file2.txt", outfile);
+    mergeFile("file3.txt", outfile);
+
+    outfile.close();
+
+    cout &lt;&lt; "Files merged successfully!" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 10: Write a C++ program to split a large text file into smaller files of equal size.</h3>
+
+    <button onclick="toggleSolution('sol10')">Show Solution</button>
+    <pre id="sol10" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    ifstream infile("largefile.txt");
+
+    if (!infile) {
+        cout &lt;&lt; "Error opening file!" &lt;&lt; endl;
+        return 1;
+    }
+
+    int linesPerFile, fileNum = 1;
+    cout &lt;&lt; "Enter number of lines per file: ";
+    cin &gt;&gt; linesPerFile;
+
+    char outFilename[50];
+    ofstream outfile;
+    int lineCount = 0;
+
+    char line[256];
+    while (infile.getline(line, 256)) {
+        if (lineCount == 0) {
+            sprintf(outFilename, "part%d.txt", fileNum);
+            outfile.open(outFilename);
+            fileNum++;
+        }
+
+        outfile &lt;&lt; line &lt;&lt; endl;
+        lineCount++;
+
+        if (lineCount == linesPerFile) {
+            outfile.close();
+            lineCount = 0;
+        }
+    }
+
+    if (outfile.is_open()) {
+        outfile.close();
+    }
+    infile.close();
+
+    cout &lt;&lt; "File split successfully!" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 11: Write a C++ program to search for a specific string in a text file and display its line number(s).</h3>
+
+    <button onclick="toggleSolution('sol11')">Show Solution</button>
+    <pre id="sol11" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int containsString(char str[], char search[]) {
+    int i = 0, j = 0;
+    while (str[i] != '\0' &amp;&amp; search[j] != '\0') {
+        if (str[i] == search[j]) {
+            i++;
+            j++;
+        } else {
+            i = i - j + 1;
+            j = 0;
+        }
+    }
+    if (search[j] == '\0')
+        return 1;
+    return 0;
+}
+
+int main() {
+    char filename[100], searchStr[100];
+
+    cout &lt;&lt; "Enter filename: ";
+    cin &gt;&gt; filename;
+    cout &lt;&lt; "Enter string to search: ";
+    cin &gt;&gt; searchStr;
+
+    ifstream infile(filename);
+
+    if (!infile) {
+        cout &lt;&lt; "Error opening file!" &lt;&lt; endl;
+        return 1;
+    }
+
+    char line[256];
+    int lineNum = 0, found = 0;
+
+    while (infile.getline(line, 256)) {
+        lineNum++;
+        if (containsString(line, searchStr)) {
+            cout &lt;&lt; "Found at line " &lt;&lt; lineNum &lt;&lt; ": " &lt;&lt; line &lt;&lt; endl;
+            found++;
+        }
+    }
+
+    if (found == 0) {
+        cout &lt;&lt; "String not found!" &lt;&lt; endl;
+    }
+
+    infile.close();
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 12: Write a C++ program to encrypt the contents of a text file using a simple encryption algorithm.</h3>
+
+    <button onclick="toggleSolution('sol12')">Show Solution</button>
+    <pre id="sol12" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    char filename[100];
+    int key;
+
+    cout &lt;&lt; "Enter filename: ";
+    cin &gt;&gt; filename;
+    cout &lt;&lt; "Enter encryption key (1-25): ";
+    cin &gt;&gt; key;
+
+    ifstream infile(filename);
+    ofstream outfile("encrypted.txt");
+
+    if (!infile || !outfile) {
+        cout &lt;&lt; "Error opening files!" &lt;&lt; endl;
+        return 1;
+    }
+
+    char ch;
+    while (infile.get(ch)) {
+        if (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z') {
+            ch = ((ch - 'a' + key) % 26) + 'a';
+        } else if (ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z') {
+            ch = ((ch - 'A' + key) % 26) + 'A';
+        }
+        outfile.put(ch);
+    }
+
+    infile.close();
+    outfile.close();
+
+    cout &lt;&lt; "File encrypted successfully!" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 13: Write a C++ program to decrypt the contents of a text file encrypted using the above algorithm.</h3>
+
+    <button onclick="toggleSolution('sol13')">Show Solution</button>
+    <pre id="sol13" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    char filename[100];
+    int key;
+
+    cout &lt;&lt; "Enter filename: ";
+    cin &gt;&gt; filename;
+    cout &lt;&lt; "Enter decryption key (same as encryption key): ";
+    cin &gt;&gt; key;
+
+    ifstream infile(filename);
+    ofstream outfile("decrypted.txt");
+
+    if (!infile || !outfile) {
+        cout &lt;&lt; "Error opening files!" &lt;&lt; endl;
+        return 1;
+    }
+
+    char ch;
+    while (infile.get(ch)) {
+        if (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z') {
+            ch = ((ch - 'a' - key + 26) % 26) + 'a';
+        } else if (ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z') {
+            ch = ((ch - 'A' - key + 26) % 26) + 'A';
+        }
+        outfile.put(ch);
+    }
+
+    infile.close();
+    outfile.close();
+
+    cout &lt;&lt; "File decrypted successfully!" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 14: Write a C++ program to read a CSV file and display its contents in tabular form.</h3>
+
+    <button onclick="toggleSolution('sol14')">Show Solution</button>
+    <pre id="sol14" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    ifstream infile("data.csv");
+
+    if (!infile) {
+        cout &lt;&lt; "Error opening file!" &lt;&lt; endl;
+        return 1;
+    }
+
+    char line[256];
+
+    cout &lt;&lt; "\n========================================" &lt;&lt; endl;
+    cout &lt;&lt; "ROLL NO | NAME        | MARKS | PHONE" &lt;&lt; endl;
+    cout &lt;&lt; "========================================" &lt;&lt; endl;
+
+    while (infile.getline(line, 256)) {
+        int i = 0;
+        while (line[i] != '\0') {
+            if (line[i] == ',') {
+                cout &lt;&lt; " | ";
+            } else {
+                cout &lt;&lt; line[i];
+            }
+            i++;
+        }
+        cout &lt;&lt; endl;
+    }
+
+    cout &lt;&lt; "========================================" &lt;&lt; endl;
+
+    infile.close();
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 15: Write a C++ program to calculate the average of numbers stored in a file.</h3>
+
+    <button onclick="toggleSolution('sol15')">Show Solution</button>
+    <pre id="sol15" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main() {
+    ifstream infile("numbers.txt");
+
+    if (!infile) {
+        cout &lt;&lt; "Error opening file!" &lt;&lt; endl;
+        return 1;
+    }
+
+    int num, sum = 0, count = 0;
+
+    while (infile &gt;&gt; num) {
+        sum += num;
+        count++;
+    }
+
+    if (count &gt; 0) {
+        double average = (double)sum / count;
+        cout &lt;&lt; "Total numbers: " &lt;&lt; count &lt;&lt; endl;
+        cout &lt;&lt; "Sum: " &lt;&lt; sum &lt;&lt; endl;
+        cout &lt;&lt; "Average: " &lt;&lt; average &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "No numbers found in file!" &lt;&lt; endl;
+    }
+
+    infile.close();
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 16: Write a C++ program to store the information of 10 Students having rollno,name,marks,mobileno properties, get() and set() member functions as binary file with following options 1. Insert Record 2. Delete Record 3. Update Record (based on rollno) 4. Search Record (based on rollno) 5. Clone the file 6. Exit.</h3>
+
+    <button onclick="toggleSolution('sol16')">Show Solution</button>
+    <pre id="sol16" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class Student {
+    int rollno;
+    char name[50];
+    float marks;
+    char mobileno[15];
+
+public:
+    void get() {
+        cout &lt;&lt; "Enter Roll No: ";
+        cin &gt;&gt; rollno;
+        cout &lt;&lt; "Enter Name: ";
+        cin &gt;&gt; name;
+        cout &lt;&lt; "Enter Marks: ";
+        cin &gt;&gt; marks;
+        cout &lt;&lt; "Enter Mobile No: ";
+        cin &gt;&gt; mobileno;
+    }
+
+    void set(int r, char n[], float m, char mob[]) {
+        rollno = r;
+        strcpy(name, n);
+        marks = m;
+        strcpy(mobileno, mob);
+    }
+
+    void display() {
+        cout &lt;&lt; rollno &lt;&lt; "\t" &lt;&lt; name &lt;&lt; "\t" &lt;&lt; marks &lt;&lt; "\t" &lt;&lt; mobileno &lt;&lt; endl;
+    }
+
+    int getRollno() {
+        return rollno;
+    }
+};
+
+void insertRecord() {
+    Student s;
+    s.get();
+    ofstream outfile("students.dat", ios::binary | ios::app);
+    outfile.write((char*)&amp;s, sizeof(s));
+    outfile.close();
+    cout &lt;&lt; "Record inserted successfully!" &lt;&lt; endl;
+}
+
+void deleteRecord() {
+    int rollno, found = 0;
+    cout &lt;&lt; "Enter Roll No to delete: ";
+    cin &gt;&gt; rollno;
+
+    ifstream infile("students.dat", ios::binary);
+    ofstream outfile("temp.dat", ios::binary);
+
+    Student s;
+    while (infile.read((char*)&amp;s, sizeof(s))) {
+        if (s.getRollno() != rollno) {
+            outfile.write((char*)&amp;s, sizeof(s));
+        } else {
+            found = 1;
+        }
+    }
+
+    infile.close();
+    outfile.close();
+
+    remove("students.dat");
+    rename("temp.dat", "students.dat");
+
+    if (found)
+        cout &lt;&lt; "Record deleted successfully!" &lt;&lt; endl;
+    else
+        cout &lt;&lt; "Record not found!" &lt;&lt; endl;
+}
+
+void updateRecord() {
+    int rollno, found = 0;
+    cout &lt;&lt; "Enter Roll No to update: ";
+    cin &gt;&gt; rollno;
+
+    fstream file("students.dat", ios::binary | ios::in | ios::out);
+    Student s;
+
+    while (file.read((char*)&amp;s, sizeof(s))) {
+        if (s.getRollno() == rollno) {
+            found = 1;
+            int pos = file.tellg();
+            pos = pos - sizeof(s);
+            file.seekg(pos);
+            s.get();
+            file.write((char*)&amp;s, sizeof(s));
+            break;
+        }
+    }
+
+    file.close();
+
+    if (found)
+        cout &lt;&lt; "Record updated successfully!" &lt;&lt; endl;
+    else
+        cout &lt;&lt; "Record not found!" &lt;&lt; endl;
+}
+
+void searchRecord() {
+    int rollno, found = 0;
+    cout &lt;&lt; "Enter Roll No to search: ";
+    cin &gt;&gt; rollno;
+
+    ifstream infile("students.dat", ios::binary);
+    Student s;
+
+    while (infile.read((char*)&amp;s, sizeof(s))) {
+        if (s.getRollno() == rollno) {
+            found = 1;
+            cout &lt;&lt; "Record found:" &lt;&lt; endl;
+            s.display();
+            break;
+        }
+    }
+
+    infile.close();
+
+    if (!found)
+        cout &lt;&lt; "Record not found!" &lt;&lt; endl;
+}
+
+void cloneFile() {
+    ifstream infile("students.dat", ios::binary);
+    ofstream outfile("students_clone.dat", ios::binary);
+
+    Student s;
+    while (infile.read((char*)&amp;s, sizeof(s))) {
+        outfile.write((char*)&amp;s, sizeof(s));
+    }
+
+    infile.close();
+    outfile.close();
+
+    cout &lt;&lt; "File cloned successfully!" &lt;&lt; endl;
+}
+
+int main() {
+    int choice;
+
+    do {
+        cout &lt;&lt; "\n===== Student Record System =====" &lt;&lt; endl;
+        cout &lt;&lt; "1. Insert Record" &lt;&lt; endl;
+        cout &lt;&lt; "2. Delete Record" &lt;&lt; endl;
+        cout &lt;&lt; "3. Update Record" &lt;&lt; endl;
+        cout &lt;&lt; "4. Search Record" &lt;&lt; endl;
+        cout &lt;&lt; "5. Clone the file" &lt;&lt; endl;
+        cout &lt;&lt; "6. Exit" &lt;&lt; endl;
+        cout &lt;&lt; "Enter your choice: ";
+        cin &gt;&gt; choice;
+
+        switch (choice) {
+            case 1:
+                insertRecord();
+                break;
+            case 2:
+                deleteRecord();
+                break;
+            case 3:
+                updateRecord();
+                break;
+            case 4:
+                searchRecord();
+                break;
+            case 5:
+                cloneFile();
+                break;
+            case 6:
+                cout &lt;&lt; "Exiting..." &lt;&lt; endl;
+                break;
+            default:
+                cout &lt;&lt; "Invalid choice!" &lt;&lt; endl;
+        }
+    } while (choice != 6);
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <p><strong>Note:</strong> This topic contains 16 practice questions on File Handling (UNIT-IV).</p>
+
+    <hr>
+
+    <p>&copy; 2026 C++ Practice Questions | Made by Sahil Rawat</p>
+
+    <script>
+        function toggleSolution(id) {
+            var sol = document.getElementById(id);
+            if (sol.style.display === 'none') {
+                sol.style.display = 'block';
+            } else {
+                sol.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

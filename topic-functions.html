@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions - C++ Questions</title>
+</head>
+<body>
+    <h1>Functions</h1>
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="questions.html">Questions</a> |
+        <a href="about.html">About Me</a>
+    </p>
+
+    <hr>
+
+    <p><a href="questions.html">&lt;&lt; Back to Topics</a></p>
+
+    <h2>Practice Questions (7 questions)</h2>
+
+    <h3>Question 1: Write a C++ method to find the smallest number among three numbers.</h3>
+   
+    <button onclick="toggleSolution('sol1')">Show Solution</button>
+    <pre id="sol1" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int findSmallest(int a, int b, int c) {
+    int smallest = a;
+    if (b &lt; smallest) {
+        smallest = b;
+    }
+    if (c &lt; smallest) {
+        smallest = c;
+    }
+    return smallest;
+}
+int main() {
+    int x, y, z;    
+    cout &lt;&lt; "Enter three numbers: ";
+    cin &gt;&gt; x &gt;&gt; y &gt;&gt; z;
+    cout &lt;&lt; "Smallest number is: " &lt;&lt; findSmallest(x, y, z);
+ return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 2: Write a C++ method to compute the average of three numbers.</h3>
+    <button onclick="toggleSolution('sol2')">Show Solution</button>
+    <pre id="sol2" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+float findAverage(int a, int b, int c) {
+    return (a + b + c) / 3.0;
+}
+int main() {
+    int x, y, z;
+    cout &lt;&lt; "Enter three numbers: ";
+    cin &gt;&gt; x &gt;&gt; y &gt;&gt; z;
+    cout &lt;&lt; "Average is: " &lt;&lt; findAverage(x, y, z);
+   return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 3: Write a C++ method to display the middle character of a string.</h3>
+     <button onclick="toggleSolution('sol3')">Show Solution</button>
+    <pre id="sol3" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+void showMiddle(string str) {
+    int len = str.length();   
+    int mid = len / 2;
+    cout &lt;&lt; "Middle character: " &lt;&lt; str[mid];
+}
+int main() {
+    string text;
+    cout &lt;&lt; "Enter a string: ";
+    cin &gt;&gt; text;
+    showMiddle(text);
+   return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 4: Write a C++ method to find all twin prime numbers less than 100.</h3>
+     <button onclick="toggleSolution('sol4')">Show Solution</button>
+    <pre id="sol4" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int isPrime(int n) {
+    if (n &lt; 2)
+        return 0;
+    for (int i = 2; i &lt;= n / 2; i++) {
+        if (n % i == 0)
+            return 0;
+    }
+    return 1;
+}
+void findTwinPrimes() {
+    for (int i = 2; i &lt; 100; i++) {
+        if (isPrime(i) &amp;&amp; isPrime(i + 2)) {
+            cout &lt;&lt; "(" &lt;&lt; i &lt;&lt; ", " &lt;&lt; i + 2 &lt;&lt; ")" &lt;&lt; endl;
+        }
+    }
+}
+int main() {
+    cout &lt;&lt; "Twin prime numbers less than 100 are:\n";
+    findTwinPrimes();
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 5: Write a C++ method to count the number of digits in an integer with the value 2. The integer may be assumed to be non-negative.</h3>
+     <button onclick="toggleSolution('sol5')">Show Solution</button>
+    <pre id="sol5" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int countTwos(int num) {
+    int count = 0;
+    while (num &gt; 0) {
+        if (num % 10 == 2) {
+            count++;
+        }
+        num = num / 10;
+    }
+    return count;
+}
+int main() {
+    int n;
+    cout &lt;&lt; "Enter a non-negative integer: ";
+    cin &gt;&gt; n;
+    cout &lt;&lt; "Number of digits with value 2: " &lt;&lt; countTwos(n);
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 6: Write a C++ method that accepts three integers and checks whether they are consecutive or not. Returns true or false.</h3>
+    <button onclick="toggleSolution('sol6')">Show Solution</button>
+    <pre id="sol6" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int areConsecutive(int a, int b, int c) {
+    int minVal = a;
+    if (b &lt; minVal) minVal = b;
+    if (c &lt; minVal) minVal = c;
+    int maxVal = a;
+    if (b &gt; maxVal) maxVal = b;
+    if (c &gt; maxVal) maxVal = c;
+    int midVal = (a + b + c) - (minVal + maxVal);
+    if (midVal == minVal + 1 &amp;&amp; maxVal == midVal + 1)
+        return 1;
+    else
+        return 0;
+}
+int main() {
+    int x, y, z;
+    cout &lt;&lt; "Enter three integers: ";
+    cin &gt;&gt; x &gt;&gt; y &gt;&gt; z;
+    if (areConsecutive(x, y, z) == 1)
+        cout &lt;&lt; "Numbers are consecutive";
+    else
+        cout &lt;&lt; "Numbers are NOT consecutive";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 7: Write a C++ method that checks whether all the characters in a given string are vowels (a,e,i,o,u) or not. Return true if each character in the string is a vowel, otherwise return false.</h3>
+    <button onclick="toggleSolution('sol7')">Show Solution</button>
+    <pre id="sol7" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int allVowels(string str) {
+    for (int i = 0; i &lt; str.length(); i++) {
+        char ch = str[i];
+
+        if (!(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')) {
+            return 0;   
+        }
+    }
+    return 1;   
+}
+int main() {
+    string text;
+    cout &lt;&lt; "Enter a string: ";
+    cin &gt;&gt; text;
+    if (allVowels(text) == 1)
+        cout &lt;&lt; "All characters are vowels";
+    else
+        cout &lt;&lt; "Not all characters are vowels";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <p><strong>Note:</strong> This topic contains 7 practice questions.</p>
+
+    <hr>
+
+    <p>&copy; 2026 C++ Practice Questions | Made by Sahil Rawat</p>
+
+    <script>
+        function toggleSolution(id) {
+            var sol = document.getElementById(id);
+            if (sol.style.display === 'none') {
+                sol.style.display = 'block';
+            } else {
+                sol.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

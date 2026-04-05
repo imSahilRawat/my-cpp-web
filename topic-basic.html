@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Programming Constructs - C++ Questions</title>
+</head>
+<body>
+    <h1>Basic Programming Constructs</h1>
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="questions.html">Questions</a> |
+        <a href="about.html">About Me</a>
+    </p>
+
+    <hr>
+
+    <p><a href="questions.html">&lt;&lt; Back to Topics</a></p>
+
+    <h2>Practice Questions (58 questions)</h2>
+
+    <h3>Question 1: Write a C++ program to print ‘Hello World!’ on screen</h3>
+    <button onclick="toggleSolution('sol1')">Show Solution</button>
+    <pre id="sol1" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    cout &lt;&lt; "Hello World!" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 2: Write a C++ program to print the sum of two numbers</h3>
+    <button onclick="toggleSolution('sol2')">Show Solution</button>
+    <pre id="sol2" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a = 10, b = 20;
+    cout &lt;&lt; "Sum: " &lt;&lt; (a + b) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 3: Write a C++ program that takes two numbers and display the product of two numbers</h3>
+    <button onclick="toggleSolution('sol3')">Show Solution</button>
+    <pre id="sol3" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b;
+    cout &lt;&lt; "Enter two numbers: ";
+    cin &gt;&gt; a &gt;&gt; b;
+    cout &lt;&lt; "Product: " &lt;&lt; (a * b) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 4: Write a C++ program to print the sum, multiply, subtract, divide and remainder of two numbers</h3>
+    <button onclick="toggleSolution('sol4')">Show Solution</button>
+    <pre id="sol4" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a = 20, b = 5;
+    cout &lt;&lt; "Sum: " &lt;&lt; (a + b) &lt;&lt; endl;
+    cout &lt;&lt; "Subtract: " &lt;&lt; (a - b) &lt;&lt; endl;
+    cout &lt;&lt; "Multiply: " &lt;&lt; (a * b) &lt;&lt; endl;
+    cout &lt;&lt; "Divide: " &lt;&lt; (a / b) &lt;&lt; endl;
+    cout &lt;&lt; "Remainder: " &lt;&lt; (a % b) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 5: Write a C++ program that takes five numbers as input to calculate and print the average of the numbers</h3>
+    <button onclick="toggleSolution('sol5')">Show Solution</button>
+    <pre id="sol5" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float a, b, c, d, e;
+    cout &lt;&lt; "Enter five numbers: ";
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d &gt;&gt; e;
+    cout &lt;&lt; "Average: " &lt;&lt; (a + b + c + d + e) / 5.0 &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 6: Write a C++ program to swap two variables</h3>
+    <button onclick="toggleSolution('sol6')">Show Solution</button>
+    <pre id="sol6" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a = 5, b = 10, temp;
+    temp = a;
+    a = b;
+    b = temp;
+    cout &lt;&lt; "a: " &lt;&lt; a &lt;&lt; ", b: " &lt;&lt; b &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 7: Write a C++ program to convert a decimal number to binary numbers</h3>
+    <button onclick="toggleSolution('sol7')">Show Solution</button>
+    <pre id="sol7" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, binary[32], i = 0;
+    cout &lt;&lt; "Enter a decimal number: ";
+    cin &gt;&gt; n;
+    while(n &gt; 0) {
+        binary[i] = n % 2;
+        n = n / 2;
+        i++;
+    }
+    cout &lt;&lt; "Binary: ";
+    for(int j = i - 1; j &gt;= 0; j--) {
+        cout &lt;&lt; binary[j];
+    }
+    cout &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 8: Write a C++ program to convert a binary number to decimal number</h3>
+    <button onclick="toggleSolution('sol8')">Show Solution</button>
+    <pre id="sol8" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    long long n;
+    int decimal = 0, i = 0, rem;
+    cout &lt;&lt; "Enter a binary number: ";
+    cin &gt;&gt; n;
+    while (n != 0) {
+        rem = n % 10;
+        n /= 10;
+        decimal += rem * pow(2, i);
+        ++i;
+    }
+    cout &lt;&lt; "Decimal: " &lt;&lt; decimal &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 9: Write a C++ program to check whether C++ is installed on your computer or not</h3>
+    <button onclick="toggleSolution('sol9')">Show Solution</button>
+    <pre id="sol9" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    cout &lt;&lt; "C++ is installed. Version: " &lt;&lt; __cplusplus &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 10: Write a C++ program and compute the sum of the digits of an integer</h3>
+    <button onclick="toggleSolution('sol10')">Show Solution</button>
+    <pre id="sol10" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, sum = 0, m;
+    cout &lt;&lt; "Enter an integer: ";
+    cin &gt;&gt; n;
+    while(n &gt; 0) {
+        m = n % 10;
+        sum = sum + m;
+        n = n / 10;
+    }
+    cout &lt;&lt; "Sum is: " &lt;&lt; sum &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 11: Write a C++ program to compare two numbers</h3>
+    <button onclick="toggleSolution('sol11')">Show Solution</button>
+    <pre id="sol11" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b;
+    cout &lt;&lt; "Enter two numbers: ";
+    cin &gt;&gt; a &gt;&gt; b;
+    if (a &gt; b) cout &lt;&lt; a &lt;&lt; " is greater" &lt;&lt; endl;
+    else if (b &gt; a) cout &lt;&lt; b &lt;&lt; " is greater" &lt;&lt; endl;
+    else cout &lt;&lt; "Both are equal" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 12: Write a C++ program to count the letters, spaces, numbers and other characters of an input string</h3>
+    <button onclick="toggleSolution('sol12')">Show Solution</button>
+    <pre id="sol12" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str;
+    int letters = 0, spaces = 0, num = 0, others = 0;
+    cout &lt;&lt; "Enter a string: ";
+    getline(cin, str);
+    for(int i = 0; i &lt; str.length(); i++) {
+        if((str[i] &gt;= 'a' &amp;&amp; str[i] &lt;= 'z') || (str[i] &gt;= 'A' &amp;&amp; str[i] &lt;= 'Z')) letters++;
+        else if(str[i] &gt;= '0' &amp;&amp; str[i] &lt;= '9') num++;
+        else if(str[i] == ' ') spaces++;
+        else others++;
+    }
+    cout &lt;&lt; "Letters: " &lt;&lt; letters &lt;&lt; "\nNumbers: " &lt;&lt; num &lt;&lt; "\nSpaces: " &lt;&lt; spaces &lt;&lt; "\nOthers: " &lt;&lt; others &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 13: Write a C++ program to print the ascii value of a given character</h3>
+    <button onclick="toggleSolution('sol13')">Show Solution</button>
+    <pre id="sol13" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    char c;
+    cout &lt;&lt; "Enter a character: ";
+    cin &gt;&gt; c;
+    cout &lt;&lt; "ASCII value of " &lt;&lt; c &lt;&lt; " is " &lt;&lt; int(c) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 14: Write a C++ program that accepts an integer (n) and computes the value of n+nn+nnn</h3>
+    <button onclick="toggleSolution('sol14')">Show Solution</button>
+    <pre id="sol14" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    cout &lt;&lt; "Enter n: ";
+    cin &gt;&gt; n;
+    cout &lt;&lt; "Result: " &lt;&lt; n + (n*10 + n) + (n*100 + n*10 + n) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 15: Write a C++ program to display the system time</h3>
+    <button onclick="toggleSolution('sol15')">Show Solution</button>
+    <pre id="sol15" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+using namespace std;
+int main() {
+    time_t now = time(0);
+    char* dt = ctime(&amp;now);
+    cout &lt;&lt; "System Time: " &lt;&lt; dt;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 16: Write a C++ program to print the odd numbers from 1 to 20</h3>
+    <button onclick="toggleSolution('sol16')">Show Solution</button>
+    <pre id="sol16" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    cout &lt;&lt; "Odd numbers: ";
+    for (int i = 1; i &lt;= 20; i += 2) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 17: Write a C++ program to print the even numbers from 1 to 20</h3>
+    <button onclick="toggleSolution('sol17')">Show Solution</button>
+    <pre id="sol17" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    cout &lt;&lt; "Even numbers: ";
+    for (int i = 2; i &lt;= 20; i += 2) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 18: Write a C++ program to convert a string to an integer</h3>
+    <button onclick="toggleSolution('sol18')">Show Solution</button>
+    <pre id="sol18" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str = "12345";
+    int num = stoi(str);
+    cout &lt;&lt; "String to integer: " &lt;&lt; num &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 19: Write a C++ program to convert seconds to hour, minute and seconds</h3>
+    <button onclick="toggleSolution('sol19')">Show Solution</button>
+    <pre id="sol19" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int sec, h, m, s;
+    cout &lt;&lt; "Enter seconds: ";
+    cin &gt;&gt; sec;
+    h = sec / 3600;
+    m = (sec % 3600) / 60;
+    s = sec % 60;
+    cout &lt;&lt; h &lt;&lt; " hours, " &lt;&lt; m &lt;&lt; " minutes, " &lt;&lt; s &lt;&lt; " seconds" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 20: Write a C++ program to compute the sum of the first 100 prime numbers</h3>
+    <button onclick="toggleSolution('sol20')">Show Solution</button>
+    <pre id="sol20" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+bool isPrime(int n) {
+    if (n &lt;= 1) return false;
+    for (int i = 2; i * i &lt;= n; i++)
+        if (n % i == 0) return false;
+    return true;
+}
+int main() {
+    int count = 0, num = 2;
+    long long sum = 0;
+    while (count &lt; 100) {
+        if (isPrime(num)) {
+            sum += num;
+            count++;
+        }
+        num++;
+    }
+    cout &lt;&lt; "Sum of first 100 primes: " &lt;&lt; sum &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 21: Write a C++ program to compute the square root of an given integer</h3>
+    <button onclick="toggleSolution('sol21')">Show Solution</button>
+    <pre id="sol21" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    int n;
+    cout &lt;&lt; "Enter integer: ";
+    cin &gt;&gt; n;
+    cout &lt;&lt; "Square root: " &lt;&lt; sqrt(n) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 22: Write a C++ program to check if a positive number is a palindrome or not</h3>
+    <button onclick="toggleSolution('sol22')">Show Solution</button>
+    <pre id="sol22" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, num, digit, rev = 0;
+    cout &lt;&lt; "Enter a positive number: ";
+    cin &gt;&gt; num;
+    n = num;
+    while (num != 0) {
+        digit = num % 10;
+        rev = (rev * 10) + digit;
+        num = num / 10;
+    }
+    if (n == rev) cout &lt;&lt; n &lt;&lt; " is a palindrome.";
+    else cout &lt;&lt; n &lt;&lt; " is not a palindrome.";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 23: Write a C++ program to add two numbers without using any arithmetic operators</h3>
+    <button onclick="toggleSolution('sol23')">Show Solution</button>
+    <pre id="sol23" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int add(int a, int b) {
+    while (b != 0) {
+        unsigned carry = a &amp; b;
+        a = a ^ b;
+        b = carry &lt;&lt; 1;
+    }
+    return a;
+}
+int main() {
+    cout &lt;&lt; "Sum of 15 and 20: " &lt;&lt; add(15, 20) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 24: Write a C++ program to add all the digits of a given positive integer</h3>
+    <button onclick="toggleSolution('sol24')">Show Solution</button>
+    <pre id="sol24" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, sum = 0;
+    cout &lt;&lt; "Enter positive integer: ";
+    cin &gt;&gt; n;
+    while (n != 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+    cout &lt;&lt; "Sum of digits: " &lt;&lt; sum &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 25: C++ program to find area of circle</h3>
+    <button onclick="toggleSolution('sol25')">Show Solution</button>
+    <pre id="sol25" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float r;
+    cout &lt;&lt; "Enter radius: ";
+    cin &gt;&gt; r;
+    cout &lt;&lt; "Area: " &lt;&lt; 3.14159 * r * r &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 26: C++ Program to find area of rectangle</h3>
+    <button onclick="toggleSolution('sol26')">Show Solution</button>
+    <pre id="sol26" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float l, w;
+    cout &lt;&lt; "Enter length and width: ";
+    cin &gt;&gt; l &gt;&gt; w;
+    cout &lt;&lt; "Area: " &lt;&lt; l * w &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 27: C++ Program to find area of triangle</h3>
+    <button onclick="toggleSolution('sol27')">Show Solution</button>
+    <pre id="sol27" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float b, h;
+    cout &lt;&lt; "Enter base and height: ";
+    cin &gt;&gt; b &gt;&gt; h;
+    cout &lt;&lt; "Area: " &lt;&lt; 0.5 * b * h &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 28: C++ Program to find area of equilateral triangle</h3>
+    <button onclick="toggleSolution('sol28')">Show Solution</button>
+    <pre id="sol28" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    float side;
+    cout &lt;&lt; "Enter side length: ";
+    cin &gt;&gt; side;
+    cout &lt;&lt; "Area: " &lt;&lt; (sqrt(3) / 4) * side * side &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 29: C++ Program to find area of rhombus</h3>
+    <button onclick="toggleSolution('sol29')">Show Solution</button>
+    <pre id="sol29" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float d1, d2;
+    cout &lt;&lt; "Enter diagonals: ";
+    cin &gt;&gt; d1 &gt;&gt; d2;
+    cout &lt;&lt; "Area: " &lt;&lt; 0.5 * d1 * d2 &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 30: C++ Program to find area of parallelogram</h3>
+    <button onclick="toggleSolution('sol30')">Show Solution</button>
+    <pre id="sol30" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float base, height;
+    cout &lt;&lt; "Enter base and height: ";
+    cin &gt;&gt; base &gt;&gt; height;
+    cout &lt;&lt; "Area: " &lt;&lt; base * height &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 31: C++ Program to find area of Prism</h3>
+    <button onclick="toggleSolution('sol31')">Show Solution</button>
+    <pre id="sol31" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float base_area, perimeter, length;
+    cout &lt;&lt; "Enter base area, base perimeter, and length: ";
+    cin &gt;&gt; base_area &gt;&gt; perimeter &gt;&gt; length;
+    cout &lt;&lt; "Surface Area of Prism: " &lt;&lt; 2 * base_area + perimeter * length &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 32: C++ Program to find volume of sphere</h3>
+    <button onclick="toggleSolution('sol32')">Show Solution</button>
+    <pre id="sol32" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float r;
+    cout &lt;&lt; "Enter radius: ";
+    cin &gt;&gt; r;
+    cout &lt;&lt; "Volume: " &lt;&lt; (4.0 / 3.0) * 3.14159 * r * r * r &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 33: C++ Program to find volume of cylinder</h3>
+    <button onclick="toggleSolution('sol33')">Show Solution</button>
+    <pre id="sol33" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float r, h;
+    cout &lt;&lt; "Enter radius and height: ";
+    cin &gt;&gt; r &gt;&gt; h;
+    cout &lt;&lt; "Volume: " &lt;&lt; 3.14159 * r * r * h &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 34: C++ Program to find volume of cuboid</h3>
+    <button onclick="toggleSolution('sol34')">Show Solution</button>
+    <pre id="sol34" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float l, w, h;
+    cout &lt;&lt; "Enter length, width, and height: ";
+    cin &gt;&gt; l &gt;&gt; w &gt;&gt; h;
+    cout &lt;&lt; "Volume: " &lt;&lt; l * w * h &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 35: C++ Program to find volume of cone</h3>
+    <button onclick="toggleSolution('sol35')">Show Solution</button>
+    <pre id="sol35" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float r, h;
+    cout &lt;&lt; "Enter radius and height: ";
+    cin &gt;&gt; r &gt;&gt; h;
+    cout &lt;&lt; "Volume: " &lt;&lt; (1.0 / 3.0) * 3.14159 * r * r * h &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 36: C++ program to find surface area of cuboid</h3>
+    <button onclick="toggleSolution('sol36')">Show Solution</button>
+    <pre id="sol36" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float l, w, h;
+    cout &lt;&lt; "Enter length, width, and height: ";
+    cin &gt;&gt; l &gt;&gt; w &gt;&gt; h;
+    cout &lt;&lt; "Surface Area: " &lt;&lt; 2 * (l*w + w*h + h*l) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 37: C++ program to find surface area of cylinder</h3>
+    <button onclick="toggleSolution('sol37')">Show Solution</button>
+    <pre id="sol37" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float r, h;
+    cout &lt;&lt; "Enter radius and height: ";
+    cin &gt;&gt; r &gt;&gt; h;
+    cout &lt;&lt; "Surface Area: " &lt;&lt; 2 * 3.14159 * r * (r + h) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 38: C++ program to find surface area of cube</h3>
+    <button onclick="toggleSolution('sol38')">Show Solution</button>
+    <pre id="sol38" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float side;
+    cout &lt;&lt; "Enter side: ";
+    cin &gt;&gt; side;
+    cout &lt;&lt; "Surface Area: " &lt;&lt; 6 * side * side &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 39: C++ program to calculate average marks</h3>
+    <button onclick="toggleSolution('sol39')">Show Solution</button>
+    <pre id="sol39" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float m1, m2, m3;
+    cout &lt;&lt; "Enter 3 marks: ";
+    cin &gt;&gt; m1 &gt;&gt; m2 &gt;&gt; m3;
+    cout &lt;&lt; "Average Marks: " &lt;&lt; (m1 + m2 + m3) / 3 &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 40: C++ program to check vowel or consonant</h3>
+    <button onclick="toggleSolution('sol40')">Show Solution</button>
+    <pre id="sol40" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    char c;
+    cout &lt;&lt; "Enter an alphabet: ";
+    cin &gt;&gt; c;
+    char lower_c = tolower(c);
+    if (lower_c == 'a' || lower_c == 'e' || lower_c == 'i' || lower_c == 'o' || lower_c == 'u')
+        cout &lt;&lt; c &lt;&lt; " is a vowel.";
+    else
+        cout &lt;&lt; c &lt;&lt; " is a consonant.";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 41: C++ program to sum of N numbers</h3>
+    <button onclick="toggleSolution('sol41')">Show Solution</button>
+    <pre id="sol41" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, sum = 0;
+    cout &lt;&lt; "Enter N: ";
+    cin &gt;&gt; n;
+    for (int i = 1; i &lt;= n; i++) sum += i;
+    cout &lt;&lt; "Sum is: " &lt;&lt; sum &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 42: C++ program to find factorial of any number</h3>
+    <button onclick="toggleSolution('sol42')">Show Solution</button>
+    <pre id="sol42" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    long long fact = 1;
+    cout &lt;&lt; "Enter number: ";
+    cin &gt;&gt; n;
+    for (int i = 1; i &lt;= n; i++) fact *= i;
+    cout &lt;&lt; "Factorial is: " &lt;&lt; fact &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 43: C++ Program to calculate electricity bill</h3>
+    <button onclick="toggleSolution('sol43')">Show Solution</button>
+    <pre id="sol43" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float units, bill = 0;
+    cout &lt;&lt; "Enter units consumed: ";
+    cin &gt;&gt; units;
+    if (units &lt;= 100) bill = units * 1.5;
+    else if (units &lt;= 200) bill = (100 * 1.5) + ((units - 100) * 2.5);
+    else bill = (100 * 1.5) + (100 * 2.5) + ((units - 200) * 3.5);
+    cout &lt;&lt; "Total Bill: Rs. " &lt;&lt; bill &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 44: C++ Program To Calculate CGPA Percentage</h3>
+    <button onclick="toggleSolution('sol44')">Show Solution</button>
+    <pre id="sol44" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float cgpa;
+    cout &lt;&lt; "Enter CGPA: ";
+    cin &gt;&gt; cgpa;
+    cout &lt;&lt; "Percentage: " &lt;&lt; cgpa * 9.5 &lt;&lt; "%" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 45: C++ Program to calculate compound interest</h3>
+    <button onclick="toggleSolution('sol45')">Show Solution</button>
+    <pre id="sol45" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    float p, r, t, ci;
+    cout &lt;&lt; "Enter Principal, Rate, Time: ";
+    cin &gt;&gt; p &gt;&gt; r &gt;&gt; t;
+    ci = p * pow((1 + r / 100), t) - p;
+    cout &lt;&lt; "Compound Interest: " &lt;&lt; ci &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 46: C++ Program To Calculate Batting Average</h3>
+    <button onclick="toggleSolution('sol46')">Show Solution</button>
+    <pre id="sol46" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int runs, matches, notout;
+    cout &lt;&lt; "Enter total runs, matches played, and notouts: ";
+    cin &gt;&gt; runs &gt;&gt; matches &gt;&gt; notout;
+    int dismissed = matches - notout;
+    if(dismissed == 0) cout &lt;&lt; "NA" &lt;&lt; endl;
+    else cout &lt;&lt; "Batting Average: " &lt;&lt; (float)runs / dismissed &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 47: C++ Program to Calculate Commission Percentage</h3>
+    <button onclick="toggleSolution('sol47')">Show Solution</button>
+    <pre id="sol47" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float sales, comm_amount;
+    cout &lt;&lt; "Enter total sales and commission amount: ";
+    cin &gt;&gt; sales &gt;&gt; comm_amount;
+    cout &lt;&lt; "Commission Percentage: " &lt;&lt; (comm_amount / sales) * 100 &lt;&lt; "%" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 48: C++ Program To Find Distance Between Two Points</h3>
+    <button onclick="toggleSolution('sol48')">Show Solution</button>
+    <pre id="sol48" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    float x1, y1, x2, y2, dist;
+    cout &lt;&lt; "Enter x1, y1: ";
+    cin &gt;&gt; x1 &gt;&gt; y1;
+    cout &lt;&lt; "Enter x2, y2: ";
+    cin &gt;&gt; x2 &gt;&gt; y2;
+    dist = sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
+    cout &lt;&lt; "Distance: " &lt;&lt; dist &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 49: C++ Program To Calculate Power Of Number</h3>
+    <button onclick="toggleSolution('sol49')">Show Solution</button>
+    <pre id="sol49" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    float base, exp;
+    cout &lt;&lt; "Enter base and exponent: ";
+    cin &gt;&gt; base &gt;&gt; exp;
+    cout &lt;&lt; "Result: " &lt;&lt; pow(base, exp) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 50: Write a C++ program to take three numbers from the user and print the greatest number</h3>
+    <button onclick="toggleSolution('sol50')">Show Solution</button>
+    <pre id="sol50" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b, c;
+    cout &lt;&lt; "Enter 3 numbers: ";
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    if (a &gt;= b &amp;&amp; a &gt;= c) cout &lt;&lt; a &lt;&lt; " is greatest.";
+    else if (b &gt;= a &amp;&amp; b &gt;= c) cout &lt;&lt; b &lt;&lt; " is greatest.";
+    else cout &lt;&lt; c &lt;&lt; " is greatest.";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 51: Write a C++ program to find the number of days in a month</h3>
+    <button onclick="toggleSolution('sol51')">Show Solution</button>
+    <pre id="sol51" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int month, year;
+    cout &lt;&lt; "Enter month (1-12) and year: ";
+    cin &gt;&gt; month &gt;&gt; year;
+    if(month == 2) {
+        if((year % 400 == 0) || (year % 4 == 0 &amp;&amp; year % 100 != 0)) cout &lt;&lt; "29 days";
+        else cout &lt;&lt; "28 days";
+    }
+    else if(month == 4 || month == 6 || month == 9 || month == 11) cout &lt;&lt; "30 days";
+    else cout &lt;&lt; "31 days";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 52: Write a C++ program to test a number is positive or negative</h3>
+    <button onclick="toggleSolution('sol52')">Show Solution</button>
+    <pre id="sol52" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number: ";
+    cin &gt;&gt; n;
+    if (n &gt; 0) cout &lt;&lt; "Positive";
+    else if (n &lt; 0) cout &lt;&lt; "Negative";
+    else cout &lt;&lt; "Zero";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 53: Write a C++ Program to accept number of week’s day (1-7) and print name of the day</h3>
+    <button onclick="toggleSolution('sol53')">Show Solution</button>
+    <pre id="sol53" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int day;
+    cout &lt;&lt; "Enter day number (1-7): ";
+    cin &gt;&gt; day;
+    switch(day) {
+        case 1: cout &lt;&lt; "Monday"; break;
+        case 2: cout &lt;&lt; "Tuesday"; break;
+        case 3: cout &lt;&lt; "Wednesday"; break;
+        case 4: cout &lt;&lt; "Thursday"; break;
+        case 5: cout &lt;&lt; "Friday"; break;
+        case 6: cout &lt;&lt; "Saturday"; break;
+        case 7: cout &lt;&lt; "Sunday"; break;
+        default: cout &lt;&lt; "Invalid day";
+    }
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 54: Write a C++ program that takes a year from user and print whether that year is a leap year or not</h3>
+    <button onclick="toggleSolution('sol54')">Show Solution</button>
+    <pre id="sol54" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int year;
+    cout &lt;&lt; "Enter a year: ";
+    cin &gt;&gt; year;
+    if ((year % 400 == 0) || (year % 4 == 0 &amp;&amp; year % 100 != 0)) cout &lt;&lt; year &lt;&lt; " is a leap year.";
+    else cout &lt;&lt; year &lt;&lt; " is not a leap year.";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 55: Write a C++ program to input 5 numbers from keyboard and find their sum and average</h3>
+    <button onclick="toggleSolution('sol55')">Show Solution</button>
+    <pre id="sol55" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b, c, d, e, sum;
+    cout &lt;&lt; "Enter 5 numbers: ";
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d &gt;&gt; e;
+    sum = a + b + c + d + e;
+    cout &lt;&lt; "Sum: " &lt;&lt; sum &lt;&lt; "\nAverage: " &lt;&lt; (float)sum / 5 &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 56: Write a program in C++ to display the first 5 natural numbers</h3>
+    <button onclick="toggleSolution('sol56')">Show Solution</button>
+    <pre id="sol56" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    cout &lt;&lt; "First 5 natural numbers: ";
+    for (int i = 1; i &lt;= 5; i++) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 57: Write a C++ program to check vowel or consonant</h3>
+    <button onclick="toggleSolution('sol57')">Show Solution</button>
+    <pre id="sol57" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    char c;
+    cout &lt;&lt; "Enter a character: ";
+    cin &gt;&gt; c;
+    c = tolower(c);
+    if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u') cout &lt;&lt; "Vowel";
+    else cout &lt;&lt; "Consonant";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 58: Write a C++ program to display the cube of the number upto given an integer</h3>
+    <button onclick="toggleSolution('sol58')">Show Solution</button>
+    <pre id="sol58" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    cout &lt;&lt; "Enter an integer: ";
+    cin &gt;&gt; n;
+    for (int i = 1; i &lt;= n; i++) {
+        cout &lt;&lt; "Number is : " &lt;&lt; i &lt;&lt; " and cube of the " &lt;&lt; i &lt;&lt; " is: " &lt;&lt; (i * i * i) &lt;&lt; endl;
+    }
+    return 0;
+}
+    </pre>
+
+
+    <h3>Question 59: Write a C++ program to display the n terms of odd natural number and their sum</h3>
+    <button onclick="toggleSolution('sol59')">Show Solution</button>
+    <pre id="sol59" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, sum = 0, odd = 1;
+    cout &lt;&lt; "Enter number of terms: ";
+    cin &gt;&gt; n;
+    cout &lt;&lt; "Odd numbers are: ";
+    for (int i = 1; i &lt;= n; i++) {
+        cout &lt;&lt; odd &lt;&lt; " ";
+        sum += odd;
+        odd += 2;
+    }
+    cout &lt;&lt; "\nSum is: " &lt;&lt; sum &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 60: Write a C++ program to display the multiplication table of a given integer</h3>
+    <button onclick="toggleSolution('sol60')">Show Solution</button>
+    <pre id="sol60" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    cout &lt;&lt; "Enter integer: ";
+    cin &gt;&gt; n;
+    for (int i = 1; i &lt;= 10; i++) {
+        cout &lt;&lt; n &lt;&lt; " x " &lt;&lt; i &lt;&lt; " = " &lt;&lt; (n * i) &lt;&lt; endl;
+    }
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 61: Write a C++ program that reads an integer and check whether it is negative, zero, or positive</h3>
+    <button onclick="toggleSolution('sol61')">Show Solution</button>
+    <pre id="sol61" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    cout &lt;&lt; "Enter an integer: ";
+    cin &gt;&gt; n;
+    if (n &gt; 0) cout &lt;&lt; "Positive" &lt;&lt; endl;
+    else if (n &lt; 0) cout &lt;&lt; "Negative" &lt;&lt; endl;
+    else cout &lt;&lt; "Zero" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 62: Write a C++ program that reads an positive integer and count the number of digits</h3>
+    <button onclick="toggleSolution('sol62')">Show Solution</button>
+    <pre id="sol62" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, count = 0;
+    cout &lt;&lt; "Enter a positive integer: ";
+    cin &gt;&gt; n;
+    if (n == 0) count = 1;
+    while (n &gt; 0) {
+        n /= 10;
+        count++;
+    }
+    cout &lt;&lt; "Number of digits: " &lt;&lt; count &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 63: Write a C++ program that accepts three numbers and check All numbers are equal or not</h3>
+    <button onclick="toggleSolution('sol63')">Show Solution</button>
+    <pre id="sol63" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b, c;
+    cout &lt;&lt; "Enter three numbers: ";
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    if (a == b &amp;&amp; b == c) cout &lt;&lt; "All numbers are equal." &lt;&lt; endl;
+    else cout &lt;&lt; "Numbers are not equal." &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 64: Write a C++ program that accepts three numbers from the user and check if numbers are in "increasing” or “decreasing” order.</h3>
+    <button onclick="toggleSolution('sol64')">Show Solution</button>
+    <pre id="sol64" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b, c;
+    cout &lt;&lt; "Enter three numbers: ";
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    if (a &lt; b &amp;&amp; b &lt; c) cout &lt;&lt; "Increasing order" &lt;&lt; endl;
+    else if (a &gt; b &amp;&amp; b &gt; c) cout &lt;&lt; "Decreasing order" &lt;&lt; endl;
+    else cout &lt;&lt; "Neither strictly increasing nor decreasing" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 65: Write a C++ program that determines a student’s grade</h3>
+    <button onclick="toggleSolution('sol65')">Show Solution</button>
+    <pre id="sol65" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int marks;
+    cout &lt;&lt; "Enter marks: ";
+    cin &gt;&gt; marks;
+    if (marks &gt;= 81 &amp;&amp; marks &lt;= 100) cout &lt;&lt; "Grade: A" &lt;&lt; endl;
+    else if (marks &gt;= 61 &amp;&amp; marks &lt;= 80) cout &lt;&lt; "Grade: B" &lt;&lt; endl;
+    else if (marks &gt;= 41 &amp;&amp; marks &lt;= 60) cout &lt;&lt; "Grade: C" &lt;&lt; endl;
+    else if (marks &gt;= 0 &amp;&amp; marks &lt;= 40) cout &lt;&lt; "Grade: D" &lt;&lt; endl;
+    else cout &lt;&lt; "Invalid marks" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 66: Write a C++ program to create a simple calculator</h3>
+    <button onclick="toggleSolution('sol66')">Show Solution</button>
+    <pre id="sol66" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    int choice;
+    float a, b;
+    cout &lt;&lt; "1.ADD 2.SUB 3.MUL 4.DIV 5.EXP 6.PERCENT 7.EXIT\nEnter choice: ";
+    cin &gt;&gt; choice;
+    if(choice == 7) return 0;
+    cout &lt;&lt; "Enter two numbers: ";
+    cin &gt;&gt; a &gt;&gt; b;
+    switch(choice) {
+        case 1: cout &lt;&lt; "Result: " &lt;&lt; a + b; break;
+        case 2: cout &lt;&lt; "Result: " &lt;&lt; a - b; break;
+        case 3: cout &lt;&lt; "Result: " &lt;&lt; a * b; break;
+        case 4: cout &lt;&lt; "Result: " &lt;&lt; a / b; break;
+        case 5: cout &lt;&lt; "Result: " &lt;&lt; pow(a, b); break;
+        case 6: cout &lt;&lt; "Result: " &lt;&lt; (a / b) * 100 &lt;&lt; "%"; break;
+        default: cout &lt;&lt; "Invalid choice";
+    }
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 67: Write a C++ program to concatenate two string</h3>
+    <button onclick="toggleSolution('sol67')">Show Solution</button>
+    <pre id="sol67" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str1 = "Hello, ", str2 = "World!";
+    string result = str1 + str2;
+    cout &lt;&lt; "Concatenated string: " &lt;&lt; result &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 68: Write a C++ program to convert all characters in a string to lowercase</h3>
+    <button onclick="toggleSolution('sol68')">Show Solution</button>
+    <pre id="sol68" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str = "HELLO WORLD";
+    for(int i = 0; i &lt; str.length(); i++) {
+        str[i] = tolower(str[i]);
+    }
+    cout &lt;&lt; "Lowercase string: " &lt;&lt; str &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 69: Write a C++ program to convert all characters in a string to uppercase</h3>
+    <button onclick="toggleSolution('sol69')">Show Solution</button>
+    <pre id="sol69" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str = "hello world";
+    for(int i = 0; i &lt; str.length(); i++) {
+        str[i] = toupper(str[i]);
+    }
+    cout &lt;&lt; "Uppercase string: " &lt;&lt; str &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 70: Write a C++ program to trim a string (remove whitespaces)</h3>
+    <button onclick="toggleSolution('sol70')">Show Solution</button>
+    <pre id="sol70" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str = "  hello world  ";
+    string trimmed = "";
+    for(char c : str) {
+        if(c != ' ') trimmed += c;
+    }
+    cout &lt;&lt; "Trimmed string: " &lt;&lt; trimmed &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 71: Write a C++ program to get a substring of a given string between two specified positions</h3>
+    <button onclick="toggleSolution('sol71')">Show Solution</button>
+    <pre id="sol71" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str = "Programming";
+    int start = 3, length = 4;
+    cout &lt;&lt; "Substring: " &lt;&lt; str.substr(start, length) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 72: Write a C++ program to replace all the ‘d’ characters with ‘f’ characters</h3>
+    <button onclick="toggleSolution('sol72')">Show Solution</button>
+    <pre id="sol72" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str = "dog and duck";
+    for(int i = 0; i &lt; str.length(); i++) {
+        if(str[i] == 'd') str[i] = 'f';
+    }
+    cout &lt;&lt; "Modified string: " &lt;&lt; str &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 73: Write a C++ program to get the length of a given string</h3>
+    <button onclick="toggleSolution('sol73')">Show Solution</button>
+    <pre id="sol73" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str = "C++ Programming";
+    cout &lt;&lt; "Length: " &lt;&lt; str.length() &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 74: Write a C++ program to print current date and time in the specified format</h3>
+    <button onclick="toggleSolution('sol74')">Show Solution</button>
+    <pre id="sol74" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+using namespace std;
+int main() {
+    time_t now = time(0);
+    tm *ltm = localtime(&amp;now);
+    cout &lt;&lt; "Date: " &lt;&lt; 1900 + ltm-&gt;tm_year &lt;&lt; "-" &lt;&lt; 1 + ltm-&gt;tm_mon &lt;&lt; "-" &lt;&lt; ltm-&gt;tm_mday &lt;&lt; endl;
+    cout &lt;&lt; "Time: " &lt;&lt; ltm-&gt;tm_hour &lt;&lt; ":" &lt;&lt; ltm-&gt;tm_min &lt;&lt; ":" &lt;&lt; ltm-&gt;tm_sec &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 75: Write a C++ program to get the character at the given index within the String</h3>
+    <button onclick="toggleSolution('sol75')">Show Solution</button>
+    <pre id="sol75" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str = "Hello World";
+    int index = 6;
+    cout &lt;&lt; "Character at index " &lt;&lt; index &lt;&lt; " is: " &lt;&lt; str[index] &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 76: Write a C++ program to remove a particular character from a string</h3>
+    <button onclick="toggleSolution('sol76')">Show Solution</button>
+    <pre id="sol76" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str = "Hello World";
+    char removeChar = 'l';
+    string result = "";
+    for(char c : str) {
+        if(c != removeChar) result += c;
+    }
+    cout &lt;&lt; "String after removal: " &lt;&lt; result &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 77: Write a C++ program to reverse a String</h3>
+    <button onclick="toggleSolution('sol77')">Show Solution</button>
+    <pre id="sol77" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string str = "Programming", rev = "";
+    for(int i = str.length() - 1; i &gt;= 0; i--) {
+        rev += str[i];
+    }
+    cout &lt;&lt; "Reversed string: " &lt;&lt; rev &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 78: Write a C++ program to remove html tags from a string</h3>
+    <button onclick="toggleSolution('sol78')">Show Solution</button>
+    <pre id="sol78" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string html = "&lt;h1&gt;Hello World&lt;/h1&gt;";
+    string plain = "";
+    bool inTag = false;
+    for(char c : html) {
+        if (c == '&lt;') inTag = true;
+        else if (c == '&gt;') inTag = false;
+        else if (!inTag) plain += c;
+    }
+    cout &lt;&lt; "Plain text: " &lt;&lt; plain &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 79: Write a C++ program to count total number of lines from a string</h3>
+    <button onclick="toggleSolution('sol79')">Show Solution</button>
+    <pre id="sol79" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string text = "Line1\nLine2\nLine3";
+    int lines = 1; 
+    for(char c : text) {
+        if(c == '\n') lines++;
+    }
+    cout &lt;&lt; "Total lines: " &lt;&lt; lines &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 80: Write a C++ Program to Accept the Marks of a Student and find Total Marks and Percentage</h3>
+    <button onclick="toggleSolution('sol80')">Show Solution</button>
+    <pre id="sol80" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    float m1, m2, m3, m4, m5, total, perc;
+    cout &lt;&lt; "Enter 5 marks: ";
+    cin &gt;&gt; m1 &gt;&gt; m2 &gt;&gt; m3 &gt;&gt; m4 &gt;&gt; m5;
+    total = m1 + m2 + m3 + m4 + m5;
+    perc = (total / 500) * 100;
+    cout &lt;&lt; "Total: " &lt;&lt; total &lt;&lt; "\nPercentage: " &lt;&lt; perc &lt;&lt; "%" &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 81: Write a C++ program to print numbers from 1 to 10 using loop</h3>
+    <button onclick="toggleSolution('sol81')">Show Solution</button>
+    <pre id="sol81" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    for (int i = 1; i &lt;= 10; i++) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 82: Write a C++ program to calculate the sum of first 10 natural number using loop</h3>
+    <button onclick="toggleSolution('sol82')">Show Solution</button>
+    <pre id="sol82" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int sum = 0;
+    for (int i = 1; i &lt;= 10; i++) {
+        sum += i;
+    }
+    cout &lt;&lt; "Sum: " &lt;&lt; sum &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 83: Write a C++ program to print multiplication table of given number</h3>
+    <button onclick="toggleSolution('sol83')">Show Solution</button>
+    <pre id="sol83" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number: ";
+    cin &gt;&gt; n;
+    for (int i = 1; i &lt;= 10; i++) {
+        cout &lt;&lt; n &lt;&lt; " * " &lt;&lt; i &lt;&lt; " = " &lt;&lt; n * i &lt;&lt; endl;
+    }
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 84: Write a C++ program to find the factorial value of any number entered through the keyboard</h3>
+    <button onclick="toggleSolution('sol84')">Show Solution</button>
+    <pre id="sol84" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    long long fact = 1;
+    cout &lt;&lt; "Enter a number: ";
+    cin &gt;&gt; n;
+    for(int i = 1; i &lt;= n; i++) fact *= i;
+    cout &lt;&lt; "Factorial: " &lt;&lt; fact &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 85: Write a C++ program that prompts the user to input an integer and then outputs the number with the digits reversed order</h3>
+    <button onclick="toggleSolution('sol85')">Show Solution</button>
+    <pre id="sol85" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, rev = 0;
+    cout &lt;&lt; "Enter an integer: ";
+    cin &gt;&gt; n;
+    while(n != 0) {
+        rev = rev * 10 + (n % 10);
+        n /= 10;
+    }
+    cout &lt;&lt; "Reversed Number: " &lt;&lt; rev &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 86: Write a C++ program that reads a set of integers, and then prints the sum of the even and odd integers using loop</h3>
+    <button onclick="toggleSolution('sol86')">Show Solution</button>
+    <pre id="sol86" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int count, n, sumEven = 0, sumOdd = 0;
+    cout &lt;&lt; "How many integers? ";
+    cin &gt;&gt; count;
+    cout &lt;&lt; "Enter numbers: ";
+    for(int i = 0; i &lt; count; i++) {
+        cin &gt;&gt; n;
+        if(n % 2 == 0) sumEven += n;
+        else sumOdd += n;
+    }
+    cout &lt;&lt; "Sum of Even: " &lt;&lt; sumEven &lt;&lt; "\nSum of Odd: " &lt;&lt; sumOdd &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 87: Write a C++ program to check whether the number is a prime number or not</h3>
+    <button onclick="toggleSolution('sol87')">Show Solution</button>
+    <pre id="sol87" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    bool isPrime = true;
+    cout &lt;&lt; "Enter a positive integer: ";
+    cin &gt;&gt; n;
+    if (n == 0 || n == 1) isPrime = false;
+    else {
+        for (int i = 2; i &lt;= n / 2; ++i) {
+            if (n % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+    }
+    if (isPrime) cout &lt;&lt; n &lt;&lt; " is a prime number." &lt;&lt; endl;
+    else cout &lt;&lt; n &lt;&lt; " is not a prime number." &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 88: Write a C++ program to calculate HCF of Two given numbers using loop</h3>
+    <button onclick="toggleSolution('sol88')">Show Solution</button>
+    <pre id="sol88" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n1, n2;
+    cout &lt;&lt; "Enter two numbers: ";
+    cin &gt;&gt; n1 &gt;&gt; n2;
+    while(n1 != n2) {
+        if(n1 &gt; n2) n1 -= n2;
+        else n2 -= n1;
+    }
+    cout &lt;&lt; "HCF = " &lt;&lt; n1 &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 89: Write a C++ program to enter the numbers till the user wants and at the end it should display the count of positive, negative and zeros</h3>
+    <button onclick="toggleSolution('sol89')">Show Solution</button>
+    <pre id="sol89" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, pos = 0, neg = 0, zero = 0;
+    char choice;
+    do {
+        cout &lt;&lt; "Enter number: ";
+        cin &gt;&gt; n;
+        if(n &gt; 0) pos++;
+        else if(n &lt; 0) neg++;
+        else zero++;
+        cout &lt;&lt; "Do you want to continue (y/n)? ";
+        cin &gt;&gt; choice;
+    } while(choice == 'y' || choice == 'Y');
+    cout &lt;&lt; "Positive: " &lt;&lt; pos &lt;&lt; " Negative: " &lt;&lt; neg &lt;&lt; " Zeros: " &lt;&lt; zero &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 90: Write a C++ program to enter the numbers till the user wants and at the end the program should display the largest and smallest numbers entered</h3>
+    <button onclick="toggleSolution('sol90')">Show Solution</button>
+    <pre id="sol90" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;climits&gt;
+using namespace std;
+int main() {
+    int n, max_num = INT_MIN, min_num = INT_MAX;
+    char choice;
+    do {
+        cout &lt;&lt; "Enter number: ";
+        cin &gt;&gt; n;
+        if(n &gt; max_num) max_num = n;
+        if(n &lt; min_num) min_num = n;
+        cout &lt;&lt; "Do you want to continue (y/n)? ";
+        cin &gt;&gt; choice;
+    } while(choice == 'y' || choice == 'Y');
+    cout &lt;&lt; "Largest: " &lt;&lt; max_num &lt;&lt; "\nSmallest: " &lt;&lt; min_num &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 91: Write a C++ program to print out all Armstrong numbers between 1 to 600 using loop</h3>
+    <button onclick="toggleSolution('sol91')">Show Solution</button>
+    <pre id="sol91" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    for(int i = 1; i &lt;= 600; i++) {
+        int sum = 0, temp = i, rem;
+        while(temp &gt; 0) {
+            rem = temp % 10;
+            sum += rem * rem * rem;
+            temp /= 10;
+        }
+        if(sum == i) cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 92: Write a C++ program to count total number of notes in entered amount using loop</h3>
+    <button onclick="toggleSolution('sol92')">Show Solution</button>
+    <pre id="sol92" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int amount;
+    int notes[9] = {2000, 500, 200, 100, 50, 20, 10, 5, 1};
+    int noteCount[9] = {0};
+    
+    cout &lt;&lt; "Enter amount: ";
+    cin &gt;&gt; amount;
+    
+    for(int i = 0; i &lt; 9; i++) {
+        if(amount &gt;= notes[i]) {
+            noteCount[i] = amount / notes[i];
+            amount = amount % notes[i];
+        }
+    }
+    
+    cout &lt;&lt; "Total notes required:" &lt;&lt; endl;
+    for(int i = 0; i &lt; 9; i++) {
+        if(noteCount[i] != 0) cout &lt;&lt; notes[i] &lt;&lt; " : " &lt;&lt; noteCount[i] &lt;&lt; endl;
+    }
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 93: Write a C++ program to print Fibonacci series of n terms where n is input by user using loop</h3>
+    <button onclick="toggleSolution('sol93')">Show Solution</button>
+    <pre id="sol93" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, a = 0, b = 1, next;
+    cout &lt;&lt; "Enter number of terms: ";
+    cin &gt;&gt; n;
+    cout &lt;&lt; "Fibonacci Series: ";
+    for (int i = 1; i &lt;= n; ++i) {
+        if(i == 1) { cout &lt;&lt; a &lt;&lt; " "; continue; }
+        if(i == 2) { cout &lt;&lt; b &lt;&lt; " "; continue; }
+        next = a + b;
+        a = b;
+        b = next;
+        cout &lt;&lt; next &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 94: Write a C++ program to calculate the sum of following series where n is input by user</h3>
+    <button onclick="toggleSolution('sol94')">Show Solution</button>
+    <pre id="sol94" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    // Assuming series: 1 + 1/2 + 1/3 + ... + 1/n
+    int n;
+    float sum = 0.0;
+    cout &lt;&lt; "Enter n: ";
+    cin &gt;&gt; n;
+    for(int i = 1; i &lt;= n; i++) {
+        sum += 1.0 / i;
+    }
+    cout &lt;&lt; "Sum of series 1 + 1/2 + ... + 1/n = " &lt;&lt; sum &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 95: Write a C++ method to compute the average of three numbers</h3>
+    <button onclick="toggleSolution('sol95')">Show Solution</button>
+    <pre id="sol95" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+float getAverage(float a, float b, float c) {
+    return (a + b + c) / 3.0;
+}
+int main() {
+    cout &lt;&lt; "Average of 10, 20, 30 is " &lt;&lt; getAverage(10, 20, 30) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 96: Write a C++ method to find the smallest number among three numbers</h3>
+    <button onclick="toggleSolution('sol96')">Show Solution</button>
+    <pre id="sol96" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int findSmallest(int a, int b, int c) {
+    int min = a;
+    if(b &lt; min) min = b;
+    if(c &lt; min) min = c;
+    return min;
+}
+int main() {
+    cout &lt;&lt; "Smallest of 50, 20, 30 is " &lt;&lt; findSmallest(50, 20, 30) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 97: Write a C++ method to check whether an year entered by the user is a leap year or not</h3>
+    <button onclick="toggleSolution('sol97')">Show Solution</button>
+    <pre id="sol97" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+bool isLeapYear(int year) {
+    return ((year % 400 == 0) || (year % 4 == 0 &amp;&amp; year % 100 != 0));
+}
+int main() {
+    int y;
+    cout &lt;&lt; "Enter year: ";
+    cin &gt;&gt; y;
+    if(isLeapYear(y)) cout &lt;&lt; "Leap Year";
+    else cout &lt;&lt; "Not a Leap Year";
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 98: Write a C++ program to accept a float value of number and return a rounded float value</h3>
+    <button onclick="toggleSolution('sol98')">Show Solution</button>
+    <pre id="sol98" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+float getRounded(float num) {
+    return round(num);
+}
+int main() {
+    float f;
+    cout &lt;&lt; "Enter a float: ";
+    cin &gt;&gt; f;
+    cout &lt;&lt; "Rounded value: " &lt;&lt; getRounded(f) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 99: Write a C++ method to compute the sum of the digits in an integer</h3>
+    <button onclick="toggleSolution('sol99')">Show Solution</button>
+    <pre id="sol99" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int sumDigits(int n) {
+    int sum = 0;
+    while(n != 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+    return sum;
+}
+int main() {
+    cout &lt;&lt; "Sum of digits of 1234: " &lt;&lt; sumDigits(1234) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 100: Write a C++ method to calculate the area of a triangle</h3>
+    <button onclick="toggleSolution('sol100')">Show Solution</button>
+    <pre id="sol100" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+float areaTriangle(float base, float height) {
+    return 0.5 * base * height;
+}
+int main() {
+    cout &lt;&lt; "Area of triangle (base 10, height 5) is " &lt;&lt; areaTriangle(10, 5) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 101: Write a C++ method to find the area of a pentagon</h3>
+    <button onclick="toggleSolution('sol101')">Show Solution</button>
+    <pre id="sol101" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+float areaPentagon(float side) {
+    return (sqrt(5 * (5 + 2 * sqrt(5))) * side * side) / 4.0;
+}
+int main() {
+    cout &lt;&lt; "Area of regular pentagon (side 5) is " &lt;&lt; areaPentagon(5) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 102: Write a C++ method to find number is even number or not</h3>
+    <button onclick="toggleSolution('sol102')">Show Solution</button>
+    <pre id="sol102" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+bool isEven(int n) {
+    return (n % 2 == 0);
+}
+int main() {
+    int num;
+    cout &lt;&lt; "Enter a number: ";
+    cin &gt;&gt; num;
+    cout &lt;&lt; (isEven(num) ? "Even" : "Odd") &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 103: Write a C++ method to check numbers is palindrome number or not</h3>
+    <button onclick="toggleSolution('sol103')">Show Solution</button>
+    <pre id="sol103" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+bool isPalindrome(int num) {
+    int orig = num, rev = 0;
+    while(num &gt; 0) {
+        rev = rev * 10 + (num % 10);
+        num /= 10;
+    }
+    return (orig == rev);
+}
+int main() {
+    cout &lt;&lt; "121 is " &lt;&lt; (isPalindrome(121) ? "Palindrome" : "Not Palindrome") &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 104: Write a C++ method to displays prime numbers between 1 to 20</h3>
+    <button onclick="toggleSolution('sol104')">Show Solution</button>
+    <pre id="sol104" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+bool isPrime(int n) {
+    if(n &lt; 2) return false;
+    for(int i = 2; i &lt;= n/2; i++) {
+        if(n % i == 0) return false;
+    }
+    return true;
+}
+void displayPrimes() {
+    cout &lt;&lt; "Primes between 1 and 20: ";
+    for(int i = 1; i &lt;= 20; i++) {
+        if(isPrime(i)) cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+}
+int main() {
+    displayPrimes();
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 105: Write a C++ method to find GCD and LCM of Two Numbers</h3>
+    <button onclick="toggleSolution('sol105')">Show Solution</button>
+    <pre id="sol105" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int getGCD(int a, int b) {
+    if (b == 0) return a;
+    return getGCD(b, a % b);
+}
+int getLCM(int a, int b) {
+    return (a * b) / getGCD(a, b);
+}
+int main() {
+    int a = 15, b = 20;
+    cout &lt;&lt; "GCD: " &lt;&lt; getGCD(a, b) &lt;&lt; ", LCM: " &lt;&lt; getLCM(a, b) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 106: Write a C++ method to find factorial using recursion</h3>
+    <button onclick="toggleSolution('sol106')">Show Solution</button>
+    <pre id="sol106" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+long long factorial(int n) {
+    if(n == 0 || n == 1) return 1;
+    return n * factorial(n - 1);
+}
+int main() {
+    cout &lt;&lt; "Factorial of 5: " &lt;&lt; factorial(5) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 107: Write a C++ program to reverse an integer number</h3>
+    <button onclick="toggleSolution('sol107')">Show Solution</button>
+    <pre id="sol107" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, rev = 0;
+    cout &lt;&lt; "Enter an integer: ";
+    cin &gt;&gt; n;
+    while(n != 0) {
+        rev = rev * 10 + n % 10;
+        n /= 10;
+    }
+    cout &lt;&lt; "Reversed Number: " &lt;&lt; rev &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 108: Write a C++ program to round a float number to specified decimals</h3>
+    <button onclick="toggleSolution('sol108')">Show Solution</button>
+    <pre id="sol108" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+int main() {
+    float f = 12.34567;
+    cout &lt;&lt; "Original: " &lt;&lt; f &lt;&lt; endl;
+    cout &lt;&lt; "Rounded to 2 decimals: " &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; f &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 109: Write a C++ program to test if a double number is an integer</h3>
+    <button onclick="toggleSolution('sol109')">Show Solution</button>
+    <pre id="sol109" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    double num;
+    cout &lt;&lt; "Enter a double: ";
+    cin &gt;&gt; num;
+    if(ceil(num) == floor(num)) cout &lt;&lt; "It is an integer." &lt;&lt; endl;
+    else cout &lt;&lt; "It is NOT an integer." &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 110: Write a C++ program to round up the result of integer division</h3>
+    <button onclick="toggleSolution('sol110')">Show Solution</button>
+    <pre id="sol110" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a = 17, b = 5;
+    int roundedUp = (a + b - 1) / b;
+    cout &lt;&lt; "17 / 5 rounded up is: " &lt;&lt; roundedUp &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 111: Write a C++ program to convert Roman number to an integer number</h3>
+    <button onclick="toggleSolution('sol111')">Show Solution</button>
+    <pre id="sol111" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int value(char r) {
+    if (r == 'I') return 1;
+    if (r == 'V') return 5;
+    if (r == 'X') return 10;
+    if (r == 'L') return 50;
+    if (r == 'C') return 100;
+    if (r == 'D') return 500;
+    if (r == 'M') return 1000;
+    return -1;
+}
+
+int main() {
+    string roman = "MCMIV";
+    int res = 0;
+    for (int i = 0; i &lt; roman.length(); i++) {
+        int s1 = value(roman[i]);
+        if (i + 1 &lt; roman.length()) {
+            int s2 = value(roman[i + 1]);
+            if (s1 &gt;= s2) res = res + s1;
+            else {
+                res = res + s2 - s1;
+                i++;
+            }
+        } else {
+            res = res + s1;
+        }
+    }
+    cout &lt;&lt; "Integer equivalent: " &lt;&lt; res &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 112: Write a C++ program to convert a float value to absolute value</h3>
+    <button onclick="toggleSolution('sol112')">Show Solution</button>
+    <pre id="sol112" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    float f = -25.75;
+    cout &lt;&lt; "Absolute value of " &lt;&lt; f &lt;&lt; " is " &lt;&lt; fabs(f) &lt;&lt; endl;
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 113: Create a class entering the command line arguments from the user and show all the arguments as output</h3>
+    <button onclick="toggleSolution('sol113')">Show Solution</button>
+    <pre id="sol113" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class CommandArgs {
+public:
+    void showArgs(int argc, char* argv[]) {
+        cout &lt;&lt; "Number of arguments: " &lt;&lt; argc &lt;&lt; "\n";
+        for (int i = 0; i &lt; argc; ++i) {
+            cout &lt;&lt; "Argument " &lt;&lt; i &lt;&lt; ": " &lt;&lt; argv[i] &lt;&lt; "\n";
+        }
+    }
+};
+
+int main(int argc, char* argv[]) {
+    CommandArgs cArgs;
+    cArgs.showArgs(argc, argv);
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <p><strong>Note:</strong> This topic contains 55 practice questions (Questions 59 to 113).</p>
+
+    <hr>
+
+    <p>&copy; 2026 C++ Practice Questions | Made by Sahil Rawat</p>
+
+    <script>
+        function toggleSolution(id) {
+            var sol = document.getElementById(id);
+            if (sol.style.display === 'none') {
+                sol.style.display = 'block';
+            } else {
+                sol.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+    

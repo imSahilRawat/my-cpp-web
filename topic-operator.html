@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Overloading - C++ Questions</title>
+</head>
+<body>
+    <h1>Operator Overloading</h1>
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="questions.html">Questions</a> |
+        <a href="about.html">About Me</a>
+    </p>
+
+    <hr>
+
+    <p><a href="questions.html">&lt;&lt; Back to Topics</a></p>
+
+    <h2>Practice Questions (8 questions)</h2>
+
+    <h3>Question 1: Define a class Complex to represent complex numbers. Overload the + operator to add two complex numbers.</h3>
+
+    <button onclick="toggleSolution('sol1')">Show Solution</button>
+    <pre id="sol1" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Complex {
+private:
+    int real, imag;
+public:
+    Complex(int r = 0, int i = 0) : real(r), imag(i) {}
+
+    Complex operator+(Complex c) {
+        return Complex(real + c.real, imag + c.imag);
+    }
+
+    void display() {
+        cout &lt;&lt; real &lt;&lt; " + " &lt;&lt; imag &lt;&lt; "i" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Complex c1(3, 4);
+    Complex c2(2, 5);
+    Complex c3;
+
+    cout &lt;&lt; "Complex 1: ";
+    c1.display();
+    cout &lt;&lt; "Complex 2: ";
+    c2.display();
+
+    c3 = c1 + c2;
+
+    cout &lt;&lt; "Sum: ";
+    c3.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 2: Create a class Fraction to represent fractions. Overload the + operator to add two fractions.</h3>
+
+    <button onclick="toggleSolution('sol2')">Show Solution</button>
+    <pre id="sol2" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Fraction {
+private:
+    int numerator, denominator;
+
+    int gcd(int a, int b) {
+        return (b == 0) ? a : gcd(b, a % b);
+    }
+
+    void simplify() {
+        int common = gcd(numerator, denominator);
+        numerator /= common;
+        denominator /= common;
+    }
+
+public:
+    Fraction(int n = 0, int d = 1) : numerator(n), denominator(d) {
+        simplify();
+    }
+
+    Fraction operator+(Fraction f) {
+        int newNum = numerator * f.denominator + f.numerator * denominator;
+        int newDen = denominator * f.denominator;
+        return Fraction(newNum, newDen);
+    }
+
+    void display() {
+        cout &lt;&lt; numerator &lt;&lt; "/" &lt;&lt; denominator &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Fraction f1(1, 4);
+    Fraction f2(2, 3);
+    Fraction f3;
+
+    cout &lt;&lt; "Fraction 1: ";
+    f1.display();
+    cout &lt;&lt; "Fraction 2: ";
+    f2.display();
+
+    f3 = f1 + f2;
+
+    cout &lt;&lt; "Sum: ";
+    f3.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 3: Define a class Matrix to represent matrices. Overload the * operator to multiply two matrices.</h3>
+
+    <button onclick="toggleSolution('sol3')">Show Solution</button>
+    <pre id="sol3" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Matrix {
+private:
+    int mat[3][3];
+    int rows, cols;
+
+public:
+    Matrix(int r = 3, int c = 3) : rows(r), cols(c) {
+        for (int i = 0; i &lt; rows; i++)
+            for (int j = 0; j &lt; cols; j++)
+                mat[i][j] = 0;
+    }
+
+    void input() {
+        cout &lt;&lt; "Enter matrix elements:" &lt;&lt; endl;
+        for (int i = 0; i &lt; rows; i++)
+            for (int j = 0; j &lt; cols; j++)
+                cin &gt;&gt; mat[i][j];
+    }
+
+    Matrix operator*(Matrix m) {
+        Matrix result(rows, m.cols);
+        for (int i = 0; i &lt; rows; i++) {
+            for (int j = 0; j &lt; m.cols; j++) {
+                for (int k = 0; k &lt; cols; k++) {
+                    result.mat[i][j] += mat[i][k] * m.mat[k][j];
+                }
+            }
+        }
+        return result;
+    }
+
+    void display() {
+        for (int i = 0; i &lt; rows; i++) {
+            for (int j = 0; j &lt; cols; j++)
+                cout &lt;&lt; mat[i][j] &lt;&lt; " ";
+            cout &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    Matrix m1, m2, m3;
+
+    cout &lt;&lt; "Enter first matrix (3x3):" &lt;&lt; endl;
+    m1.input();
+
+    cout &lt;&lt; "Enter second matrix (3x3):" &lt;&lt; endl;
+    m2.input();
+
+    m3 = m1 * m2;
+
+    cout &lt;&lt; "Product of matrices:" &lt;&lt; endl;
+    m3.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 4: Implement a class String to represent strings. Overload the + operator to concatenate two strings.</h3>
+
+    <button onclick="toggleSolution('sol4')">Show Solution</button>
+    <pre id="sol4" style="display:none;">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class MyString {
+private:
+    string str;
+
+public:
+    MyString(string s = "") : str(s) {}
+
+    MyString operator+(MyString s) {
+        return MyString(str + s.str);
+    }
+
+    void display() {
+        cout &lt;&lt; str &lt;&lt; endl;
+    }
+};
+
+int main() {
+    MyString s1("Hello, ");
+    MyString s2("World!");
+    MyString s3;
+
+    cout &lt;&lt; "String 1: ";
+    s1.display();
+    cout &lt;&lt; "String 2: ";
+    s2.display();
+
+    s3 = s1 + s2;
+
+    cout &lt;&lt; "Concatenated: ";
+    s3.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 5: Define a class Date to represent dates. Overload the &lt; operator to compare two dates.</h3>
+
+    <button onclick="toggleSolution('sol5')">Show Solution</button>
+    <pre id="sol5" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Date {
+private:
+    int day, month, year;
+
+public:
+    Date(int d = 1, int m = 1, int y = 2000) : day(d), month(m), year(y) {}
+
+    bool operator&lt;(Date d) {
+        if (year &lt; d.year)
+            return true;
+        else if (year &gt; d.year)
+            return false;
+
+        if (month &lt; d.month)
+            return true;
+        else if (month &gt; d.month)
+            return false;
+
+        return day &lt; d.day;
+    }
+
+    void display() {
+        cout &lt;&lt; day &lt;&lt; "/" &lt;&lt; month &lt;&lt; "/" &lt;&lt; year &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Date d1(15, 3, 2024);
+    Date d2(20, 5, 2024);
+
+    cout &lt;&lt; "Date 1: ";
+    d1.display();
+    cout &lt;&lt; "Date 2: ";
+    d2.display();
+
+    if (d1 &lt; d2)
+        cout &lt;&lt; "Date 1 is earlier than Date 2" &lt;&lt; endl;
+    else
+        cout &lt;&lt; "Date 1 is not earlier than Date 2" &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 6: Implement a class Money to represent money. Overload the + operator to add two amounts of money.</h3>
+
+    <button onclick="toggleSolution('sol6')">Show Solution</button>
+    <pre id="sol6" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Money {
+private:
+    int rupees, paise;
+
+public:
+    Money(int r = 0, int p = 0) : rupees(r), paise(p) {
+        if (paise &gt;= 100) {
+            rupees += paise / 100;
+            paise = paise % 100;
+        }
+    }
+
+    Money operator+(Money m) {
+        int totalRupees = rupees + m.rupees;
+        int totalPaise = paise + m.paise;
+        return Money(totalRupees, totalPaise);
+    }
+
+    void display() {
+        cout &lt;&lt; "Rs. " &lt;&lt; rupees &lt;&lt; "." &lt;&lt; paise &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Money m1(100, 75);
+    Money m2(50, 50);
+    Money m3;
+
+    cout &lt;&lt; "Money 1: ";
+    m1.display();
+    cout &lt;&lt; "Money 2: ";
+    m2.display();
+
+    m3 = m1 + m2;
+
+    cout &lt;&lt; "Total: ";
+    m3.display();
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 7: Create a class Rectangle to represent rectangles. Overload the == operator to check if two rectangles are equal.</h3>
+
+    <button onclick="toggleSolution('sol7')">Show Solution</button>
+    <pre id="sol7" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Rectangle {
+private:
+    int length, breadth;
+
+public:
+    Rectangle(int l = 0, int b = 0) : length(l), breadth(b) {}
+
+    bool operator==(Rectangle r) {
+        return (length == r.length &amp;&amp; breadth == r.breadth);
+    }
+
+    void display() {
+        cout &lt;&lt; "Length: " &lt;&lt; length &lt;&lt; ", Breadth: " &lt;&lt; breadth &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Rectangle r1(10, 5);
+    Rectangle r2(10, 5);
+    Rectangle r3(8, 4);
+
+    cout &lt;&lt; "Rectangle 1: ";
+    r1.display();
+    cout &lt;&lt; "Rectangle 2: ";
+    r2.display();
+    cout &lt;&lt; "Rectangle 3: ";
+    r3.display();
+
+    if (r1 == r2)
+        cout &lt;&lt; "Rectangle 1 and Rectangle 2 are equal" &lt;&lt; endl;
+    else
+        cout &lt;&lt; "Rectangle 1 and Rectangle 2 are not equal" &lt;&lt; endl;
+
+    if (r1 == r3)
+        cout &lt;&lt; "Rectangle 1 and Rectangle 3 are equal" &lt;&lt; endl;
+    else
+        cout &lt;&lt; "Rectangle 1 and Rectangle 3 are not equal" &lt;&lt; endl;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <h3>Question 8: Define a class Time to represent time. Overload the &lt;&lt; operator to display the time in HH:MM format.</h3>
+
+    <button onclick="toggleSolution('sol8')">Show Solution</button>
+    <pre id="sol8" style="display:none;">
+#include &lt;iostream&gt;
+using namespace std;
+
+class Time {
+private:
+    int hours, minutes;
+
+public:
+    Time(int h = 0, int m = 0) : hours(h), minutes(m) {
+        if (minutes &gt;= 60) {
+            hours += minutes / 60;
+            minutes = minutes % 60;
+        }
+    }
+
+    friend ostream&amp; operator&lt;&lt;(ostream&amp; out, Time&amp; t);
+};
+
+ostream&amp; operator&lt;&lt;(ostream&amp; out, Time&amp; t) {
+    out &lt;&lt; t.hours &lt;&lt; ":" &lt;&lt; t.minutes &lt;&lt; endl;
+    return out;
+}
+
+int main() {
+    Time t1(9, 30);
+    Time t2(14, 45);
+
+    cout &lt;&lt; "Time 1: " &lt;&lt; t1;
+    cout &lt;&lt; "Time 2: " &lt;&lt; t2;
+
+    return 0;
+}
+    </pre>
+    <hr>
+
+    <p><strong>Note:</strong> This topic contains 8 practice questions on Operator Overloading (UNIT-II).</p>
+
+    <hr>
+
+    <p>&copy; 2026 C++ Practice Questions | Made by Sahil Rawat</p>
+
+    <script>
+        function toggleSolution(id) {
+            var sol = document.getElementById(id);
+            if (sol.style.display === 'none') {
+                sol.style.display = 'block';
+            } else {
+                sol.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
